@@ -25,6 +25,10 @@ class FindoctorViewController: MDBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func actionFindDoctor(_ sender: Any) {
+        let vc : DoctorListViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorListViewController") as! DoctorListViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     /*
     // MARK: - Navigation
 

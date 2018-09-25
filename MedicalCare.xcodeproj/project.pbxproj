@@ -14,6 +14,12 @@
 		0E0861BB21593366001847D9 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0861BA21593366001847D9 /* HomeCollectionViewCell.swift */; };
 		0E0861BD21593C92001847D9 /* FindoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0861BC21593C92001847D9 /* FindoctorViewController.swift */; };
 		0E35D88D21573F6700CA48BC /* MDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35D88C21573F6700CA48BC /* MDProvider.swift */; };
+		0E49BA4F215A6C8F0085C20E /* DoctorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */; };
+		0E49BA51215A70FB0085C20E /* ListDoctorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */; };
+		0E49BA53215A75690085C20E /* DoctorPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA52215A75690085C20E /* DoctorPresentViewController.swift */; };
+		0E49BA55215A95030085C20E /* DoctorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */; };
+		0E49BA58215A99020085C20E /* DoctorInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA57215A99020085C20E /* DoctorInfoCell.swift */; };
+		0E49BA5A215A99130085C20E /* DoctorInfoWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */; };
 		0EFDFF3D2156B94400627A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDFF3C2156B94400627A59 /* AppDelegate.swift */; };
 		0EFDFF422156B94400627A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFDFF402156B94400627A59 /* Main.storyboard */; };
 		0EFDFF442156B94600627A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EFDFF432156B94600627A59 /* Assets.xcassets */; };
@@ -37,6 +43,12 @@
 		0E0861BA21593366001847D9 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E0861BC21593C92001847D9 /* FindoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindoctorViewController.swift; sourceTree = "<group>"; };
 		0E35D88C21573F6700CA48BC /* MDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDProvider.swift; sourceTree = "<group>"; };
+		0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListViewController.swift; sourceTree = "<group>"; };
+		0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDoctorCell.swift; sourceTree = "<group>"; };
+		0E49BA52215A75690085C20E /* DoctorPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorPresentViewController.swift; sourceTree = "<group>"; };
+		0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailViewController.swift; sourceTree = "<group>"; };
+		0E49BA57215A99020085C20E /* DoctorInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoCell.swift; sourceTree = "<group>"; };
+		0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoWithImageCell.swift; sourceTree = "<group>"; };
 		0EFDFF392156B94400627A59 /* MedicalCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EFDFF3C2156B94400627A59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EFDFF412156B94400627A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,10 +92,30 @@
 				0E0861B521592D7C001847D9 /* MDBaseViewController.swift */,
 				0EFDFF562156CA8000627A59 /* LoginViewController.swift */,
 				0E0861B821592F42001847D9 /* MainTabbarViewController.swift */,
-				0E0861BC21593C92001847D9 /* FindoctorViewController.swift */,
 			);
 			name = Controller;
 			path = "Controllẻ";
+			sourceTree = "<group>";
+		};
+		0E49BA4D215A6C6D0085C20E /* Doctor */ = {
+			isa = PBXGroup;
+			children = (
+				0E0861BC21593C92001847D9 /* FindoctorViewController.swift */,
+				0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */,
+				0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */,
+				0E49BA52215A75690085C20E /* DoctorPresentViewController.swift */,
+			);
+			path = Doctor;
+			sourceTree = "<group>";
+		};
+		0E49BA56215A98DA0085C20E /* DoctorDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */,
+				0E49BA57215A99020085C20E /* DoctorInfoCell.swift */,
+				0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */,
+			);
+			path = DoctorDetail;
 			sourceTree = "<group>";
 		};
 		0EFDFF302156B94400627A59 = {
@@ -109,6 +141,8 @@
 				0E35D88C21573F6700CA48BC /* MDProvider.swift */,
 				0E0861B021592344001847D9 /* MDExtension.swift */,
 				0EFDFF602156D74800627A59 /* Contants.swift */,
+				0E49BA4D215A6C6D0085C20E /* Doctor */,
+				0E49BA56215A98DA0085C20E /* DoctorDetail */,
 				0EFDFF5E2156D30200627A59 /* Register */,
 				0EFDFF5F2156D30F00627A59 /* Tutorial */,
 				0E0861B2215926CF001847D9 /* Home */,
@@ -213,16 +247,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E49BA55215A95030085C20E /* DoctorDetailViewController.swift in Sources */,
 				0EFDFF5D2156D2EF00627A59 /* RegisterViewController.swift in Sources */,
 				0EFDFF572156CA8000627A59 /* LoginViewController.swift in Sources */,
+				0E49BA5A215A99130085C20E /* DoctorInfoWithImageCell.swift in Sources */,
 				0E0861B121592344001847D9 /* MDExtension.swift in Sources */,
 				0EFDFF4F2156C24D00627A59 /* TutorialViewControllerOne.swift in Sources */,
 				0EFDFF552156C69300627A59 /* TutorialPageViewController.swift in Sources */,
+				0E49BA53215A75690085C20E /* DoctorPresentViewController.swift in Sources */,
 				0E35D88D21573F6700CA48BC /* MDProvider.swift in Sources */,
 				0EFDFF5B2156D2D700627A59 /* ProfileRegiterViewController.swift in Sources */,
+				0E49BA51215A70FB0085C20E /* ListDoctorCell.swift in Sources */,
+				0E49BA4F215A6C8F0085C20E /* DoctorListViewController.swift in Sources */,
 				0E0861BB21593366001847D9 /* HomeCollectionViewCell.swift in Sources */,
 				0EFDFF592156D2A000627A59 /* BirthDayViewController.swift in Sources */,
 				0EFDFF532156C64700627A59 /* TutorialViewControllerThree.swift in Sources */,
+				0E49BA58215A99020085C20E /* DoctorInfoCell.swift in Sources */,
 				0E0861B921592F42001847D9 /* MainTabbarViewController.swift in Sources */,
 				0EFDFF612156D74800627A59 /* Contants.swift in Sources */,
 				0E0861B621592D7C001847D9 /* MDBaseViewController.swift in Sources */,
