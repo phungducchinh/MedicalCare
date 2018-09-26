@@ -20,6 +20,10 @@
 		0E49BA55215A95030085C20E /* DoctorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */; };
 		0E49BA58215A99020085C20E /* DoctorInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA57215A99020085C20E /* DoctorInfoCell.swift */; };
 		0E49BA5A215A99130085C20E /* DoctorInfoWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */; };
+		0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */; };
+		0EB3FD70215BCC4100C65EB7 /* DoctorHospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */; };
+		0EB3FD73215BDE6E00C65EB7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */; };
+		0EB3FD75215BE12600C65EB7 /* UserSetingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD74215BE12600C65EB7 /* UserSetingViewCell.swift */; };
 		0EFDFF3D2156B94400627A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDFF3C2156B94400627A59 /* AppDelegate.swift */; };
 		0EFDFF422156B94400627A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFDFF402156B94400627A59 /* Main.storyboard */; };
 		0EFDFF442156B94600627A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EFDFF432156B94600627A59 /* Assets.xcassets */; };
@@ -49,6 +53,10 @@
 		0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailViewController.swift; sourceTree = "<group>"; };
 		0E49BA57215A99020085C20E /* DoctorInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoCell.swift; sourceTree = "<group>"; };
 		0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoWithImageCell.swift; sourceTree = "<group>"; };
+		0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalViewController.swift; sourceTree = "<group>"; };
+		0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalCell.swift; sourceTree = "<group>"; };
+		0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		0EB3FD74215BE12600C65EB7 /* UserSetingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetingViewCell.swift; sourceTree = "<group>"; };
 		0EFDFF392156B94400627A59 /* MedicalCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EFDFF3C2156B94400627A59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EFDFF412156B94400627A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,8 +110,10 @@
 			children = (
 				0E0861BC21593C92001847D9 /* FindoctorViewController.swift */,
 				0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */,
+				0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */,
 				0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */,
 				0E49BA52215A75690085C20E /* DoctorPresentViewController.swift */,
+				0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */,
 			);
 			path = Doctor;
 			sourceTree = "<group>";
@@ -116,6 +126,15 @@
 				0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */,
 			);
 			path = DoctorDetail;
+			sourceTree = "<group>";
+		};
+		0EB3FD71215BDE5100C65EB7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */,
+				0EB3FD74215BE12600C65EB7 /* UserSetingViewCell.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		0EFDFF302156B94400627A59 = {
@@ -141,6 +160,7 @@
 				0E35D88C21573F6700CA48BC /* MDProvider.swift */,
 				0E0861B021592344001847D9 /* MDExtension.swift */,
 				0EFDFF602156D74800627A59 /* Contants.swift */,
+				0EB3FD71215BDE5100C65EB7 /* User */,
 				0E49BA4D215A6C6D0085C20E /* Doctor */,
 				0E49BA56215A98DA0085C20E /* DoctorDetail */,
 				0EFDFF5E2156D30200627A59 /* Register */,
@@ -248,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E49BA55215A95030085C20E /* DoctorDetailViewController.swift in Sources */,
+				0EB3FD75215BE12600C65EB7 /* UserSetingViewCell.swift in Sources */,
 				0EFDFF5D2156D2EF00627A59 /* RegisterViewController.swift in Sources */,
 				0EFDFF572156CA8000627A59 /* LoginViewController.swift in Sources */,
 				0E49BA5A215A99130085C20E /* DoctorInfoWithImageCell.swift in Sources */,
@@ -262,6 +283,7 @@
 				0E0861BB21593366001847D9 /* HomeCollectionViewCell.swift in Sources */,
 				0EFDFF592156D2A000627A59 /* BirthDayViewController.swift in Sources */,
 				0EFDFF532156C64700627A59 /* TutorialViewControllerThree.swift in Sources */,
+				0EB3FD73215BDE6E00C65EB7 /* UserViewController.swift in Sources */,
 				0E49BA58215A99020085C20E /* DoctorInfoCell.swift in Sources */,
 				0E0861B921592F42001847D9 /* MainTabbarViewController.swift in Sources */,
 				0EFDFF612156D74800627A59 /* Contants.swift in Sources */,
@@ -269,7 +291,9 @@
 				0EFDFF3D2156B94400627A59 /* AppDelegate.swift in Sources */,
 				0E0861B4215926DE001847D9 /* HomeViewController.swift in Sources */,
 				0E0861BD21593C92001847D9 /* FindoctorViewController.swift in Sources */,
+				0EB3FD70215BCC4100C65EB7 /* DoctorHospitalCell.swift in Sources */,
 				0EFDFF512156C63900627A59 /* TutorialViewControllerTwo.swift in Sources */,
+				0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

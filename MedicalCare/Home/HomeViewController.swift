@@ -84,6 +84,12 @@ extension HomeViewController : HomeCellDelegate{
             let vc : FindoctorViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FindoctorViewController") as! FindoctorViewController
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
+            let vc : DoctorListViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorListViewController") as! DoctorListViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc : DoctorListViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorListViewController") as! DoctorListViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 4:
             let vc : TutorialPageViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TutorialPageViewController") as! TutorialPageViewController
             self.navigationController?.pushViewController(vc, animated: true)
         default:

@@ -12,7 +12,7 @@ import UIKit
 class MDProvider {
     
     public static let instance = MDProvider()
-    
+    var control = UIViewController()
     func setShadown(view : UIView, borderShadow : CGFloat, bgColor : UIColor, shadownColor : UIColor){
         let shadowSize : CGFloat = borderShadow
         let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2,
@@ -32,5 +32,19 @@ class MDProvider {
         colors.append(UIColor(red: 25/255, green: 115/255, blue: 159/255, alpha: 1))
         colors.append(UIColor(red: 53/255, green: 216/255, blue: 166/255, alpha: 1))
         view.navigationController?.navigationBar.setGradientBackground(colors: colors)
+    }
+    
+    func setUpNavigation(controller : UIViewController){
+        let btn1 = UIButton(type: .custom)
+        btn1.setImage(#imageLiteral(resourceName: "btn_back_white"), for: .normal)
+        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        self.control = controller
+        btn1.addTarget(self, action: #selector(back), for: .touchUpInside)
+        let item1 = UIBarButtonItem(customView: btn1)
+        controller.navigationItem.setLeftBarButton(item1, animated: true)
+    }
+    
+    @objc func back(){
+        self.control.navigationController?.popViewController(animated: true)
     }
 }

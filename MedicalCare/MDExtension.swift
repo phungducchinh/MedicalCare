@@ -126,3 +126,128 @@ extension UINavigationController {
         return self.visibleViewController!.topMostViewController()
     }
 }
+
+extension UIImage{
+    func resize(_ image: UIImage) -> UIImage {
+        var actualHeight = Float(image.size.height)
+        var actualWidth = Float(image.size.width)
+        let maxHeight: Float = 300.0
+        let maxWidth: Float = 400.0
+        var imgRatio: Float = actualWidth / actualHeight
+        let maxRatio: Float = maxWidth / maxHeight
+        let compressionQuality: Float = 0.5
+        //50 percent compression
+        if actualHeight > maxHeight || actualWidth > maxWidth {
+            if imgRatio < maxRatio {
+                //adjust width according to maxHeight
+                imgRatio = maxHeight / actualHeight
+                actualWidth = imgRatio * actualWidth
+                actualHeight = maxHeight
+            }
+            else if imgRatio > maxRatio {
+                //adjust height according to maxWidth
+                imgRatio = maxWidth / actualWidth
+                actualHeight = imgRatio * actualHeight
+                actualWidth = maxWidth
+            }
+            else {
+                actualHeight = maxHeight
+                actualWidth = maxWidth
+            }
+        }
+        let rect = CGRect(x: 0.0, y: 0.0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
+        UIGraphicsBeginImageContext(rect.size)
+        image.draw(in: rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let imageData = UIImageJPEGRepresentation(img!, CGFloat(compressionQuality))
+        UIGraphicsEndImageContext()
+        return UIImage(data: imageData!) ?? UIImage()
+    }
+    
+    
+    func renderResizedImage (newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / self.size.width
+        let newHeight = self.size.height * scale
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+        
+        let image = renderer.image { (context) in
+            self.draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
+        }
+        return image
+    }
+    
+    func resizeImage(_ targetSize: CGSize = CGSize(width: 200, height: 200)) -> UIImage {
+        let size = self.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0,y:  0, width: newSize.width, height: newSize.height)
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        self.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    func cropImage(navigationSize: CGFloat) -> UIImage? {
+        var imageHeight = size.height
+        let imageWidth = size.width
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        print(imageHeight)
+        print(screenHeight)
+        let statusBatHeight = UIApplication.shared.statusBarFrame.size.height
+        let constant = (navigationSize + 50 + statusBatHeight) * imageHeight / screenHeight
+        imageHeight = imageHeight - constant
+        
+        let mySize = CGSize(width: imageWidth, height: imageHeight)
+        //crop bottom
+        let cropRect = CGRect(x: 0, y: constant/2, width: mySize.width, height: mySize.height)
+        if let imageRef = cgImage!.cropping(to: cropRect) {
+            return UIImage(cgImage: imageRef, scale: 0, orientation: imageOrientation)
+        }
+        
+        return nil
+    }
+    func toBase64() -> String{
+        let imageData = UIImageJPEGRepresentation(self, 0.5)
+        return (imageData?.base64EncodedString())!
+    }
+}
+
+extension UIView {
+    
+    /**
+     Given an Array of CGColor, it will:
+     - Remove all sublayers of type CAGradientLayer.
+     - Create and insert a new CAGradientLayer.
+     
+     - Parameters:
+     - colors: An Array of CGColor with the colors for the gradient fill
+     
+     - Returns: The newly created gradient CAGradientLayer
+     */
+    func layerGradient(colors c:[CGColor])->CAGradientLayer {
+        self.layer.sublayers = self.layer.sublayers?.filter(){!($0 is CAGradientLayer)}
+        let layer : CAGradientLayer = CAGradientLayer()
+        layer.frame.size = self.frame.size
+        layer.frame.origin = CGPoint.zero
+        layer.colors = c
+        self.layer.insertSublayer(layer, at: 0)
+        return layer
+    }
+}
