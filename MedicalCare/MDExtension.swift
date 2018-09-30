@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 extension CAGradientLayer {
     
@@ -208,8 +209,6 @@ extension UIImage{
         let imageWidth = size.width
         let screenSize = UIScreen.main.bounds
         let screenHeight = screenSize.height
-        print(imageHeight)
-        print(screenHeight)
         let statusBatHeight = UIApplication.shared.statusBarFrame.size.height
         let constant = (navigationSize + 50 + statusBatHeight) * imageHeight / screenHeight
         imageHeight = imageHeight - constant
@@ -229,6 +228,26 @@ extension UIImage{
     }
 }
 
+extension String
+{
+    func safelyLimitedTo(length n: Int)->String { // check max length
+        if (self.count <= n) {
+            return self
+        }
+        return String( Array(self).prefix(upTo: n) )
+    }
+    
+    public var isEmail: Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,20}"
+        let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: self)
+    }
+    
+    var isNumber: Bool {
+        return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
+}
 extension UIView {
     
     /**
@@ -249,5 +268,11 @@ extension UIView {
         layer.colors = c
         self.layer.insertSublayer(layer, at: 0)
         return layer
+    }
+}
+
+class Connectivity {
+    class func isConnectedToInternet() ->Bool {
+        return NetworkReachabilityManager()!.isReachable
     }
 }

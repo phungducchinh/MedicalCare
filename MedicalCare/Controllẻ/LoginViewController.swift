@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 class LoginViewController: MDBaseViewController {
 
+    @IBOutlet weak var tfEmail: UITextField!
+    @IBOutlet weak var tfPass: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        tfEmail.text = "ducchinh@sdsdf.com"
+        tfPass.text = "dsfsdfr"
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +28,29 @@ class LoginViewController: MDBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func actionLogin(_ sender: Any) {
+        if Connectivity.isConnectedToInternet() == false{
+            MDProvider.loadAlert(title: "", message:errNoInterNet )
+            return
+        }
+        guard let email = tfEmail.text , email != ""  else {
+            MDProvider.loadAlert(title: "", message: errMissInfoLogin)
+            return
+        }
+        
+        if email.isEmail == false{
+            MDProvider.loadAlert(title: "", message: errWrongEmailFormat)
+            return
+        }
+        
+        guard let password = tfPass.text , password != "" else{
+            MDProvider.loadAlert(title: "", message: errMissInfoLogin)
+            return
+        }
+        SVProgressHUD.show()
+        self.performSegue(withIdentifier: kSegueLoginToTabbar, sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

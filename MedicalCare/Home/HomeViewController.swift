@@ -40,11 +40,6 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         cell.delegate = self
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
@@ -80,18 +75,24 @@ extension HomeViewController : HomeCellDelegate{
         
         switch id {
         case 0:
-//            self.performSegue(withIdentifier: kSegueHomeToFindDoctor, sender: nil)
-            let vc : FindoctorViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FindoctorViewController") as! FindoctorViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.performSegue(withIdentifier: kSegueHomeToFindDoctor, sender: nil)
         case 1:
-            let vc : DoctorListViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorListViewController") as! DoctorListViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.performSegue(withIdentifier: kSegueHomeToListHospital, sender: nil)
         case 2:
-            let vc : DoctorListViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorListViewController") as! DoctorListViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+           self.performSegue(withIdentifier: kSegueHomeToListPharmarcy, sender: nil)
+        case 3:
+            self.tabBarController?.selectedIndex = 1
+            if let nav = self.tabBarController?.viewControllers?[1] as? UINavigationController {
+                nav.popToRootViewController(animated: true)
+            }
         case 4:
             let vc : TutorialPageViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TutorialPageViewController") as! TutorialPageViewController
             self.navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            self.tabBarController?.selectedIndex = 3
+            if let nav = self.tabBarController?.viewControllers?[3] as? UINavigationController {
+                nav.popToRootViewController(animated: true)
+            }
         default:
             print(id)
         }

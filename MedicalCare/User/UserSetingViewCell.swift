@@ -15,6 +15,8 @@ class UserSetingViewCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgTitle: UIImageView!
     var idCell = 0
+    weak var delegate : HomeCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +38,6 @@ class UserSetingViewCell: UITableViewCell {
         self.btnNext.setImage(imgButton, for: .normal)
     }
     @IBAction func actionNext(_ sender: Any) {
-        
+        self.delegate?.getIdOfCell(id: idCell)
     }
 }

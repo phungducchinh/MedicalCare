@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
 
-class MDProvider {
+class MDProvider  {
+    
     
     public static let instance = MDProvider()
     var control = UIViewController()
@@ -47,4 +50,86 @@ class MDProvider {
     @objc func back(){
         self.control.navigationController?.popViewController(animated: true)
     }
+    
+    class func loadAlert(title: String, message: String) {
+        
+        var topController:UIViewController = UIApplication.shared.keyWindow!.rootViewController!
+        while ((topController.presentedViewController) != nil) {
+            topController = topController.presentedViewController!;
+        }
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        topController.present(alertController, animated:true, completion:nil)
+    }
+    
+   
+    func coordinates(forAddress address: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) {
+            (placemarks, error) in
+            guard error == nil else {
+                print("Geocoding error: \(error!)")
+                completion(nil)
+                return
+            }
+            completion(placemarks?.first?.location?.coordinate)
+        }
+    }
+    
+    public func openMapForPlace(lat:Double = 0, long:Double = 0, placeName:String = "") {
+        let latitude: CLLocationDegrees = lat
+        let longitude: CLLocationDegrees = long
+        
+        let regionDistance:CLLocationDistance = 100
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = placeName
+        mapItem.openInMaps(launchOptions: options)
+    }
+    
+    func openMap(address : String){
+        
+//        let urlAddress = URL(string: "http://maps.apple.com/?Bệnh viện Răng Hàm Mặt Tp. HCM, Đường Trần Hưng Đạo, Quận 1, Hồ Chí Minh" )1600,PennsylvaniaAve.,20500
+        guard let map = URL(string: "http://maps.apple.com/?address=" + address) else {return}
+        UIApplication.shared.open(map)
+
+//        coordinates(forAddress: address) {
+//            (location) in
+//            guard let location = location else {
+//                MDProvider.loadAlert(title: "", message: errWrongAddress)
+//                return
+//            }
+//            self.openMapForPlace(lat: location.latitude, long: location.longitude)
+//        }
+//                let geocoder = CLGeocoder()
+//
+//                geocoder.geocodeAddressString(address) { (placemarks, error) in
+//                    if let error = error {
+//                        print(error.localizedDescription)
+//                    } else {
+//                        if let location = placemarks?.first?.location {
+//                            let query = "?ll=\(location.coordinate.latitude),\(location.coordinate.longitude)"
+//                            let urlString = "http://maps.apple.com/".appending(query)
+//                            if let url = URL(string: urlString) {
+//                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//                            }
+//                        }
+//                    }
+//                }
+    }
+    
+    func call(phoneNumber : String){
+        guard let number = URL(string: "tel://\(phoneNumber)") else { return }
+        UIApplication.shared.open(number)
+    }
 }
+
+
+

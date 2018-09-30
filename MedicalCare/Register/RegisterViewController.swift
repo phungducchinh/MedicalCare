@@ -10,11 +10,26 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var tfFullName: UITextField!
+    @IBOutlet weak var tfEmail: UITextField!
+    @IBOutlet weak var tfPhone: UITextField!
+    @IBOutlet weak var tfPass: UITextField!
+    @IBOutlet weak var tfRepass: UITextField!
+    
+    var userinfo : UserObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        tfFullName.text = "Nguyen van a"
+        tfEmail.text = "nguyenvana@gmail.com"
+        tfPhone.text = "0876522232"
+        tfPass.text = "12345678"
+        tfPass.text = "12345678"
+        tfRepass.text = "12345678"
         // Do any additional setup after loading the view.
     }
 
@@ -23,15 +38,39 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func actionNext(_ sender: Any) {
+        
+        guard tfFullName.text != "" && tfEmail.text != "" && tfPhone.text != "" && tfPass.text != "" && tfRepass.text != "" else{
+            MDProvider.loadAlert(title: "", message: errMissInfoRegister)
+            return
+        }
+        
+        if !(tfEmail.text?.isEmail)!{
+            MDProvider.loadAlert(title: "", message: errWrongEmailFormat)
+            return
+        }
+        
+        if !(tfPhone.text?.isNumber)!{
+            MDProvider.loadAlert(title: "", message: errWrongPhoneNumberFormat)
+            return
+        }
+        
+        if tfPass.text != tfRepass.text {
+            MDProvider.loadAlert(title: "", message: errWrongPassAndRepass)
+            return
+        }
+        
+        userinfo = UserObject(id: 0, name: tfFullName.text, email: tfEmail.text, password: tfPass.text, phonenumber: tfPhone.text, birthday: "", weight: 0, height: 0, gender: true, avatar: "")
+    
+        self.performSegue(withIdentifier: kSegueRegisterToBirthday, sender: self)
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueRegisterToBirthday {
+            if let vc = segue.destination as? BirthDayViewController{
+                vc.userInfo = userinfo
+            }
+        }
+    }
 
 }

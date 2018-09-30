@@ -1,19 +1,18 @@
 //
-//  FindoctorViewController.swift
+//  MakeAppointmentViewController.swift
 //  MedicalCare
 //
-//  Created by Macintosh HD on 9/24/18.
+//  Created by Macintosh HD on 9/28/18.
 //  Copyright © 2018 DUCCHINH. All rights reserved.
 //
 
 import UIKit
 
-class FindoctorViewController: MDBaseViewController {
+class MakeAppointmentViewController: MDBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Tìm bác sĩ"
-        MDProvider.instance.setUpNavigation(controller: self)
+
         // Do any additional setup after loading the view.
     }
 
@@ -22,17 +21,15 @@ class FindoctorViewController: MDBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func actionFindDoctor(_ sender: Any) {
-        self.performSegue(withIdentifier: kSegueFindDoctorToListDoctor, sender: nil)
+    @IBAction func actionBook(_ sender: Any) {
+         self.performSegue(withIdentifier: kSegueMakeToCfAppointment, sender: nil)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

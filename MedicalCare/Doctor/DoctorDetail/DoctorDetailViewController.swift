@@ -13,6 +13,8 @@ class DoctorDetailViewController: MDBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Thông tin bác sĩ"
+        MDProvider.instance.setUpNavigation(controller: self)
         tbvDoctorInfo.estimatedRowHeight = 80
         tbvDoctorInfo.rowHeight = UITableViewAutomaticDimension
         tbvDoctorInfo.separatorStyle = .none

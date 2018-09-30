@@ -41,7 +41,6 @@ class DoctorPresentViewController: UIViewController {
         self.delegate?.closeView()
     }
     @IBAction func actionCloseView(_ sender: Any) {
-        print("sdada")
         self.delegate?.closeView()
     }
     @IBAction func actionOpenMap(_ sender: Any) {
@@ -51,12 +50,16 @@ class DoctorPresentViewController: UIViewController {
     }
     
     @IBAction func actionOpenDoctorInfo(_ sender: Any) {
-        let vc : DoctorDetailViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorDetailViewController") as! DoctorDetailViewController
+//        let vc : DoctorDetailViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorDetailViewController") as! DoctorDetailViewController
+//        self.delegate?.closeView()
+//        self.parentView.navigationController?.pushViewController(vc, animated: true)
         self.delegate?.closeView()
-        self.parentView.navigationController?.pushViewController(vc, animated: true)
+        self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorInfo, sender: nil)
     }
     
     @IBAction func actionOpenHospitalOfDoctor(_ sender: Any) {
+        self.delegate?.closeView()
+        self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorHospital, sender: nil)
     }
     
     @IBAction func actionMakeAppointment(_ sender: Any) {

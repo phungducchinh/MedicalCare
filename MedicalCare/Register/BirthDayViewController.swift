@@ -11,6 +11,8 @@ import UIKit
 class BirthDayViewController: UIViewController {
 
     @IBOutlet weak var pkBirthday: UIDatePicker!
+    
+    var userInfo : UserObject?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,15 +29,21 @@ class BirthDayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func actionNext(_ sender: Any) {
+        self.performSegue(withIdentifier: kSegueBirthdayToWeight, sender: self)
     }
-    */
+    
+    @IBAction func changeBirthday(_ sender: Any) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        self.userInfo?.birthday = dateFormatter.string(from: (sender as AnyObject).date)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueBirthdayToWeight {
+            if let vc = segue.destination as? ProfileRegiterViewController{
+                vc.userInfo = self.userInfo
+            }
+        }
+    }
 
 }

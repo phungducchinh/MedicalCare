@@ -16,6 +16,8 @@ class DoctorHospitalViewController: MDBaseViewController {
     let arrAddress = ["Plot no 5, Atharv nagar,Ring road, Nagpur", "Plot no 5, Atharv nagar,Ring road, Nagpur" , "Plot no 5, Atharv nagar,Ring road, Nagpur"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Thông tin nơi công tác"
+        MDProvider.instance.setUpNavigation(controller: self)
         tbvDoctorHospital.estimatedRowHeight = 80
         tbvDoctorHospital.rowHeight = UITableViewAutomaticDimension
         tbvDoctorHospital.separatorStyle = .none

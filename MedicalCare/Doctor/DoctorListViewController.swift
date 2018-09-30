@@ -21,7 +21,6 @@ class DoctorListViewController: MDBaseViewController {
         viewController.parentView = self
         // Add View Controller as Child View Controller
         if let frame = UIApplication.shared.windows.last?.frame {
-            print(frame)
             viewController.view.frame = frame
             UIApplication.shared.windows.last?.addSubview(viewController.view)
         }
@@ -35,6 +34,8 @@ class DoctorListViewController: MDBaseViewController {
         super.viewDidLoad()
         tbvListDoctor.estimatedRowHeight = 80
         tbvListDoctor.rowHeight = UITableViewAutomaticDimension
+        self.navigationItem.title = "Danh sách bác sĩ"
+        MDProvider.instance.setUpNavigation(controller: self)
         // Do any additional setup after loading the view.
     }
 
@@ -59,10 +60,10 @@ extension DoctorListViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let statusFrame = UIApplication.shared.statusBarFrame
-        let flTrueY = statusFrame.height + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0)
-        self.doctorPresentView.view.frame = CGRect(x: -self.view.frame.size.width, y: flTrueY, width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)!)
+        let flTrueY = statusFrame.height //+ CGFloat(self.navigationController?.navigationBar.frame.height ?? 0)
+        self.doctorPresentView.view.frame = CGRect(x: -self.view.frame.size.width, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
         UIView.animate(withDuration: 0.3, animations: {
-            self.doctorPresentView.view.frame = CGRect(x: 0, y: flTrueY, width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)!)
+            self.doctorPresentView.view.frame = CGRect(x: 0, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
         }) { (finish) in
             
         }
@@ -73,8 +74,8 @@ extension DoctorListViewController : DoctorPresentDelegate{
     func closeView() {
         UIView.animate(withDuration: 0.3, animations: {
             let statusFrame = UIApplication.shared.statusBarFrame
-            let flTrueY = statusFrame.height + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0)
-            self.doctorPresentView.view.frame = CGRect(x: -self.view.frame.size.width, y: flTrueY, width: self.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)!)
+            let flTrueY =  statusFrame.height //+ CGFloat(self.navigationController?.navigationBar.frame.height ?? 0)
+            self.doctorPresentView.view.frame = CGRect(x: -self.view.frame.size.width, y: CGFloat(flTrueY), width: self.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
         }) { (finish) in
         }
     }
