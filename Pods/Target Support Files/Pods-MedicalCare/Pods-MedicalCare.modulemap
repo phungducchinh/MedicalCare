@@ -1,0 +1,6 @@
+framework module Pods_MedicalCare {
+  umbrella header "Pods-MedicalCare-umbrella.h"
+
+  export *
+  module * { export * }
+}
