@@ -13,11 +13,6 @@ class UserHistoryViewController: MDBaseViewController {
     @IBOutlet weak var tbvListAppointment: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Lịch sử cuộc hẹn"
-        MDProvider.instance.setUpNavigation(controller: self)
-        tbvListAppointment.estimatedRowHeight = 80
-        tbvListAppointment.rowHeight = UITableViewAutomaticDimension
-        tbvListAppointment.separatorStyle = .none
         // Do any additional setup after loading the view.
     }
 
@@ -26,6 +21,14 @@ class UserHistoryViewController: MDBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Lịch sử cuộc hẹn"
+        MDProvider.instance.setUpNavigation(controller: self)
+        tbvListAppointment.estimatedRowHeight = 80
+        tbvListAppointment.rowHeight = UITableViewAutomaticDimension
+        tbvListAppointment.separatorStyle = .none
+    }
 
     /*
     // MARK: - Navigation

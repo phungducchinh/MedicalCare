@@ -1,34 +1,51 @@
 //
-//  FindoctorViewController.swift
+//  HospitalPharmacyDetialViewController.swift
 //  MedicalCare
 //
-//  Created by Macintosh HD on 9/24/18.
+//  Created by Macintosh HD on 10/1/18.
 //  Copyright © 2018 DUCCHINH. All rights reserved.
 //
 
 import UIKit
 
-class FindoctorViewController: MDBaseViewController {
+class HospitalPharmacyDetialViewController: MDBaseViewController {
 
+    @IBOutlet weak var imgAva: UIImageView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var lblPlace: UILabel!
+    @IBOutlet weak var tvInfo: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "Tìm bác sĩ"
         MDProvider.instance.setUpNavigation(controller: self)
+        
+        if tvInfo.contentSize.height > tvInfo.frame.height{
+            tvInfo.isScrollEnabled = true
+        }else{
+            tvInfo.isScrollEnabled = false
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func actionFindDoctor(_ sender: Any) {
-        self.performSegue(withIdentifier: kSegueFindDoctorToListDoctor, sender: nil)
+    @IBAction func actionOpenMap(_ sender: Any) {
+        
     }
+    
+    @IBAction func actionCall(_ sender: Any) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

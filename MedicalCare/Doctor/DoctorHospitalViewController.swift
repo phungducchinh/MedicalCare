@@ -16,11 +16,7 @@ class DoctorHospitalViewController: MDBaseViewController {
     let arrAddress = ["Plot no 5, Atharv nagar,Ring road, Nagpur", "Plot no 5, Atharv nagar,Ring road, Nagpur" , "Plot no 5, Atharv nagar,Ring road, Nagpur"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Thông tin nơi công tác"
-        MDProvider.instance.setUpNavigation(controller: self)
-        tbvDoctorHospital.estimatedRowHeight = 80
-        tbvDoctorHospital.rowHeight = UITableViewAutomaticDimension
-        tbvDoctorHospital.separatorStyle = .none
+
         if tbvDoctorHospital.contentSize.height > tbvDoctorHospital.frame.height{
             tbvDoctorHospital.isScrollEnabled = true
         }else{
@@ -29,6 +25,15 @@ class DoctorHospitalViewController: MDBaseViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Thông tin nơi công tác"
+        MDProvider.instance.setUpNavigation(controller: self)
+        tbvDoctorHospital.estimatedRowHeight = 80
+        tbvDoctorHospital.rowHeight = UITableViewAutomaticDimension
+        tbvDoctorHospital.separatorStyle = .none
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

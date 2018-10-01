@@ -13,10 +13,15 @@ class HistoryViewController: MDBaseViewController {
     @IBOutlet weak var tvListAppointment: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+     // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tvListAppointment.estimatedRowHeight = 80
         tvListAppointment.rowHeight = UITableViewAutomaticDimension
         tvListAppointment.separatorStyle = .none
-        self.navigationItem.title = "Lịch sử cuộc hẹn"        // Do any additional setup after loading the view.
+        self.navigationItem.title = "Lịch sử cuộc hẹn"
     }
 
     override func didReceiveMemoryWarning() {

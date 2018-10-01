@@ -32,13 +32,18 @@ class DoctorListViewController: MDBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tbvListDoctor.estimatedRowHeight = 80
         tbvListDoctor.rowHeight = UITableViewAutomaticDimension
         self.navigationItem.title = "Danh sách bác sĩ"
         MDProvider.instance.setUpNavigation(controller: self)
-        // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

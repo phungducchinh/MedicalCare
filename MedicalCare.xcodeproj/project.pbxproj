@@ -16,6 +16,7 @@
 		0E123BD3215E84A300AFAE47 /* MakeAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E123BD2215E84A300AFAE47 /* MakeAppointmentViewController.swift */; };
 		0E123BD5215E8CE200AFAE47 /* AppointmentConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E123BD4215E8CE200AFAE47 /* AppointmentConfirmViewController.swift */; };
 		0E123BD7215E94F500AFAE47 /* AppointmentDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E123BD6215E94F500AFAE47 /* AppointmentDetailViewCell.swift */; };
+		0E343C6521627FF1009DE613 /* HospitalPharmacyDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E343C6421627FF1009DE613 /* HospitalPharmacyDetialViewController.swift */; };
 		0E35D88D21573F6700CA48BC /* MDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35D88C21573F6700CA48BC /* MDProvider.swift */; };
 		0E49BA4F215A6C8F0085C20E /* DoctorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */; };
 		0E49BA51215A70FB0085C20E /* ListDoctorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */; };
@@ -59,6 +60,7 @@
 		0E123BD2215E84A300AFAE47 /* MakeAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAppointmentViewController.swift; sourceTree = "<group>"; };
 		0E123BD4215E8CE200AFAE47 /* AppointmentConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentConfirmViewController.swift; sourceTree = "<group>"; };
 		0E123BD6215E94F500AFAE47 /* AppointmentDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDetailViewCell.swift; sourceTree = "<group>"; };
+		0E343C6421627FF1009DE613 /* HospitalPharmacyDetialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalPharmacyDetialViewController.swift; sourceTree = "<group>"; };
 		0E35D88C21573F6700CA48BC /* MDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDProvider.swift; sourceTree = "<group>"; };
 		0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListViewController.swift; sourceTree = "<group>"; };
 		0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDoctorCell.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC69047215FBE6B00B074F0 /* HospitalListViewController.swift */,
+				0E343C6421627FF1009DE613 /* HospitalPharmacyDetialViewController.swift */,
 			);
 			path = Hospital;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E343C6521627FF1009DE613 /* HospitalPharmacyDetialViewController.swift in Sources */,
 				0E49BA55215A95030085C20E /* DoctorDetailViewController.swift in Sources */,
 				0E123BD5215E8CE200AFAE47 /* AppointmentConfirmViewController.swift in Sources */,
 				0EB3FD75215BE12600C65EB7 /* UserSetingViewCell.swift in Sources */,
@@ -582,7 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
-				DEVELOPMENT_TEAM = 59XQK7E67T;
+				DEVELOPMENT_TEAM = 6C99TY569A;
 				INFOPLIST_FILE = MedicalCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -603,7 +607,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
-				DEVELOPMENT_TEAM = 59XQK7E67T;
+				DEVELOPMENT_TEAM = 6C99TY569A;
 				INFOPLIST_FILE = MedicalCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (

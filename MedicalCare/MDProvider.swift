@@ -63,66 +63,39 @@ class MDProvider  {
         topController.present(alertController, animated:true, completion:nil)
     }
     
-   
-    func coordinates(forAddress address: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) {
-            (placemarks, error) in
-            guard error == nil else {
-                print("Geocoding error: \(error!)")
-                completion(nil)
-                return
-            }
-            completion(placemarks?.first?.location?.coordinate)
-        }
-    }
-    
-    public func openMapForPlace(lat:Double = 0, long:Double = 0, placeName:String = "") {
-        let latitude: CLLocationDegrees = lat
-        let longitude: CLLocationDegrees = long
-        
-        let regionDistance:CLLocationDistance = 100
-        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
-        let options = [
-            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-        ]
-        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = placeName
-        mapItem.openInMaps(launchOptions: options)
+    func ConvertBase64StringToImage (imageBase64String:String) -> UIImage {
+        let imageData = Data.init(base64Encoded: imageBase64String, options: .init(rawValue: 0))
+        let image = UIImage(data: imageData!)
+        return image!
     }
     
     func openMap(address : String){
-        
-//        let urlAddress = URL(string: "http://maps.apple.com/?Bệnh viện Răng Hàm Mặt Tp. HCM, Đường Trần Hưng Đạo, Quận 1, Hồ Chí Minh" )1600,PennsylvaniaAve.,20500
-        guard let map = URL(string: "http://maps.apple.com/?address=" + address) else {return}
-        UIApplication.shared.open(map)
-
-//        coordinates(forAddress: address) {
-//            (location) in
-//            guard let location = location else {
-//                MDProvider.loadAlert(title: "", message: errWrongAddress)
-//                return
-//            }
-//            self.openMapForPlace(lat: location.latitude, long: location.longitude)
-//        }
-//                let geocoder = CLGeocoder()
-//
-//                geocoder.geocodeAddressString(address) { (placemarks, error) in
-//                    if let error = error {
-//                        print(error.localizedDescription)
-//                    } else {
-//                        if let location = placemarks?.first?.location {
-//                            let query = "?ll=\(location.coordinate.latitude),\(location.coordinate.longitude)"
-//                            let urlString = "http://maps.apple.com/".appending(query)
-//                            if let url = URL(string: urlString) {
-//                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//                            }
-//                        }
-//                    }
-//                }
+        let maps = "http://maps.apple.com/?address="
+        let url = maps + address
+        let urlString = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+        print(urlString as Any)
+        UIApplication.shared.open(urlString!)
+    }
+    
+    func getCoordinate( addressString : String,
+                        completionHandler: @escaping(Double, NSError?) -> Void ) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    let location = placemark.location!
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    guard let distance : Double = appDelegate.userLocation?.distance(from: location) else {
+                        completionHandler(0, error as NSError?)
+                        return
+                    }
+                    completionHandler ((distance/1000).roundToDecimal(1), nil)
+                    return
+                }
+            }
+            
+            completionHandler(0, error as NSError?)
+        }
     }
     
     func call(phoneNumber : String){

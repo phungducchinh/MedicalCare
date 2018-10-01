@@ -37,6 +37,18 @@ class DoctorPresentViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        imgAvatar.image = MDProvider.instance.ConvertBase64StringToImage(imageBase64String: strAva)
+//        lblName.text = name
+//        lblSpecallize.text = special
+//        lblHospital.text = hospital + " , " + addHos
+//        MDProvider.instance.getCoordinate(addressString: addHos, completionHandler: {distance , err in
+//            self.lblPlace.text = "\(distance)" + " km"
+//        })
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         self.delegate?.closeView()
     }
@@ -44,15 +56,14 @@ class DoctorPresentViewController: UIViewController {
         self.delegate?.closeView()
     }
     @IBAction func actionOpenMap(_ sender: Any) {
+        
     }
     
     @IBAction func actionMakeCall(_ sender: Any) {
+        
     }
     
     @IBAction func actionOpenDoctorInfo(_ sender: Any) {
-//        let vc : DoctorDetailViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorDetailViewController") as! DoctorDetailViewController
-//        self.delegate?.closeView()
-//        self.parentView.navigationController?.pushViewController(vc, animated: true)
         self.delegate?.closeView()
         self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorInfo, sender: nil)
     }

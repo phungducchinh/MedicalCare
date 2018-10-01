@@ -368,18 +368,58 @@
                                     <action selector="actionNext:" destination="UB1-mP-Sif" eventType="touchUpInside" id="V1K-dC-vFU"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4ZX-YA-bGa">
+                                <rect key="frame" x="255" y="407" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="U3H-fF-Da9"/>
+                                    <constraint firstAttribute="height" constant="100" id="gGV-fk-Xp4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn ảnh đại diện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPz-Fy-8zj">
+                                <rect key="frame" x="20" y="447" width="145.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.098039215686274508" green="0.45098039215686275" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uxm-UN-1ce">
+                                <rect key="frame" x="255" y="407" width="100" height="100"/>
+                                <connections>
+                                    <action selector="actionOpenCamera:" destination="UB1-mP-Sif" eventType="touchUpInside" id="6fS-sq-d57"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="4ZX-YA-bGa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vPz-Fy-8zj" secondAttribute="trailing" constant="20" id="4En-Kb-2uj"/>
                             <constraint firstItem="fNS-Yj-7cD" firstAttribute="centerX" secondItem="jf7-fY-yeQ" secondAttribute="centerX" id="8Ok-F2-1Ge"/>
+                            <constraint firstItem="vPz-Fy-8zj" firstAttribute="leading" secondItem="jf7-fY-yeQ" secondAttribute="leading" constant="20" id="A78-m2-qLP"/>
                             <constraint firstItem="KSx-ed-yzK" firstAttribute="centerX" secondItem="jf7-fY-yeQ" secondAttribute="centerX" id="CND-q3-ilg"/>
+                            <constraint firstItem="Uxm-UN-1ce" firstAttribute="centerY" secondItem="4ZX-YA-bGa" secondAttribute="centerY" id="GUF-I3-8IW"/>
                             <constraint firstItem="jf7-fY-yeQ" firstAttribute="bottom" secondItem="KSx-ed-yzK" secondAttribute="bottom" constant="40" id="HSu-wb-qMm"/>
+                            <constraint firstItem="Uxm-UN-1ce" firstAttribute="width" secondItem="4ZX-YA-bGa" secondAttribute="width" id="I28-24-uk5"/>
                             <constraint firstItem="t9k-aP-kbY" firstAttribute="leading" secondItem="jf7-fY-yeQ" secondAttribute="leading" constant="5" id="I2s-dF-ju7"/>
+                            <constraint firstItem="4ZX-YA-bGa" firstAttribute="top" secondItem="fNS-Yj-7cD" secondAttribute="bottom" constant="20" id="KTu-Nj-tdI"/>
                             <constraint firstItem="KSx-ed-yzK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fNS-Yj-7cD" secondAttribute="bottom" constant="20" id="SGR-3I-uS8"/>
                             <constraint firstItem="W7l-56-Ygt" firstAttribute="leading" secondItem="jf7-fY-yeQ" secondAttribute="leading" constant="30" id="Shv-82-yUG"/>
+                            <constraint firstItem="jf7-fY-yeQ" firstAttribute="trailing" secondItem="4ZX-YA-bGa" secondAttribute="trailing" constant="20" id="U8S-xL-XRz"/>
+                            <constraint firstItem="Uxm-UN-1ce" firstAttribute="centerX" secondItem="4ZX-YA-bGa" secondAttribute="centerX" id="ZGq-iQ-3Kt"/>
                             <constraint firstItem="fNS-Yj-7cD" firstAttribute="top" secondItem="W7l-56-Ygt" secondAttribute="bottom" constant="40" id="ZRE-qm-lwj"/>
                             <constraint firstItem="W7l-56-Ygt" firstAttribute="top" secondItem="jf7-fY-yeQ" secondAttribute="top" constant="90" id="b21-q6-U5A"/>
                             <constraint firstItem="t9k-aP-kbY" firstAttribute="top" secondItem="jf7-fY-yeQ" secondAttribute="top" constant="10" id="gq1-Eg-0md"/>
+                            <constraint firstItem="Uxm-UN-1ce" firstAttribute="height" secondItem="4ZX-YA-bGa" secondAttribute="height" id="hm6-7g-rJN"/>
+                            <constraint firstItem="KSx-ed-yzK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4ZX-YA-bGa" secondAttribute="bottom" constant="10" id="hxL-FR-c8O"/>
+                            <constraint firstItem="vPz-Fy-8zj" firstAttribute="centerY" secondItem="4ZX-YA-bGa" secondAttribute="centerY" id="oti-b7-cje"/>
                             <constraint firstItem="jf7-fY-yeQ" firstAttribute="trailing" secondItem="fNS-Yj-7cD" secondAttribute="trailing" id="w9z-qL-nLf"/>
                             <constraint firstItem="jf7-fY-yeQ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W7l-56-Ygt" secondAttribute="trailing" constant="30" id="wY1-iD-eMg"/>
                             <constraint firstItem="fNS-Yj-7cD" firstAttribute="leading" secondItem="jf7-fY-yeQ" secondAttribute="leading" id="wbF-53-J5A"/>
@@ -387,13 +427,14 @@
                         <viewLayoutGuide key="safeArea" id="jf7-fY-yeQ"/>
                     </view>
                     <connections>
+                        <outlet property="imgAvatar" destination="4ZX-YA-bGa" id="eRm-6Z-wCR"/>
                         <outlet property="pkBirthday" destination="fNS-Yj-7cD" id="zYS-XX-Pd8"/>
                         <segue destination="Xxd-7s-bkT" kind="show" identifier="BirthdayToWeight" id="iZI-27-cUA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ysr-Gv-yqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5105" y="-672"/>
+            <point key="canvasLocation" x="5104.8000000000002" y="-672.41379310344837"/>
         </scene>
         <!--Profile Regiter View Controller-->
         <scene sceneID="Au5-Cz-RzJ">
@@ -2754,11 +2795,137 @@ Ring road, Nagpur</string>
                     </view>
                     <connections>
                         <outlet property="tbvListHospital" destination="9zW-SZ-AQx" id="EMr-kO-4Mn"/>
+                        <segue destination="yEc-oc-kXZ" kind="show" identifier="HospitalToDetail" id="he3-xl-fs3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lp9-Q9-CNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7270" y="-215"/>
+        </scene>
+        <!--Hospital Pharmacy Detial View Controller-->
+        <scene sceneID="1zd-UX-5Tm">
+            <objects>
+                <viewController storyboardIdentifier="HospitalPharmacyDetialViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yEc-oc-kXZ" customClass="HospitalPharmacyDetialViewController" customModule="MedicalCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="arb-mr-Hzm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_userTest" translatesAutoresizingMaskIntoConstraints="NO" id="LJo-r8-C4R">
+                                <rect key="frame" x="137.5" y="99" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="BDg-0Q-LVF"/>
+                                    <constraint firstAttribute="height" constant="100" id="yQx-rt-7Tb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,7 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4X-vA-rqc">
+                                <rect key="frame" x="39.5" y="342.5" width="46" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.098039215690000001" green="0.45098039220000002" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpp-eI-p9h">
+                                <rect key="frame" x="45" y="302.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="3SU-cq-JnV"/>
+                                    <constraint firstAttribute="height" constant="35" id="khq-Ba-21b"/>
+                                </constraints>
+                                <state key="normal" image="img_btn_navigation"/>
+                                <connections>
+                                    <action selector="actionOpenMap:" destination="yEc-oc-kXZ" eventType="touchUpInside" id="lYo-wX-0o1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bệnh viện Răng Hàm Mặt TP.HCM" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vg7-S0-ryh">
+                                <rect key="frame" x="61" y="214" width="254" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" red="0.098039215690000001" green="0.45098039220000002" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2z-s2-J7e">
+                                <rect key="frame" x="295" y="302.5" width="35" height="35"/>
+                                <state key="normal" image="img_btn_phone_call"/>
+                                <connections>
+                                    <action selector="actionCall:" destination="yEc-oc-kXZ" eventType="touchUpInside" id="pZv-Ph-WDG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="263-265 Đường Trần Hưng Đạo, Phường Cô Giang, Quận 1, Hồ Chí Minh, Việt Nam" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy5-Su-xv6">
+                                <rect key="frame" x="34" y="241.5" width="307.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gọi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvq-fY-lb5">
+                                <rect key="frame" x="301" y="342.5" width="23.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.098039215690000001" green="0.45098039220000002" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CJT-4Q-hZt">
+                                <rect key="frame" x="20" y="380.5" width="335" height="217.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Không ngừng nâng cao chất lượng dịch vụ
+
+Đổi mới và nâng cao các dịch vụ là một trong những ưu tiên hàng đầu trong định hướng phát triển của Bệnh viện răng hàm mặt TP.HCM trong thời gian qua. Chính vì vậy, hiện nay chất lượng dịch vụ của bệnh viện đã ngang tầm với các nước trong khu vực, có uy tín trên trường quốc tế, thu hút được nhiều bệnh nhân trong và ngoài nước đến bệnh viện điều trị.
+
+Bằng việc áp dụng hàng loạt kỹ thuật mới và triển khai các chương trình nha khoa phòng ngừa, điều trị các bệnh răng miệng, Bệnh viện Răng Hàm Mặt TP.HCM đã làm tốt nhiệm vụ phục vụ cho công tác chăm sóc sức khỏe nhân dân.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mvq-fY-lb5" firstAttribute="centerX" secondItem="U2z-s2-J7e" secondAttribute="centerX" id="22L-wP-U9U"/>
+                            <constraint firstItem="mvq-fY-lb5" firstAttribute="bottom" secondItem="p4X-vA-rqc" secondAttribute="bottom" id="46V-Gm-fco"/>
+                            <constraint firstItem="U2z-s2-J7e" firstAttribute="centerX" secondItem="tRn-Wf-hI9" secondAttribute="centerX" multiplier="5:3" id="5rd-sa-egA"/>
+                            <constraint firstItem="vg7-S0-ryh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tRn-Wf-hI9" secondAttribute="leading" constant="20" id="6ly-Cy-a6B"/>
+                            <constraint firstItem="U2z-s2-J7e" firstAttribute="height" secondItem="Tpp-eI-p9h" secondAttribute="height" id="9dA-MK-N8r"/>
+                            <constraint firstItem="tRn-Wf-hI9" firstAttribute="trailing" secondItem="CJT-4Q-hZt" secondAttribute="trailing" constant="20" id="B2t-Jf-Vxr"/>
+                            <constraint firstItem="U2z-s2-J7e" firstAttribute="top" secondItem="Tpp-eI-p9h" secondAttribute="top" id="C7L-fP-jSJ"/>
+                            <constraint firstItem="tRn-Wf-hI9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yy5-Su-xv6" secondAttribute="trailing" constant="20" id="CBg-XK-P7d"/>
+                            <constraint firstItem="tRn-Wf-hI9" firstAttribute="bottom" secondItem="CJT-4Q-hZt" secondAttribute="bottom" constant="20" id="Ezu-Fk-AeK"/>
+                            <constraint firstItem="p4X-vA-rqc" firstAttribute="top" secondItem="Tpp-eI-p9h" secondAttribute="bottom" constant="5" id="GQ4-67-q1T"/>
+                            <constraint firstItem="yy5-Su-xv6" firstAttribute="top" secondItem="vg7-S0-ryh" secondAttribute="bottom" constant="8" id="HUA-3F-Ord"/>
+                            <constraint firstItem="p4X-vA-rqc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tRn-Wf-hI9" secondAttribute="leading" constant="10" id="K7A-cw-ooC"/>
+                            <constraint firstItem="p4X-vA-rqc" firstAttribute="centerX" secondItem="Tpp-eI-p9h" secondAttribute="centerX" id="LAo-La-ITi"/>
+                            <constraint firstItem="U2z-s2-J7e" firstAttribute="width" secondItem="Tpp-eI-p9h" secondAttribute="width" id="Oa3-Dc-ChV"/>
+                            <constraint firstItem="Tpp-eI-p9h" firstAttribute="centerX" secondItem="tRn-Wf-hI9" secondAttribute="centerX" multiplier="1:3" id="PyD-a3-nYT"/>
+                            <constraint firstItem="tRn-Wf-hI9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vg7-S0-ryh" secondAttribute="trailing" constant="20" id="UHI-K4-OuU"/>
+                            <constraint firstItem="CJT-4Q-hZt" firstAttribute="leading" secondItem="tRn-Wf-hI9" secondAttribute="leading" constant="20" id="UxQ-7f-Wts"/>
+                            <constraint firstItem="yy5-Su-xv6" firstAttribute="centerX" secondItem="tRn-Wf-hI9" secondAttribute="centerX" id="Xc9-Lv-mT1"/>
+                            <constraint firstItem="tRn-Wf-hI9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mvq-fY-lb5" secondAttribute="trailing" constant="10" id="Xd7-Ol-AK2"/>
+                            <constraint firstItem="yy5-Su-xv6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tRn-Wf-hI9" secondAttribute="leading" constant="20" id="byP-NK-hC0"/>
+                            <constraint firstItem="Tpp-eI-p9h" firstAttribute="top" secondItem="yy5-Su-xv6" secondAttribute="bottom" constant="25" id="d3U-Zc-787"/>
+                            <constraint firstItem="mvq-fY-lb5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="p4X-vA-rqc" secondAttribute="trailing" constant="20" id="etc-2D-5Xd"/>
+                            <constraint firstItem="vg7-S0-ryh" firstAttribute="top" secondItem="LJo-r8-C4R" secondAttribute="bottom" constant="15" id="lIM-Zc-6ts"/>
+                            <constraint firstItem="LJo-r8-C4R" firstAttribute="top" secondItem="tRn-Wf-hI9" secondAttribute="top" constant="35" id="ouY-4R-HcC"/>
+                            <constraint firstItem="mvq-fY-lb5" firstAttribute="top" secondItem="U2z-s2-J7e" secondAttribute="bottom" constant="5" id="pXc-qw-Jze"/>
+                            <constraint firstItem="LJo-r8-C4R" firstAttribute="centerX" secondItem="tRn-Wf-hI9" secondAttribute="centerX" id="tvc-F7-oC3"/>
+                            <constraint firstItem="vg7-S0-ryh" firstAttribute="centerX" secondItem="tRn-Wf-hI9" secondAttribute="centerX" id="udl-bc-yE6"/>
+                            <constraint firstItem="CJT-4Q-hZt" firstAttribute="top" secondItem="p4X-vA-rqc" secondAttribute="bottom" constant="20" id="yu0-xL-m7x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tRn-Wf-hI9"/>
+                    </view>
+                    <connections>
+                        <outlet property="imgAva" destination="LJo-r8-C4R" id="1Qa-Sj-6Bg"/>
+                        <outlet property="lblAddress" destination="yy5-Su-xv6" id="oeh-lh-gl0"/>
+                        <outlet property="lblName" destination="vg7-S0-ryh" id="AKD-Ep-zjX"/>
+                        <outlet property="lblPlace" destination="p4X-vA-rqc" id="BdC-41-j9y"/>
+                        <outlet property="tvInfo" destination="CJT-4Q-hZt" id="mKN-64-dFz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v7S-gS-xVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8318" y="-105"/>
         </scene>
         <!--Pharmacy View Controller-->
         <scene sceneID="jPJ-Hi-RaI">
@@ -2885,6 +3052,7 @@ Ring road, Nagpur</string>
                     </view>
                     <connections>
                         <outlet property="tbvListPharmacy" destination="Zt3-KV-SpF" id="Fww-sK-VFa"/>
+                        <segue destination="yEc-oc-kXZ" kind="show" identifier="PharmacyToDetail" id="rVT-BV-x2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95v-Rw-DJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3040,6 +3208,7 @@ Ring road, Nagpur</string>
         <image name="btn_user" width="19" height="24"/>
         <image name="btn_user_chose" width="19" height="24"/>
         <image name="btnn_startapp" width="346" height="73"/>
+        <image name="default-avatar" width="480" height="480"/>
         <image name="ico_btn_place" width="20" height="25"/>
         <image name="ico_btn_user" width="25" height="25"/>
         <image name="ico_map" width="8" height="10"/>
@@ -3728,7 +3897,8 @@ iRibGJ4YowAAAAAAAAIBAAAAAAAAAFkAAAAAAAAAAAAAAAAAABilA
     <inferredMetricsTieBreakers>
         <segue reference="bKW-8y-r9w"/>
         <segue reference="bAx-f1-8va"/>
-        <segue reference="0cL-OI-Ktb"/>
+        <segue reference="he3-xl-fs3"/>
+        <segue reference="m4t-Q8-bep"/>
         <segue reference="T6P-E0-DfG"/>
         <segue reference="tlx-P5-XNU"/>
     </inferredMetricsTieBreakers>

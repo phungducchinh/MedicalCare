@@ -31,6 +31,8 @@ let kSegueRegisterToTabbar = "RegisterToTabbar"
 let kSegueHomeToHistory = "HomeToHistory"
 let kSegueUserToListAppointment = "UserToListAppointment"
 let kSegueUserToLogin = "UserToLogin"
+let kSegueHospitalToDetail = "HospitalToDetail"
+let kSeguePharmacyToDetail = "PharmacyToDetail"
 
 //------------Error text ----
 let errNoInterNet = "Không có kết nối internet.\nVui lòng thử lại."

@@ -25,6 +25,7 @@ class UserViewController: MDBaseViewController {
     var arrTitle : [String] = ["Cập nhật thông tin" , "Xem lịch hẹn" , "Cài đặt"]
     let firstCl = UIColor(red: 25/255, green: 115/255, blue: 159/255, alpha: 1).cgColor
     let secondCl = UIColor(red: 53/255, green: 216/255, blue: 166/255, alpha: 1).cgColor
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        MDProvider.instance.setUpNavigation(controller: self)
@@ -58,6 +59,11 @@ class UserViewController: MDBaseViewController {
         btn1.addTarget(self, action: #selector(logout), for: .touchUpInside)
         let item1 = UIBarButtonItem(customView: btn1)
         self.navigationItem.setRightBarButton(item1, animated: true)  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     @objc func logout(){

@@ -13,10 +13,7 @@ class HospitalListViewController: MDBaseViewController {
     @IBOutlet weak var tbvListHospital: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        MDProvider.instance.setUpNavigation(controller: self)
-        self.navigationItem.title = "Danh sách bệnh viện"
-        tbvListHospital.estimatedRowHeight = 80
-        tbvListHospital.rowHeight = UITableViewAutomaticDimension
+
         // Do any additional setup after loading the view.
     }
 
@@ -25,16 +22,21 @@ class HospitalListViewController: MDBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        MDProvider.instance.setUpNavigation(controller: self)
+        self.navigationItem.title = "Danh sách bệnh viện"
+        tbvListHospital.estimatedRowHeight = 80
+        tbvListHospital.rowHeight = UITableViewAutomaticDimension
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueHospitalToDetail{
+            if let vc = segue.destination as? HospitalPharmacyDetialViewController{
+                vc.navigationItem.title = "Thông tin bệnh viện"
+            }
+        }
+    }
 
 }
 
@@ -48,5 +50,7 @@ extension HospitalListViewController : UITableViewDataSource, UITableViewDelegat
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: kSegueHospitalToDetail, sender: self)
+    }
 }

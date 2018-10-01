@@ -13,28 +13,30 @@ class PharmacyViewController: MDBaseViewController {
     @IBOutlet weak var tbvListPharmacy: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationItem.title = "Danh sách nhà thuốc"
         MDProvider.instance.setUpNavigation(controller: self)
         tbvListPharmacy.estimatedRowHeight = 80
         tbvListPharmacy.rowHeight = UITableViewAutomaticDimension
-        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == kSeguePharmacyToDetail{
+            if let vc = segue.destination as? HospitalPharmacyDetialViewController{
+                vc.navigationItem.title = "Thông tin nhà thuốc"
+            }
+        }
     }
-    */
 
 }
 
@@ -48,5 +50,7 @@ extension PharmacyViewController : UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: kSeguePharmacyToDetail, sender: self)
+    }
 }

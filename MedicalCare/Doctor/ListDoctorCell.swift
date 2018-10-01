@@ -26,5 +26,17 @@ class ListDoctorCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setUpCell(strAva: String, name: String, special: String, hospital: String, addHos: String){
+        imgAvatar.image = MDProvider.instance.ConvertBase64StringToImage(imageBase64String: strAva)
+        lblName.text = name
+        lblSpecallize.text = special
+        lblHospital.text = hospital + " , " + addHos
+        MDProvider.instance.getCoordinate(addressString: addHos, completionHandler: {distance , err in
+            self.lblPlace.text = "\(distance)" + " km"
+        })
+        self.layoutIfNeeded()
+        self.setNeedsLayout()
+    }
 
 }

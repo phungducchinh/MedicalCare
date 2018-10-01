@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import CoreLocation
-class DoctorHospitalCell: UITableViewCell , CLLocationManagerDelegate{
+
+class DoctorHospitalCell: UITableViewCell {
 
     @IBOutlet weak var imgHospital: UIImageView!
     @IBOutlet weak var imgPlace: UIImageView!
@@ -16,12 +16,8 @@ class DoctorHospitalCell: UITableViewCell , CLLocationManagerDelegate{
     @IBOutlet weak var imgHospitalAddress: UILabel!
     
     var idCell = 0
-    let locationManager : CLLocationManager = CLLocationManager()
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        locationManager.delegate = self
         // Initialization code
     }
 
@@ -32,10 +28,12 @@ class DoctorHospitalCell: UITableViewCell , CLLocationManagerDelegate{
     }
 
     @IBAction func actionOpenMap(_ sender: Any) {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        let address = "263-265 Đường Trần Hưng Đạo, Thành Phố Hồ Chí Minh, Việt Nam"
+        MDProvider.instance.openMap(address: address)
         
-        MDProvider.instance.openMap(address: "14,Ly%20tu%20trong,%20quan%201.,70000")
+//        MDProvider.instance.getCoordinate(addressString: address, completionHandler: {distance , err in
+//            print(distance)
+//        })
     }
     @IBAction func actionOpenPhone(_ sender: Any) {
     }

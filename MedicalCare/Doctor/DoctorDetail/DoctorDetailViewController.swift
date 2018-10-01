@@ -13,11 +13,7 @@ class DoctorDetailViewController: MDBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Thông tin bác sĩ"
-        MDProvider.instance.setUpNavigation(controller: self)
-        tbvDoctorInfo.estimatedRowHeight = 80
-        tbvDoctorInfo.rowHeight = UITableViewAutomaticDimension
-        tbvDoctorInfo.separatorStyle = .none
+        
         if tbvDoctorInfo.contentSize.height > tbvDoctorInfo.frame.height{
             tbvDoctorInfo.isScrollEnabled = true
         }else{
@@ -26,6 +22,15 @@ class DoctorDetailViewController: MDBaseViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Thông tin bác sĩ"
+        MDProvider.instance.setUpNavigation(controller: self)
+        tbvDoctorInfo.estimatedRowHeight = 80
+        tbvDoctorInfo.rowHeight = UITableViewAutomaticDimension
+        tbvDoctorInfo.separatorStyle = .none
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

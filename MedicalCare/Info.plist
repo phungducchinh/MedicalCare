@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Ứng dụng sẽ sử dụng vị trí của bạn</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Location always and when in usage description</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -63,5 +65,11 @@
 	<string>Location always usage description</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Location usage desription</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Ứng dụng sẽ sử dụng camera để chụp ảnh.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Bạn có thể chọn hình từ thư viện.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Hãy cho phép ứng dụng truy cập vào thư viện ảnh của bạn</string>
 </dict>
 </plist>
