@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol DoctorPresentDelegate : class {
-    func closeView()
+@objc protocol DoctorPresentDelegate : class {
+    @objc optional func closeView()
+    @objc optional func sendDate(date : String)
 }
 
 class DoctorPresentViewController: UIViewController {
@@ -50,10 +51,10 @@ class DoctorPresentViewController: UIViewController {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        self.delegate?.closeView()
+        self.delegate?.closeView!()
     }
     @IBAction func actionCloseView(_ sender: Any) {
-        self.delegate?.closeView()
+        self.delegate?.closeView!()
     }
     @IBAction func actionOpenMap(_ sender: Any) {
         
@@ -64,12 +65,12 @@ class DoctorPresentViewController: UIViewController {
     }
     
     @IBAction func actionOpenDoctorInfo(_ sender: Any) {
-        self.delegate?.closeView()
+        self.delegate?.closeView!()
         self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorInfo, sender: nil)
     }
     
     @IBAction func actionOpenHospitalOfDoctor(_ sender: Any) {
-        self.delegate?.closeView()
+        self.delegate?.closeView!()
         self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorHospital, sender: nil)
     }
     

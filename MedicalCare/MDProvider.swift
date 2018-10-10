@@ -13,7 +13,6 @@ import MapKit
 
 class MDProvider  {
     
-    
     public static let instance = MDProvider()
     var control = UIViewController()
     func setShadown(view : UIView, borderShadow : CGFloat, bgColor : UIColor, shadownColor : UIColor){
@@ -77,19 +76,25 @@ class MDProvider  {
         UIApplication.shared.open(urlString!)
     }
     
-    func getCoordinate( addressString : String,
+    func getCoordinate( addressString : String, lblPlace : UILabel,
                         completionHandler: @escaping(Double, NSError?) -> Void ) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(addressString) { (placemarks, error) in
             if error == nil {
                 if let placemark = placemarks?[0] {
                     let location = placemark.location!
+                    
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    guard let distance : Double = appDelegate.userLocation?.distance(from: location) else {
+//                    guard let distance : Double = appDelegate.userLocation?.distance(from: location) else {
+//                        completionHandler(0, error as NSError?)
+//                        return
+//                    }
+                    guard let userLocation : CLLocation = appDelegate.userLocation else{
                         completionHandler(0, error as NSError?)
                         return
                     }
-                    completionHandler ((distance/1000).roundToDecimal(1), nil)
+                    self.caculateDistance(fromLocation: userLocation, toLocation: location, lable: lblPlace)
+//                    completionHandler ((distance/1000).roundToDecimal(1), nil)
                     return
                 }
             }
@@ -98,9 +103,81 @@ class MDProvider  {
         }
     }
     
+    func caculateDistance(fromLocation : CLLocation, toLocation : CLLocation, lable : UILabel) {
+        let directionRequest = MKDirectionsRequest()
+        let mkPlacemarkOrigen = MKPlacemark(coordinate: fromLocation.coordinate, addressDictionary: nil)
+        let mkPlacemarkDestination = MKPlacemark(coordinate: toLocation.coordinate, addressDictionary: nil)
+        let source: MKMapItem = MKMapItem(placemark: mkPlacemarkOrigen)
+        let destination: MKMapItem = MKMapItem(placemark: mkPlacemarkDestination)
+        directionRequest.source = source
+        directionRequest.destination = destination
+        let directions = MKDirections(request: directionRequest)
+        directions.calculate {
+            (response, error) -> Void in
+            if error != nil { print("Error calculating direction - \(String(describing: error?.localizedDescription))") }
+            else {
+                for route in (response?.routes)!{
+                    print("Distance = \(route.distance)")
+//                    for step in route.steps{
+//                        print(step.instructions)
+//                    }
+                    lable.text = "\((route.distance/1000).roundToDecimal(1)) km"
+                }
+            }
+        }
+    }
+    
     func call(phoneNumber : String){
         guard let number = URL(string: "tel://\(phoneNumber)") else { return }
         UIApplication.shared.open(number)
+    }
+    
+    func caculateYears(birthDay: String) -> Int{
+        guard birthDay != "" else {
+            return 0
+        }
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: date)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let userBirthday = dateFormatter.date(from: birthDay)
+        let unitFlags = Set<Calendar.Component>([.day, .month, .year])
+        
+        let components = calendar.dateComponents(unitFlags, from: userBirthday!)
+        let userYear = components.year ?? 0
+        return (year - userYear)
+        
+    }
+    
+    func showDropDown(button : UIButton, datasource : [String], controller : UIViewController, idButton : Int){
+        var isScroll = false
+        var heightOfTb : CGFloat = 0
+        let trueOriginY : CGFloat = button.frame.origin.y + button.frame.height + 1
+        let trueHeight = button.frame.height * CGFloat(datasource.count)
+        let statusFrame = UIApplication.shared.statusBarFrame
+        
+        let freeHeightBottom = UIScreen.main.bounds.height - statusFrame.height - button.frame.origin.y -  (controller.navigationController?.navigationBar.frame.height ?? 0) - button.frame.height + 1
+        
+        if trueHeight > freeHeightBottom{
+            isScroll = true
+            heightOfTb = freeHeightBottom
+        }else{
+            heightOfTb = trueHeight
+            isScroll = false
+        }
+        
+        DropDownListView.instance.setupDropDown(view: controller.view, isScroll: isScroll, x: button.frame.origin.x , y: trueOriginY , width: button.frame.width, height: heightOfTb , datasource: datasource, controller : controller,  idCell : idButton)
+    }
+    
+    func changeClTextBtn(btn: UIButton, index: Int){
+        if index != 0{
+            btn.setTitleColor(clTextTitle, for: .normal)
+        }else{
+            btn.setTitleColor(clDarkTex, for: .normal)
+        }
     }
 }
 

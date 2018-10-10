@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-
 //-----------Color-----
 let clTextTitle = UIColor(red: 25/255, green: 115/255, blue: 159/255, alpha: 1)
 let clShadownBlue = UIColor(red: 0/255, green: 153/255, blue: 255/255, alpha: 0.17)
 let clDark = UIColor(red: 168/255, green: 168/255, blue: 168/255, alpha: 1)
+let clDarkTex = UIColor(red: 154/255, green: 154/255, blue: 154/255, alpha: 1)
 let clGreenGardient = UIColor(red: 53/255, green: 216/255, blue: 166/255, alpha: 1)
 
 //-----------Segue text ----
@@ -33,6 +33,8 @@ let kSegueUserToListAppointment = "UserToListAppointment"
 let kSegueUserToLogin = "UserToLogin"
 let kSegueHospitalToDetail = "HospitalToDetail"
 let kSeguePharmacyToDetail = "PharmacyToDetail"
+let kSegueUserToUpdateInfo = "UserToUpdateInfo"
+let kSegueHomeToEmergency = "HomeToEmergency"
 
 //------------Error text ----
 let errNoInterNet = "Không có kết nối internet.\nVui lòng thử lại."
@@ -40,6 +42,25 @@ let errWrongEmailFormat = "Định dạng email không đúng.\nVui lòng nhập
 let errWrongInfoLogin = "Thông tin đăng nhập không đúng.\nVui lòng nhập lại."
 let errMissInfoLogin = "Thiếu thông tin đăng nhập.\nVui lòng nhập lại."
 let errMissInfoRegister = "Thiếu thông tin đăng ký.\nVui lòng nhập lại."
-let errWrongPhoneNumberFormat = "Định dạng số điện thoại không đúng.\nVui lòng nhập lại."
+let errWrongPhoneNumberFormat = "Số điện thoại không đúng.\nVui lòng nhập lại."
+let errWrongPassMinLength = "Mật khẩu ít nhất 8 ký tự.\nVui lòng nhập lại"
 let errWrongPassAndRepass = "Mật khẩu không khớp.\nVui lòng nhập lại."
 let errWrongAddress = "Không thể mở bản đồ.\nVui lòng thử lại"
+
+let errorMessageNoInternet = "Không thể kết nối internet.\nVui lòng kiểm tra và thử lại."
+let kErrorTimeOutText = "Time out when call api"
+let kErrorText = "Xảy ra lỗi trong quá trình kết nối database.\nVui lòng thử lại."
+let errorFailLogin = "Đăng nhập không thành công!\nVui lòng thử lại."
+let errorFailRegister = "Đăng ký không thành công.\nVui lòng thử lại."
+
+//---------Api doucument-----
+let kServerDomain = "http://192.168.1.121:8080/medicalcare/" //local server
+
+let kAPILogin = kServerDomain + "login.php"
+let kAPIGetUserInfo = kServerDomain + "getUserInfo.php"
+let kAPIRegister = kServerDomain + "registerUser.php"
+
+//---------Key ----------
+var defaultLogin = UserDefaults.standard
+let kUserDefaultkeyLogin = "loginname"
+

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class MDBaseViewController: UIViewController {
 
@@ -25,8 +24,5 @@ class MDBaseViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        DispatchQueue.main.async {
-            SVProgressHUD.dismiss()
-        }
     }
 }

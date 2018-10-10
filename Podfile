@@ -7,6 +7,6 @@ target 'MedicalCare' do
 
   # Pods for MedicalCare
     pod 'Alamofire'
-    pod 'SVProgressHUD'
+    pod 'JGProgressHUD'
     pod 'IQKeyboardManager'
 end

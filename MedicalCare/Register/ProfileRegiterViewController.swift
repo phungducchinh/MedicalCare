@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+import JGProgressHUD
 
 class ProfileRegiterViewController: UIViewController {
 
@@ -20,6 +20,8 @@ class ProfileRegiterViewController: UIViewController {
     var arrWeight = [Int]()
     var arrHeight = [Int]()
     var arrGender = ["Nam", "Nữ"]
+    
+    let hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,23 @@ class ProfileRegiterViewController: UIViewController {
     
     @IBAction func actionRegister(_ sender: Any) {
         // action call api register
-        self.performSegue(withIdentifier: kSegueRegisterToTabbar, sender: nil)
+        guard (userInfo != nil) else {
+            MDProvider.loadAlert(title: "", message: errMissInfoRegister)
+            return
+        }
+        hud.show(in: self.view)
+        MDAPIManager.instance.register(userInfo: userInfo!, success: {success in
+            print("thanh cong")
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            self.performSegue(withIdentifier: kSegueRegisterToTabbar, sender: nil)
+        }, failure: {fail, err in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            MDProvider.loadAlert(title: "", message: err)
+        })
     }
 }
 
@@ -76,11 +94,7 @@ extension ProfileRegiterViewController : UIPickerViewDelegate, UIPickerViewDataS
         case 1:
             userInfo?.weight = arrWeight[row]
         case 2:
-            if arrGender[row] == "Nam"{
-                userInfo?.gender = true
-            }else{
-                userInfo?.gender = false
-            }
+            userInfo?.gender = arrGender[row]
         default:
             print(component as Any)
         }

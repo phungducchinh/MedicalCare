@@ -28,12 +28,16 @@ class ListDoctorCell: UITableViewCell {
     }
     
     func setUpCell(strAva: String, name: String, special: String, hospital: String, addHos: String){
-        imgAvatar.image = MDProvider.instance.ConvertBase64StringToImage(imageBase64String: strAva)
+        if strAva != ""{
+            imgAvatar.image = MDProvider.instance.ConvertBase64StringToImage(imageBase64String: strAva)
+        }else{
+            imgAvatar.image = #imageLiteral(resourceName: "default-avatar")
+        }
         lblName.text = name
         lblSpecallize.text = special
         lblHospital.text = hospital + " , " + addHos
-        MDProvider.instance.getCoordinate(addressString: addHos, completionHandler: {distance , err in
-            self.lblPlace.text = "\(distance)" + " km"
+        MDProvider.instance.getCoordinate(addressString: addHos, lblPlace: lblPlace, completionHandler: {distance , err in
+//            self.lblPlace.text = "\(distance)" + " km"
         })
         self.layoutIfNeeded()
         self.setNeedsLayout()

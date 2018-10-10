@@ -1,24 +1,24 @@
 PODS:
   - Alamofire (4.7.3)
   - IQKeyboardManager (6.1.1)
-  - SVProgressHUD (2.2.5)
+  - JGProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - Alamofire
   - IQKeyboardManager
-  - SVProgressHUD
+  - JGProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - IQKeyboardManager
-    - SVProgressHUD
+    - JGProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
 
-PODFILE CHECKSUM: e4b1c95356a7f301133c8c0ace8c3498d251c5a6
+PODFILE CHECKSUM: 1c099fbf35883a0985ff9bd3677a97ebe2b3efe3
 
 COCOAPODS: 1.5.3

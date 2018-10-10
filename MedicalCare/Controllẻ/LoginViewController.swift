@@ -7,19 +7,22 @@
 //
 
 import UIKit
-import SVProgressHUD
 import Alamofire
+import JGProgressHUD
 
 class LoginViewController: MDBaseViewController {
 
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPass: UITextField!
+    
+    let hud = JGProgressHUD(style: .dark)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
-        tfEmail.text = "ducchinh@sdsdf.com"
-        tfPass.text = "dsfsdfr"
+        tfEmail.text = "duytruong123@gmail.com"
+        tfPass.text = "12345678"
         // Do any additional setup after loading the view.
     }
 
@@ -47,8 +50,25 @@ class LoginViewController: MDBaseViewController {
             MDProvider.loadAlert(title: "", message: errMissInfoLogin)
             return
         }
-        SVProgressHUD.show()
-        self.performSegue(withIdentifier: kSegueLoginToTabbar, sender: nil)
+        hud.show(in: self.view)
+        
+        MDAPIManager.instance.login(email: email, password: password, success: {sucess in
+            print(sucess)
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            // code lấy dữ liệu user defaults
+//            if let userData = defaultLogin.data(forKey: kUserDefaultkeyLogin),
+//                let user = try? JSONDecoder().decode(UserObject.self, from: userData) {
+//            }
+            
+            self.performSegue(withIdentifier: kSegueLoginToTabbar, sender: nil)
+        }, failure: {fail, err in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            MDProvider.loadAlert(title: "", message: err)
+        })
     }
     
     /*

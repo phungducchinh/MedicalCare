@@ -24,6 +24,11 @@
 		0E49BA55215A95030085C20E /* DoctorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */; };
 		0E49BA58215A99020085C20E /* DoctorInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA57215A99020085C20E /* DoctorInfoCell.swift */; };
 		0E49BA5A215A99130085C20E /* DoctorInfoWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */; };
+		0E5372F02163BEC200F5F260 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372EF2163BEC200F5F260 /* EmergencyViewController.swift */; };
+		0E5372F42163C30500F5F260 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F22163C30500F5F260 /* Cell.swift */; };
+		0E5372F52163C30500F5F260 /* DropDownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F32163C30500F5F260 /* DropDownListView.swift */; };
+		0E5372F72163D21C00F5F260 /* ChooseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F62163D21C00F5F260 /* ChooseTimeViewController.swift */; };
+		0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E712B1B216E2B18002FA421 /* MDAPIManager.swift */; };
 		0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */; };
 		0EB3FD70215BCC4100C65EB7 /* DoctorHospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */; };
 		0EB3FD73215BDE6E00C65EB7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */; };
@@ -68,6 +73,11 @@
 		0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailViewController.swift; sourceTree = "<group>"; };
 		0E49BA57215A99020085C20E /* DoctorInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoCell.swift; sourceTree = "<group>"; };
 		0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoWithImageCell.swift; sourceTree = "<group>"; };
+		0E5372EF2163BEC200F5F260 /* EmergencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
+		0E5372F22163C30500F5F260 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		0E5372F32163C30500F5F260 /* DropDownListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownListView.swift; sourceTree = "<group>"; };
+		0E5372F62163D21C00F5F260 /* ChooseTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimeViewController.swift; sourceTree = "<group>"; };
+		0E712B1B216E2B18002FA421 /* MDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAPIManager.swift; sourceTree = "<group>"; };
 		0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalViewController.swift; sourceTree = "<group>"; };
 		0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalCell.swift; sourceTree = "<group>"; };
 		0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 			children = (
 				0E0861B3215926DE001847D9 /* HomeViewController.swift */,
 				0E0861BA21593366001847D9 /* HomeCollectionViewCell.swift */,
+				0E5372EF2163BEC200F5F260 /* EmergencyViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -147,6 +158,7 @@
 				0E123BD4215E8CE200AFAE47 /* AppointmentConfirmViewController.swift */,
 				0E123BD6215E94F500AFAE47 /* AppointmentDetailViewCell.swift */,
 				0EC6904F21611F2800B074F0 /* HistoryViewController.swift */,
+				0E5372F62163D21C00F5F260 /* ChooseTimeViewController.swift */,
 			);
 			path = MakeAppointment;
 			sourceTree = "<group>";
@@ -173,6 +185,15 @@
 				0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */,
 			);
 			path = DoctorDetail;
+			sourceTree = "<group>";
+		};
+		0E5372F12163C2F400F5F260 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				0E5372F22163C30500F5F260 /* Cell.swift */,
+				0E5372F32163C30500F5F260 /* DropDownListView.swift */,
+			);
+			path = DropDown;
 			sourceTree = "<group>";
 		};
 		0EB3FD71215BDE5100C65EB7 /* User */ = {
@@ -232,10 +253,12 @@
 			isa = PBXGroup;
 			children = (
 				0EC6904C2160FC2D00B074F0 /* Model */,
+				0E712B1B216E2B18002FA421 /* MDAPIManager.swift */,
 				0EFDFF3C2156B94400627A59 /* AppDelegate.swift */,
 				0E35D88C21573F6700CA48BC /* MDProvider.swift */,
 				0E0861B021592344001847D9 /* MDExtension.swift */,
 				0EFDFF602156D74800627A59 /* Contants.swift */,
+				0E5372F12163C2F400F5F260 /* DropDown */,
 				0EC69049215FD0DA00B074F0 /* Pharmacy */,
 				0EC69046215FBE4B00B074F0 /* Hospital */,
 				0E123BD1215E848300AFAE47 /* MakeAppointment */,
@@ -384,13 +407,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MedicalCare/Pods-MedicalCare-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -405,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E343C6521627FF1009DE613 /* HospitalPharmacyDetialViewController.swift in Sources */,
+				0E5372F52163C30500F5F260 /* DropDownListView.swift in Sources */,
 				0E49BA55215A95030085C20E /* DoctorDetailViewController.swift in Sources */,
 				0E123BD5215E8CE200AFAE47 /* AppointmentConfirmViewController.swift in Sources */,
 				0EB3FD75215BE12600C65EB7 /* UserSetingViewCell.swift in Sources */,
@@ -419,12 +443,15 @@
 				0E35D88D21573F6700CA48BC /* MDProvider.swift in Sources */,
 				0EC6904B215FD0EE00B074F0 /* PharmacyViewController.swift in Sources */,
 				0E123BD7215E94F500AFAE47 /* AppointmentDetailViewCell.swift in Sources */,
+				0E5372F72163D21C00F5F260 /* ChooseTimeViewController.swift in Sources */,
 				0EFDFF5B2156D2D700627A59 /* ProfileRegiterViewController.swift in Sources */,
 				0E49BA51215A70FB0085C20E /* ListDoctorCell.swift in Sources */,
+				0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */,
 				0EC6905021611F2800B074F0 /* HistoryViewController.swift in Sources */,
 				0E49BA4F215A6C8F0085C20E /* DoctorListViewController.swift in Sources */,
 				0E0861BB21593366001847D9 /* HomeCollectionViewCell.swift in Sources */,
 				0EFDFF592156D2A000627A59 /* BirthDayViewController.swift in Sources */,
+				0E5372F02163BEC200F5F260 /* EmergencyViewController.swift in Sources */,
 				0EFDFF532156C64700627A59 /* TutorialViewControllerThree.swift in Sources */,
 				0EB3FD73215BDE6E00C65EB7 /* UserViewController.swift in Sources */,
 				0E49BA58215A99020085C20E /* DoctorInfoCell.swift in Sources */,
@@ -440,6 +467,7 @@
 				0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */,
 				0EC69048215FBE6B00B074F0 /* HospitalListViewController.swift in Sources */,
 				0EC6904E2160FC4700B074F0 /* User.swift in Sources */,
+				0E5372F42163C30500F5F260 /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -283,3 +283,10 @@ extension Double {
         return Darwin.round(self * multiplier) / multiplier
     }
 }
+
+extension UITableView {
+    func scrollToTop(animated: Bool) {
+        setContentOffset(CGPoint.zero, animated: animated)
+    }
+    
+}

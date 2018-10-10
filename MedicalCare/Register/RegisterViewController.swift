@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var tfPhone: UITextField!
     @IBOutlet weak var tfPass: UITextField!
     @IBOutlet weak var tfRepass: UITextField!
+    @IBOutlet weak var tfAddress: UITextField!
     
     var userinfo : UserObject?
     
@@ -30,6 +31,7 @@ class RegisterViewController: UIViewController {
         tfPass.text = "12345678"
         tfPass.text = "12345678"
         tfRepass.text = "12345678"
+        tfAddress.text = "97 Man Thiện, Phường Tăng Nhơn Phú A, Quận 9"
         // Do any additional setup after loading the view.
     }
 
@@ -40,7 +42,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func actionNext(_ sender: Any) {
         
-        guard tfFullName.text != "" && tfEmail.text != "" && tfPhone.text != "" && tfPass.text != "" && tfRepass.text != "" else{
+        guard tfFullName.text != "" && tfEmail.text != "" && tfPhone.text != "" && tfPass.text != "" && tfRepass.text != "" && tfAddress.text != "" else{
             MDProvider.loadAlert(title: "", message: errMissInfoRegister)
             return
         }
@@ -55,12 +57,22 @@ class RegisterViewController: UIViewController {
             return
         }
         
+        if (tfPhone.text?.count)! != 10{
+            MDProvider.loadAlert(title: "", message: errWrongPhoneNumberFormat)
+            return
+        }
+        
+        if (tfPass.text?.count)! < 8{
+            MDProvider.loadAlert(title: "", message: errWrongPassMinLength)
+            return
+        }
+        
         if tfPass.text != tfRepass.text {
             MDProvider.loadAlert(title: "", message: errWrongPassAndRepass)
             return
         }
         
-        userinfo = UserObject(id: 0, name: tfFullName.text, email: tfEmail.text, password: tfPass.text, phonenumber: tfPhone.text, birthday: "", weight: 0, height: 0, gender: true, avatar: "")
+        userinfo = UserObject(id: 0, name: tfFullName.text, email: tfEmail.text, password: tfPass.text, phone_number: tfPhone.text, birthday: "", weight: 0, height: 0,gender: "", type : 0,avatar: "", address : tfAddress.text )
     
         self.performSegue(withIdentifier: kSegueRegisterToBirthday, sender: self)
     }

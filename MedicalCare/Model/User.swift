@@ -9,15 +9,29 @@
 import Foundation
 import UIKit
 
-struct  UserObject : Decodable {
+struct UserApi : Codable {
+    let success : Int?
+    let msg : String?
+    let data : UserObject?
+}
+
+struct  UserObject : Codable {
     var id : Int?
     var name : String?
     var email : String?
     var password : String?
-    var phonenumber : String?
+    var phone_number : String?
     var birthday : String?
     var weight : Int?
     var height : Int?
-    var gender : Bool?
+    var gender : String?
+    var type : Int?
     var avatar : String?
+    var address : String?
+    
+}
+
+struct UserLoginInfo : Encodable{
+    var email : String?
+    var password : String?
 }

@@ -60,6 +60,8 @@ extension DoctorListViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListDoctorCell", for: indexPath) as! ListDoctorCell
+        let address = "263-265 Đường Trần Hưng Đạo, Thành Phố Hồ Chí Minh, Việt Nam"
+        cell.setUpCell(strAva: "", name: "Trà Văn Hiên", special: "Khoa ngoại B3", hospital: "Bệnh viện Quân Dân Y miền Đông", addHos: address)
         return cell
     }
     

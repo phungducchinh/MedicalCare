@@ -86,8 +86,7 @@ extension HomeViewController : HomeCellDelegate{
                 nav.popToRootViewController(animated: true)
             }
         case 4:
-            let vc : TutorialPageViewController =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TutorialPageViewController") as! TutorialPageViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.performSegue(withIdentifier: kSegueHomeToEmergency, sender: self)
         case 5:
             self.tabBarController?.selectedIndex = 3
             if let nav = self.tabBarController?.viewControllers?[3] as? UINavigationController {
