@@ -181,4 +181,139 @@ class MDAPIManager{
         }
         return nil
     }
+    
+    func getAllHospital(url : String ,success: @escaping ([Hospital]) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+        guard Connectivity.isConnectedToInternet()  else {
+            failure(false, errorMessageNoInternet)
+            return
+        }
+        
+        let urlgetInfo = URL(string: url)
+        let param  : Parameters = ["idquest" : "1"]
+        let manager = self.sessionManager
+        manager.request(urlgetInfo!, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            if response.result.isSuccess{
+                guard let result = response.result.value as? Dictionary<String,Any> else{
+                    failure( false, kErrorText)
+                    return
+                }
+                
+                let code = result["success"] as? Int ?? 0
+                let msg = result["msg"] as? String ?? ""
+                if code == 200{
+                    do{
+                       let dataProduct = try JSONDecoder().decode(AllHospitalApi.self, from: response.data!)
+                        success(dataProduct.data!)
+                    }catch{
+                        failure(false, kErrorText)
+                    }
+                    
+                }else if code == 400 || code == 401{
+                    failure(true,  msg)  // add target goto login view
+                }else{
+                    failure(false,  msg)
+                }
+                
+            }else{
+                if let error = response.result.error{
+                    print(error)
+                    if error._code == NSURLErrorTimedOut{
+                        failure(false, kErrorTimeOutText)
+                        return
+                    }
+                }
+                failure(false, kErrorText)
+            }
+        }
+    }
+    
+    func getAllEmergency(success: @escaping ([Emergency]) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+        guard Connectivity.isConnectedToInternet()  else {
+            failure(false, errorMessageNoInternet)
+            return
+        }
+        
+        let urlgetInfo = URL(string: kAPIGetAllEmergency)
+        let param  : Parameters = ["idquest" : "1"]
+        let manager = self.sessionManager
+        manager.request(urlgetInfo!, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            if response.result.isSuccess{
+                guard let result = response.result.value as? Dictionary<String,Any> else{
+                    failure( false, kErrorText)
+                    return
+                }
+                
+                let code = result["success"] as? Int ?? 0
+                let msg = result["msg"] as? String ?? ""
+                if code == 200{
+                    do{
+                        let dataProduct = try JSONDecoder().decode(AllEmergencyApi.self, from: response.data!)
+                        success(dataProduct.data!)
+                    }catch{
+                        failure(false, kErrorText)
+                    }
+                    
+                }else if code == 400 || code == 401{
+                    failure(true,  msg)  // add target goto login view
+                }else{
+                    failure(false,  msg)
+                }
+                
+            }else{
+                if let error = response.result.error{
+                    print(error)
+                    if error._code == NSURLErrorTimedOut{
+                        failure(false, kErrorTimeOutText)
+                        return
+                    }
+                }
+                failure(false, kErrorText)
+            }
+        }
+    }
+    
+    func getAllInfoFindDoctor(success: @escaping (InfofindDoctor) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+        guard Connectivity.isConnectedToInternet()  else {
+            failure(false, errorMessageNoInternet)
+            return
+        }
+        
+        let urlgetInfo = URL(string: kAPIGetAllInfoFindDoctor)
+        let param  : Parameters = ["id" : "1"]
+        let manager = self.sessionManager
+        manager.request(urlgetInfo!, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            if response.result.isSuccess{
+                guard let result = response.result.value as? Dictionary<String,Any> else{
+                    failure( false, kErrorText)
+                    return
+                }
+                
+                let code = result["success"] as? Int ?? 0
+                let msg = result["msg"] as? String ?? ""
+                if code == 200{
+                    do{
+                        let dataProduct = try JSONDecoder().decode(AllInfofindDoctorApi.self, from: response.data!)
+                        success(dataProduct.data!)
+                    }catch{
+                        failure(false, kErrorText)
+                    }
+                    
+                }else if code == 400 || code == 401{
+                    failure(true,  msg)  // add target goto login view
+                }else{
+                    failure(false,  msg)
+                }
+                
+            }else{
+                if let error = response.result.error{
+                    print(error)
+                    if error._code == NSURLErrorTimedOut{
+                        failure(false, kErrorTimeOutText)
+                        return
+                    }
+                }
+                failure(false, kErrorText)
+            }
+        }
+    }
 }

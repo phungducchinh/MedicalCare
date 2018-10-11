@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class EmergencyViewController: MDBaseViewController {
 
     @IBOutlet weak var tbvEmergency: UITableView!
+    
+    var arrEmergency : [Emergency] = []
+    var row = 0
+    let hud = JGProgressHUD(style: .dark)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,8 +28,26 @@ class EmergencyViewController: MDBaseViewController {
         MDProvider.instance.setUpNavigation(controller: self)
         tbvEmergency.estimatedRowHeight = 80
         tbvEmergency.rowHeight = UITableViewAutomaticDimension
+        DispatchQueue.main.async {
+            self.getData()
+        }
     }
 
+    func getData(){
+        hud.show(in: self.view)
+        MDAPIManager.instance.getAllEmergency(success: {success in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            self.arrEmergency = success
+            self.tbvEmergency.reloadData()
+        }, failure: {fail, err in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            MDProvider.loadAlert(title: "", message: err)
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,11 +68,13 @@ class EmergencyViewController: MDBaseViewController {
 
 extension EmergencyViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return arrEmergency.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorHospitalCell", for: indexPath) as! DoctorHospitalCell
+        let info = arrEmergency[indexPath.row]
+        cell.setupEmergencyCell(name: info.name ?? "", address: info.phone_number ?? "", phone: info.phone_number ?? "")
         return cell
     }
     

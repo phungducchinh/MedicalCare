@@ -18,6 +18,7 @@
 		0E123BD7215E94F500AFAE47 /* AppointmentDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E123BD6215E94F500AFAE47 /* AppointmentDetailViewCell.swift */; };
 		0E343C6521627FF1009DE613 /* HospitalPharmacyDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E343C6421627FF1009DE613 /* HospitalPharmacyDetialViewController.swift */; };
 		0E35D88D21573F6700CA48BC /* MDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35D88C21573F6700CA48BC /* MDProvider.swift */; };
+		0E3F682E216F907B00D0AC7B /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F682D216F907B00D0AC7B /* Hospital.swift */; };
 		0E49BA4F215A6C8F0085C20E /* DoctorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */; };
 		0E49BA51215A70FB0085C20E /* ListDoctorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */; };
 		0E49BA53215A75690085C20E /* DoctorPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BA52215A75690085C20E /* DoctorPresentViewController.swift */; };
@@ -28,6 +29,8 @@
 		0E5372F42163C30500F5F260 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F22163C30500F5F260 /* Cell.swift */; };
 		0E5372F52163C30500F5F260 /* DropDownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F32163C30500F5F260 /* DropDownListView.swift */; };
 		0E5372F72163D21C00F5F260 /* ChooseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F62163D21C00F5F260 /* ChooseTimeViewController.swift */; };
+		0E6B9232216FA290009662C5 /* Emergency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9231216FA290009662C5 /* Emergency.swift */; };
+		0E6B9234216FA75E009662C5 /* InfoFinđoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */; };
 		0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E712B1B216E2B18002FA421 /* MDAPIManager.swift */; };
 		0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */; };
 		0EB3FD70215BCC4100C65EB7 /* DoctorHospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */; };
@@ -67,6 +70,7 @@
 		0E123BD6215E94F500AFAE47 /* AppointmentDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDetailViewCell.swift; sourceTree = "<group>"; };
 		0E343C6421627FF1009DE613 /* HospitalPharmacyDetialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalPharmacyDetialViewController.swift; sourceTree = "<group>"; };
 		0E35D88C21573F6700CA48BC /* MDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDProvider.swift; sourceTree = "<group>"; };
+		0E3F682D216F907B00D0AC7B /* Hospital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListViewController.swift; sourceTree = "<group>"; };
 		0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDoctorCell.swift; sourceTree = "<group>"; };
 		0E49BA52215A75690085C20E /* DoctorPresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorPresentViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 		0E5372F22163C30500F5F260 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		0E5372F32163C30500F5F260 /* DropDownListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownListView.swift; sourceTree = "<group>"; };
 		0E5372F62163D21C00F5F260 /* ChooseTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimeViewController.swift; sourceTree = "<group>"; };
+		0E6B9231216FA290009662C5 /* Emergency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emergency.swift; sourceTree = "<group>"; };
+		0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoFinđoctor.swift"; sourceTree = "<group>"; };
 		0E712B1B216E2B18002FA421 /* MDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAPIManager.swift; sourceTree = "<group>"; };
 		0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalViewController.swift; sourceTree = "<group>"; };
 		0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalCell.swift; sourceTree = "<group>"; };
@@ -227,6 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				0EC6904D2160FC4700B074F0 /* User.swift */,
+				0E3F682D216F907B00D0AC7B /* Hospital.swift */,
+				0E6B9231216FA290009662C5 /* Emergency.swift */,
+				0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,6 +455,7 @@
 				0E5372F72163D21C00F5F260 /* ChooseTimeViewController.swift in Sources */,
 				0EFDFF5B2156D2D700627A59 /* ProfileRegiterViewController.swift in Sources */,
 				0E49BA51215A70FB0085C20E /* ListDoctorCell.swift in Sources */,
+				0E6B9234216FA75E009662C5 /* InfoFinđoctor.swift in Sources */,
 				0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */,
 				0EC6905021611F2800B074F0 /* HistoryViewController.swift in Sources */,
 				0E49BA4F215A6C8F0085C20E /* DoctorListViewController.swift in Sources */,
@@ -462,6 +472,8 @@
 				0E0861B4215926DE001847D9 /* HomeViewController.swift in Sources */,
 				0E0861BD21593C92001847D9 /* FindoctorViewController.swift in Sources */,
 				0EB3FD70215BCC4100C65EB7 /* DoctorHospitalCell.swift in Sources */,
+				0E3F682E216F907B00D0AC7B /* Hospital.swift in Sources */,
+				0E6B9232216FA290009662C5 /* Emergency.swift in Sources */,
 				0EFDFF512156C63900627A59 /* TutorialViewControllerTwo.swift in Sources */,
 				0E123BD3215E84A300AFAE47 /* MakeAppointmentViewController.swift in Sources */,
 				0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */,

@@ -59,6 +59,10 @@ let kServerDomain = "http://192.168.1.121:8080/medicalcare/" //local server
 let kAPILogin = kServerDomain + "login.php"
 let kAPIGetUserInfo = kServerDomain + "getUserInfo.php"
 let kAPIRegister = kServerDomain + "registerUser.php"
+let kAPIGetAllHospital = kServerDomain + "getAllHospital.php"
+let kAPIGetAllPharmacy = kServerDomain + "getAllMedicalShop.php"
+let kAPIGetAllEmergency = kServerDomain + "getAllEmergency.php"
+let kAPIGetAllInfoFindDoctor = kServerDomain + "getAllInfoFindDoctor.php"
 
 //---------Key ----------
 var defaultLogin = UserDefaults.standard

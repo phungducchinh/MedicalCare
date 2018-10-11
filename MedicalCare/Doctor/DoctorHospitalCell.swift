@@ -16,6 +16,8 @@ class DoctorHospitalCell: UITableViewCell {
     @IBOutlet weak var imgHospitalAddress: UILabel!
     
     var idCell = 0
+    var phone = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,14 +29,17 @@ class DoctorHospitalCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setupEmergencyCell (name : String, address : String, phone : String){
+        lblHospitalName.text = name
+        imgHospitalAddress.text = address
+        self.phone = phone
+    }
+    
     @IBAction func actionOpenMap(_ sender: Any) {
-        let address = "263-265 Đường Trần Hưng Đạo, Thành Phố Hồ Chí Minh, Việt Nam"
-        MDProvider.instance.openMap(address: address)
-        
-//        MDProvider.instance.getCoordinate(addressString: address, completionHandler: {distance , err in
-//            print(distance)
-//        })
+//        let address = "263-265 Đường Trần Hưng Đạo, Thành Phố Hồ Chí Minh, Việt Nam"
+        MDProvider.instance.openMap(address: imgHospitalAddress.text ?? "")
     }
     @IBAction func actionOpenPhone(_ sender: Any) {
+        MDProvider.instance.call(phoneNumber: self.phone )
     }
 }

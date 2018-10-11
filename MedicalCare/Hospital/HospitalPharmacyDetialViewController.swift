@@ -16,6 +16,9 @@ class HospitalPharmacyDetialViewController: MDBaseViewController {
     @IBOutlet weak var lblPlace: UILabel!
     @IBOutlet weak var tvInfo: UITextView!
     
+    var infoHospital : Hospital?
+    var phone = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +28,15 @@ class HospitalPharmacyDetialViewController: MDBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         MDProvider.instance.setUpNavigation(controller: self)
+        
+        lblName.text = infoHospital?.name ?? ""
+        lblAddress.text = infoHospital?.address ?? ""
+        tvInfo.text = infoHospital?.info ?? ""
+        phone = infoHospital?.phone_number ?? ""
+        MDProvider.instance.setupImage(strAva: infoHospital?.avatar ?? "", imgView: imgAva)
+        MDProvider.instance.getCoordinate(addressString: infoHospital?.address ?? "", lblPlace: lblPlace, completionHandler: {distance , err in
+            print(distance)
+        })
         
         if tvInfo.contentSize.height > tvInfo.frame.height{
             tvInfo.isScrollEnabled = true
@@ -39,11 +51,11 @@ class HospitalPharmacyDetialViewController: MDBaseViewController {
     }
     
     @IBAction func actionOpenMap(_ sender: Any) {
-        
+        MDProvider.instance.openMap(address: lblAddress.text ?? "")
     }
     
     @IBAction func actionCall(_ sender: Any) {
-        
+        MDProvider.instance.call(phoneNumber: phone)
     }
     
     /*

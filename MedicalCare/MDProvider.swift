@@ -132,6 +132,14 @@ class MDProvider  {
         UIApplication.shared.open(number)
     }
     
+    func setupImage(strAva : String, imgView : UIImageView){
+        if strAva != ""{
+            imgView.image = MDProvider.instance.ConvertBase64StringToImage(imageBase64String: strAva)
+        }else{
+            imgView.image = #imageLiteral(resourceName: "default-avatar")
+        }
+    }
+    
     func caculateYears(birthDay: String) -> Int{
         guard birthDay != "" else {
             return 0
