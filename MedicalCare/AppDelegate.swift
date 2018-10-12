@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager.startUpdatingLocation()
         
         // code lấy dữ liệu user defaults
-        if let userData = defaultLogin.data(forKey: kUserDefaultkeyLogin), let user = try? JSONDecoder().decode(UserObject.self, from: userData) {
+        if let userData = defaultLogin.data(forKey: kUserDefaultkeyLogin), let _ = try? JSONDecoder().decode(UserObject.self, from: userData) {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
             self.window?.rootViewController = viewController

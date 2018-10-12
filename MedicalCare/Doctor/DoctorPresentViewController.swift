@@ -24,6 +24,7 @@ class DoctorPresentViewController: UIViewController {
     
     weak var delegate : DoctorPresentDelegate?
     var parentView = UIViewController()
+    var objDoctor : Doctor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +42,34 @@ class DoctorPresentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        imgAvatar.image = MDProvider.instance.ConvertBase64StringToImage(imageBase64String: strAva)
-//        lblName.text = name
-//        lblSpecallize.text = special
-//        lblHospital.text = hospital + " , " + addHos
-//        MDProvider.instance.getCoordinate(addressString: addHos, completionHandler: {distance , err in
-//            self.lblPlace.text = "\(distance)" + " km"
-//        })
+    }
+    
+    func upateData(objDoc: Doctor){
+        self.objDoctor = objDoc
+        MDProvider.instance.setupImage(strAva: objDoctor?.avatar ?? "", imgView: self.imgAvatar)
+        self.lblName.text = objDoctor?.name ?? ""
+        self.lblSpeciallize.text = objDoctor?.specialize ?? ""
+        if let certificate = objDoctor?.certificate {
+            self.lblCertificate.text =  cvtArrToString(info: certificate)
+        }else{
+            self.lblCertificate.text = ""
+        }
+        MDProvider.instance.getCoordinate(addressString: objDoctor?.address ?? "", lblPlace: self.lblPlace, completionHandler: {distance , err in
+        })
+    }
+    
+    func cvtArrToString(info: [Info]) -> String{
+        var str = ""
+        if info.count > 0{
+            for i in info{
+                str += i.name ?? ""
+                str += ","
+            }
+            str.removeLast()
+            return str
+        }else{
+            return str
+        }
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -57,21 +79,21 @@ class DoctorPresentViewController: UIViewController {
         self.delegate?.closeView!()
     }
     @IBAction func actionOpenMap(_ sender: Any) {
-        
+        MDProvider.instance.openMap(address: self.objDoctor?.address ?? "")
     }
     
     @IBAction func actionMakeCall(_ sender: Any) {
-        
+        MDProvider.instance.call(phoneNumber: self.objDoctor?.phone_number ?? "")
     }
     
     @IBAction func actionOpenDoctorInfo(_ sender: Any) {
         self.delegate?.closeView!()
-        self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorInfo, sender: nil)
+        self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorInfo, sender: self)
     }
     
     @IBAction func actionOpenHospitalOfDoctor(_ sender: Any) {
         self.delegate?.closeView!()
-        self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorHospital, sender: nil)
+        self.parentView.performSegue(withIdentifier: kSegueDoctorToDoctorHospital, sender: self)
     }
     
     @IBAction func actionMakeAppointment(_ sender: Any) {

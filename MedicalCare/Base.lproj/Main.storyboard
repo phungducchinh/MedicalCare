@@ -730,22 +730,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UOU-W4-hIX">
-                                <rect key="frame" x="0.0" y="105" width="375" height="554"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UOU-W4-hIX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListDoctorCell" rowHeight="148" id="JE2-3O-fy0" customClass="ListDoctorCell" customModule="MedicalCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JE2-3O-fy0" id="cPN-0z-g9V">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="147.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_userTest" translatesAutoresizingMaskIntoConstraints="NO" id="Efl-e4-Bok">
-                                                    <rect key="frame" x="20" y="20" width="100" height="100"/>
+                                                    <rect key="frame" x="20" y="20" width="92" height="92"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="OKB-yd-81g"/>
-                                                        <constraint firstAttribute="width" constant="100" id="V9i-gp-fBz"/>
+                                                        <constraint firstAttribute="height" constant="92" id="OKB-yd-81g"/>
+                                                        <constraint firstAttribute="width" constant="92" id="V9i-gp-fBz"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -755,31 +755,31 @@
                                                             <real key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="50"/>
+                                                            <real key="value" value="46"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bác sĩ Trà Văn Hiên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQ3-Gz-8Mv">
-                                                    <rect key="frame" x="125" y="20" width="147" height="20.5"/>
+                                                    <rect key="frame" x="117" y="20" width="147" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.098039215686274508" green="0.45098039215686275" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khoa nội nhi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isg-NV-hYp">
-                                                    <rect key="frame" x="125" y="43.5" width="84.5" height="18"/>
+                                                    <rect key="frame" x="117" y="43.5" width="84.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.58431372549019611" green="0.59607843137254901" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_map" translatesAutoresizingMaskIntoConstraints="NO" id="Bh9-Vl-mHW">
-                                                    <rect key="frame" x="125" y="74.5" width="12" height="12"/>
+                                                    <rect key="frame" x="117" y="74.5" width="12" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="12" id="AP0-mj-iev"/>
                                                         <constraint firstAttribute="width" constant="12" id="yms-Hm-1LR"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bệnh viện Quân Dân Y Miền Đông, Quận 9, TP. HCM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwP-OT-R1t">
-                                                    <rect key="frame" x="142" y="71.5" width="194" height="36"/>
+                                                    <rect key="frame" x="134" y="71.5" width="194" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.31764705882352939" green="0.33725490196078434" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -822,6 +822,14 @@
                                                 <constraint firstItem="isg-NV-hYp" firstAttribute="leading" secondItem="AQ3-Gz-8Mv" secondAttribute="leading" id="zz0-ta-2oR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.6588235294117647" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="imgAvatar" destination="Efl-e4-Bok" id="LhR-Ms-NS2"/>
                                             <outlet property="lblHospital" destination="lwP-OT-R1t" id="2c8-JY-cY0"/>
@@ -1420,14 +1428,14 @@
                                                                 <constraint firstAttribute="height" constant="15" id="H0w-GO-FHz"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jym Hospital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYj-lX-9WN">
-                                                            <rect key="frame" x="40" y="20" width="94.5" height="19.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" text="Jym Hospital" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYj-lX-9WN">
+                                                            <rect key="frame" x="40" y="20" width="95" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_btn_place" translatesAutoresizingMaskIntoConstraints="NO" id="xyT-ZI-AvC">
-                                                            <rect key="frame" x="16.5" y="48" width="12" height="12"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="ico_btn_place" translatesAutoresizingMaskIntoConstraints="NO" id="xyT-ZI-AvC">
+                                                            <rect key="frame" x="16.5" y="60" width="12" height="12"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="12" id="9yz-YG-h2Z"/>
                                                                 <constraint firstAttribute="width" constant="12" id="hp5-Uq-ZhC"/>
@@ -1455,8 +1463,8 @@
                                                                 <action selector="actionOpenPhone:" destination="xBF-p8-SfN" eventType="touchUpInside" id="Sop-xT-VTH"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANG-3R-diF">
-                                                            <rect key="frame" x="38.5" y="49.5" width="173" height="38.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANG-3R-diF">
+                                                            <rect key="frame" x="38.5" y="60" width="173" height="38.5"/>
                                                             <string key="text">Plot no 5, Atharv nagar, 
 Ring road, Nagpur</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1471,17 +1479,19 @@ Ring road, Nagpur</string>
                                                         <constraint firstItem="xyT-ZI-AvC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a1v-4k-Ex2" secondAttribute="leading" constant="15" id="C6x-SD-RDB"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JYj-lX-9WN" secondAttribute="trailing" constant="20" id="CMA-D5-GyV"/>
                                                         <constraint firstItem="JYj-lX-9WN" firstAttribute="leading" secondItem="jpE-Yd-4Ti" secondAttribute="trailing" constant="10" id="E16-hs-sHl"/>
+                                                        <constraint firstItem="ANG-3R-diF" firstAttribute="top" secondItem="xyT-ZI-AvC" secondAttribute="top" constant="-5" id="GIk-PW-3O5"/>
                                                         <constraint firstItem="VlZ-oz-nVp" firstAttribute="top" secondItem="a1v-4k-Ex2" secondAttribute="top" constant="20" id="Hhi-02-eSb"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xyT-ZI-AvC" secondAttribute="bottom" constant="20" id="RWf-AG-oga"/>
                                                         <constraint firstItem="jpE-Yd-4Ti" firstAttribute="leading" secondItem="a1v-4k-Ex2" secondAttribute="leading" constant="15" id="Ry3-ef-NK1"/>
                                                         <constraint firstAttribute="trailing" secondItem="Fh6-Gi-mJE" secondAttribute="trailing" constant="15" id="Xi0-jr-sLE"/>
-                                                        <constraint firstItem="Fh6-Gi-mJE" firstAttribute="top" secondItem="VlZ-oz-nVp" secondAttribute="bottom" constant="10" id="Xog-Tq-zSY"/>
+                                                        <constraint firstItem="Fh6-Gi-mJE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VlZ-oz-nVp" secondAttribute="bottom" constant="10" id="Xog-Tq-zSY"/>
                                                         <constraint firstItem="ANG-3R-diF" firstAttribute="leading" secondItem="xyT-ZI-AvC" secondAttribute="trailing" constant="10" id="dy3-eW-Fug"/>
+                                                        <constraint firstItem="Fh6-Gi-mJE" firstAttribute="top" secondItem="ANG-3R-diF" secondAttribute="top" id="dyc-XN-m6V"/>
                                                         <constraint firstItem="JYj-lX-9WN" firstAttribute="top" secondItem="a1v-4k-Ex2" secondAttribute="top" constant="20" id="f1h-mS-zcP"/>
                                                         <constraint firstAttribute="trailing" secondItem="VlZ-oz-nVp" secondAttribute="trailing" constant="15" id="fW8-tu-Xy0"/>
-                                                        <constraint firstItem="ANG-3R-diF" firstAttribute="top" secondItem="JYj-lX-9WN" secondAttribute="bottom" constant="10" id="gOy-NT-okV"/>
-                                                        <constraint firstItem="xyT-ZI-AvC" firstAttribute="top" secondItem="jpE-Yd-4Ti" secondAttribute="bottom" constant="13" id="lWB-q2-daX"/>
-                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ANG-3R-diF" secondAttribute="bottom" constant="20" id="qnS-o5-1ij"/>
+                                                        <constraint firstItem="ANG-3R-diF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JYj-lX-9WN" secondAttribute="bottom" constant="10" id="gOy-NT-okV"/>
+                                                        <constraint firstItem="xyT-ZI-AvC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jpE-Yd-4Ti" secondAttribute="bottom" constant="15" id="lWB-q2-daX"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ANG-3R-diF" secondAttribute="bottom" constant="20" id="qnS-o5-1ij"/>
                                                         <constraint firstItem="xyT-ZI-AvC" firstAttribute="centerX" secondItem="jpE-Yd-4Ti" secondAttribute="centerX" id="uLU-Nv-DvG"/>
                                                         <constraint firstItem="VlZ-oz-nVp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JYj-lX-9WN" secondAttribute="trailing" constant="3" id="vVs-hY-gSI"/>
                                                         <constraint firstItem="jpE-Yd-4Ti" firstAttribute="top" secondItem="a1v-4k-Ex2" secondAttribute="top" constant="20" id="vcT-UJ-O9k"/>
@@ -1537,7 +1547,7 @@ Ring road, Nagpur</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcA-Ii-XsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9025" y="-1129"/>
+            <point key="canvasLocation" x="9024.7999999999993" y="-1129.385307346327"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="khT-c2-x9g">
@@ -1820,7 +1830,7 @@ Ring road, Nagpur</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uB3-oA-27D">
-                                        <rect key="frame" x="233" y="204" width="92" height="19.5"/>
+                                        <rect key="frame" x="252" y="204" width="54" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2856,10 +2866,10 @@ Ring road, Nagpur</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_userTest" translatesAutoresizingMaskIntoConstraints="NO" id="aCx-by-5Cf">
-                                                    <rect key="frame" x="20" y="20" width="100" height="100"/>
+                                                    <rect key="frame" x="20" y="20" width="92" height="92"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="bRE-j4-vyR"/>
-                                                        <constraint firstAttribute="height" constant="100" id="ea4-Ja-KPy"/>
+                                                        <constraint firstAttribute="width" constant="92" id="bRE-j4-vyR"/>
+                                                        <constraint firstAttribute="height" constant="92" id="ea4-Ja-KPy"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2869,31 +2879,31 @@ Ring road, Nagpur</string>
                                                             <real key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="50"/>
+                                                            <real key="value" value="46"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bác sĩ Trà Văn Hiên" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smP-qR-F5T">
-                                                    <rect key="frame" x="125" y="20" width="147" height="20.5"/>
+                                                    <rect key="frame" x="117" y="20" width="147" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.098039215690000001" green="0.45098039220000002" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khoa nội nhi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcw-iy-8QZ">
-                                                    <rect key="frame" x="125" y="43.5" width="84.5" height="18"/>
+                                                    <rect key="frame" x="117" y="43.5" width="84.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_map" translatesAutoresizingMaskIntoConstraints="NO" id="71m-9i-YUQ">
-                                                    <rect key="frame" x="125" y="74.5" width="12" height="12"/>
+                                                    <rect key="frame" x="117" y="74.5" width="12" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="QpM-C6-Zm5"/>
                                                         <constraint firstAttribute="height" constant="12" id="ihx-Rz-zGt"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bệnh viện Quân Dân Y Miền Đông, Quận 9, TP. HCM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXe-6m-9V4">
-                                                    <rect key="frame" x="142" y="71.5" width="194" height="36"/>
+                                                    <rect key="frame" x="134" y="71.5" width="194" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.31764705879999999" green="0.33725490200000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3122,10 +3132,10 @@ Bằng việc áp dụng hàng loạt kỹ thuật mới và triển khai các c
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_userTest" translatesAutoresizingMaskIntoConstraints="NO" id="mog-cq-yOl">
-                                                    <rect key="frame" x="20" y="20" width="100" height="100"/>
+                                                    <rect key="frame" x="20" y="20" width="92" height="92"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="0EH-4J-VHf"/>
-                                                        <constraint firstAttribute="width" constant="100" id="Gd4-CQ-Yak"/>
+                                                        <constraint firstAttribute="height" constant="92" id="0EH-4J-VHf"/>
+                                                        <constraint firstAttribute="width" constant="92" id="Gd4-CQ-Yak"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -3135,31 +3145,31 @@ Bằng việc áp dụng hàng loạt kỹ thuật mới và triển khai các c
                                                             <real key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="50"/>
+                                                            <real key="value" value="46"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bác sĩ Trà Văn Hiên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNy-dF-Xyj">
-                                                    <rect key="frame" x="125" y="20" width="147" height="20.5"/>
+                                                    <rect key="frame" x="117" y="20" width="147" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.098039215690000001" green="0.45098039220000002" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khoa nội nhi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZP-yG-njd">
-                                                    <rect key="frame" x="125" y="43.5" width="84.5" height="18"/>
+                                                    <rect key="frame" x="117" y="43.5" width="84.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_map" translatesAutoresizingMaskIntoConstraints="NO" id="zzo-40-eOE">
-                                                    <rect key="frame" x="125" y="74.5" width="12" height="12"/>
+                                                    <rect key="frame" x="117" y="74.5" width="12" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="12" id="9AP-4P-WOr"/>
                                                         <constraint firstAttribute="width" constant="12" id="tQp-In-VFB"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bệnh viện Quân Dân Y Miền Đông, Quận 9, TP. HCM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCt-kZ-EcV">
-                                                    <rect key="frame" x="142" y="71.5" width="194" height="36"/>
+                                                    <rect key="frame" x="134" y="71.5" width="194" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.31764705879999999" green="0.33725490200000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

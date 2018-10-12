@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class DoctorListViewController: MDBaseViewController {
 
@@ -29,7 +30,10 @@ class DoctorListViewController: MDBaseViewController {
     }()
     
     @IBOutlet weak var tbvListDoctor: UITableView!
-    
+    var objFindDoctor : FindDoctor?
+    let hud = JGProgressHUD(style: .dark)
+    var arrDoctor : [Doctor] = []
+    var row = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +46,31 @@ class DoctorListViewController: MDBaseViewController {
         tbvListDoctor.rowHeight = UITableViewAutomaticDimension
         self.navigationItem.title = "Danh sách bác sĩ"
         MDProvider.instance.setUpNavigation(controller: self)
+        DispatchQueue.main.async {
+            self.getData()
+        }
+    }
+    
+    func getData(){
+        hud.show(in: self.view)
+        if self.objFindDoctor != nil{
+            MDAPIManager.instance.getAllInfoDoctor(objFindoctor: self.objFindDoctor!, success: {success in
+                DispatchQueue.main.async {
+                    self.hud.dismiss()
+                }
+                self.arrDoctor = success
+                self.tbvListDoctor.reloadData()
+            }, failure: {fail, err in
+                DispatchQueue.main.async {
+                    self.hud.dismiss()
+                }
+                MDProvider.loadAlert(title: "", message: err)
+            })
+        }else{
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+        }
     }
     
     @IBAction func actionBack(_ sender: Any) {
@@ -51,23 +80,40 @@ class DoctorListViewController: MDBaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueDoctorToDoctorInfo{
+            let vc = segue.destination as? DoctorDetailViewController
+            vc?.objDoctor = arrDoctor[row]
+        }
+        
+        if segue.identifier == kSegueDoctorToDoctorHospital{
+            let vc = segue.destination as? DoctorHospitalViewController
+            vc?.objDoctor = arrDoctor[row]
+        }
+    }
 }
 
 extension DoctorListViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return arrDoctor.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListDoctorCell", for: indexPath) as! ListDoctorCell
-        let address = "263-265 Đường Trần Hưng Đạo, Thành Phố Hồ Chí Minh, Việt Nam"
-        cell.setUpCell(strAva: "", name: "Trà Văn Hiên", special: "Khoa ngoại B3", hospital: "Bệnh viện Quân Dân Y miền Đông", addHos: address)
+//        let address = "263-265 Đường Trần Hưng Đạo, Thành Phố Hồ Chí Minh, Việt Nam"
+        if arrDoctor.count > indexPath.row{
+            let info = arrDoctor[indexPath.row]
+            cell.setUpCell(strAva: info.avatar ?? "", name: info.name ?? "", special: info.specialize ?? "", hospital: info.address ?? "", addHos: info.address ?? "")
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let statusFrame = UIApplication.shared.statusBarFrame
         let flTrueY = statusFrame.height //+ CGFloat(self.navigationController?.navigationBar.frame.height ?? 0)
+        self.row = indexPath.row
+        self.doctorPresentView.upateData(objDoc: arrDoctor[indexPath.row])
         self.doctorPresentView.view.frame = CGRect(x: -self.view.frame.size.width, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
         UIView.animate(withDuration: 0.3, animations: {
             self.doctorPresentView.view.frame = CGRect(x: 0, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))

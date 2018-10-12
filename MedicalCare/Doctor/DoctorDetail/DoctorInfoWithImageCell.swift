@@ -26,4 +26,31 @@ class DoctorInfoWithImageCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setupData(title: String, address: String, time: String){
+        lblTitle.text = title
+        lblAddress.text = address
+        lblTime.text = time
+    }
+    
+    func setupNotImage(arrInfo: [String]){
+        imgTop.isHidden = true
+        imgBottom.isHidden = true
+        lblTime.isHidden = true
+        lblAddress.text = cvtArrToString(info: arrInfo)
+    }
+    
+    func cvtArrToString(info: [String]) -> String{
+        var str = ""
+        if info.count > 0{
+            for i in info{
+                str += "- "
+                str += i
+                str += "\n"
+            }
+            str.removeLast()
+            return str
+        }else{
+            return str
+        }
+    }
 }

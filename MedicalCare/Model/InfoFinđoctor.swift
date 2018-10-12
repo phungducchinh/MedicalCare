@@ -26,3 +26,10 @@ struct Info : Codable {
     var id : Int?
     var name : String?
 }
+
+struct FindDoctor: Codable{
+    var hospital_id : Int?
+    var certificate_id: Int?
+    var specialize_id: Int?
+    var gender: String?
+}

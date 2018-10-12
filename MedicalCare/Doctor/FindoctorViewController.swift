@@ -19,6 +19,12 @@ class FindoctorViewController: MDBaseViewController {
     
     var infoFindDoctor : InfofindDoctor?
     let hud = JGProgressHUD(style: .dark)
+    
+    var arrHospital: [String] = ["Chọn bệnh viện"]
+    var arrSpecialize: [String] = ["Chọn chuyên khoa"]
+    var arrCertificate: [String] = ["Chọn học hàm"]
+    var arrGender: [String] = ["Chọn giới tính"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,18 +39,68 @@ class FindoctorViewController: MDBaseViewController {
         }
     }
     
-    func cnvArrInfoToArrString(arrFrom : [Info], temp : String) -> [String]{
+    func getData(){
+        hud.show(in: self.view)
+        MDAPIManager.instance.getAllInfoFindDoctor(success: {success in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            self.infoFindDoctor = success
+            self.arrHospital.removeAll()
+            self.arrHospital = ["Chọn bệnh viện"]
+            self.arrSpecialize = ["Chọn chuyên khoa"]
+            self.arrCertificate = ["Chọn học hàm"]
+            self.arrGender = ["Chọn giới tính"]
+            if (self.infoFindDoctor?.benhvien) != nil {
+                self.arrHospital += self.cnvArrInfoToArrString(arrFrom: (self.infoFindDoctor?.benhvien)!)
+            }
+            if (self.infoFindDoctor?.chuyenkhoa) != nil {
+                self.arrSpecialize += self.cnvArrInfoToArrString(arrFrom: (self.infoFindDoctor?.chuyenkhoa)!)
+            }
+            if (self.infoFindDoctor?.hocham) != nil {
+                self.arrCertificate += self.cnvArrInfoToArrString(arrFrom: (self.infoFindDoctor?.hocham)!)
+            }
+            if (self.infoFindDoctor?.gioitinh) != nil {
+                self.arrGender += self.cnvArrInfoToArrString(arrFrom: (self.infoFindDoctor?.gioitinh)!)
+            }
+        }, failure: {fail, err in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            MDProvider.loadAlert(title: "", message: err)
+        })
+    }
+    
+    func cnvArrInfoToArrString(arrFrom : [Info]) -> [String]{
         var arrStr = [""]
         arrStr.removeAll()
-        let normal = Info.init(id: 0, name: temp)
-        var arrtemp = arrFrom
-        arrtemp.removeAll()
-        arrtemp.append(normal)
-        arrtemp += arrFrom
-        for i in arrtemp{
+        for i in arrFrom{
             arrStr.append(i.name ?? "")
         }
         return arrStr
+    }
+    
+    func getId(info: [Info], name: String) -> Int{
+        var id = 0
+        for i in info{
+            if i.name == name{
+                id = i.id ?? 0
+            }
+        }
+        return id
+    }
+    
+    func getGender(gender: String) -> String{
+        let gder = ""
+        if arrGender.count > 0{
+            if getId(info: (infoFindDoctor?.gioitinh)!, name: gender) == 0{
+                return gder
+            }else{
+                return gender
+            }
+        }else{
+            return gder
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,61 +109,36 @@ class FindoctorViewController: MDBaseViewController {
     }
     
     @IBAction func acChooseHospital(_ sender: Any) {
-        guard let arrHospital = infoFindDoctor?.benhvien else{
-            MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: ["Chọn bệnh viện"], controller: self, idButton: 0)
-            return
-        }
-        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: self.cnvArrInfoToArrString(arrFrom: arrHospital, temp: "Chọn bệnh viện"), controller: self, idButton: 0)
+        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: arrHospital, controller: self, idButton: 0)
     }
     @IBAction func acChooseSpecialize(_ sender: Any) {
-        guard let arrPecialize = infoFindDoctor?.chuyenkhoa else{
-            MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: ["Chọn chuyên khoa"], controller: self, idButton: 0)
-            return
-        }
-        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: self.cnvArrInfoToArrString(arrFrom: arrPecialize, temp: "Chọn chuyên khoa"), controller: self, idButton: 1)
+        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: arrSpecialize, controller: self, idButton: 1)
     }
     @IBAction func acChooseCertificate(_ sender: Any) {
-        guard let arrCertificate = infoFindDoctor?.hocham else{
-            MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: ["Chọn học hàm"], controller: self, idButton: 0)
-            return
-        }
-        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: self.cnvArrInfoToArrString(arrFrom: arrCertificate, temp: "Chọn học hàm"), controller: self, idButton: 2)
+        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: arrCertificate, controller: self, idButton: 2)
     }
     @IBAction func acChooseGender(_ sender: Any) {
-        guard let arrGender = infoFindDoctor?.gioitinh else{
-            MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: ["Chọn giới tính"], controller: self, idButton: 0)
-            return
-        }
-        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource:  self.cnvArrInfoToArrString(arrFrom: arrGender, temp: "Chọn giới tính"), controller: self, idButton: 3)
+        MDProvider.instance.showDropDown(button: sender as! UIButton, datasource:  arrGender, controller: self, idButton: 3)
     }
     
     @IBAction func actionFindDoctor(_ sender: Any) {
-        self.performSegue(withIdentifier: kSegueFindDoctorToListDoctor, sender: nil)
+        self.performSegue(withIdentifier: kSegueFindDoctorToListDoctor, sender: self)
     }
+
     
-    func getData(){
-        hud.show(in: self.view)
-        MDAPIManager.instance.getAllInfoFindDoctor(success: {success in
-            DispatchQueue.main.async {
-                self.hud.dismiss()
-            }
-            self.infoFindDoctor = success
-        }, failure: {fail, err in
-            DispatchQueue.main.async {
-                self.hud.dismiss()
-            }
-            MDProvider.loadAlert(title: "", message: err)
-        })
-    }
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == kSegueFindDoctorToListDoctor{
+            let find = FindDoctor(hospital_id: getId(info: (infoFindDoctor?.benhvien)!, name: btnHospital.titleLabel?.text ?? "") , certificate_id: getId(info: (infoFindDoctor?.chuyenkhoa)!, name: btnSpecialize.titleLabel?.text ?? "") ,
+                                  specialize_id: getId(info: (infoFindDoctor?.hocham)!, name: btnCertificate.titleLabel?.text ?? "") ,
+                                  gender: getGender(gender: btnGender.titleLabel?.text ?? "") )
+            let vc = segue.destination as? DoctorListViewController
+                vc?.objFindDoctor = find
+        }
     }
-    */
+ 
 
 }
 
@@ -115,36 +146,16 @@ extension FindoctorViewController : DropDownDelegate{
     func getValueIndropDown(index: Int, idIndex: Int) {
         switch idIndex {
         case 0:
-            guard let arrHospital = infoFindDoctor?.benhvien else{
-                btnHospital.setTitle("Chọn bệnh viện", for: .normal)
-                MDProvider.instance.changeClTextBtn(btn: btnHospital, index: index)
-                return
-            }
-            btnHospital.setTitle(self.cnvArrInfoToArrString(arrFrom: arrHospital, temp: "Chọn bệnh viện")[index], for: .normal)
+            btnHospital.setTitle(arrHospital[index], for: .normal)
             MDProvider.instance.changeClTextBtn(btn: btnHospital, index: index)
         case 1:
-            guard let arrSpecialize = infoFindDoctor?.chuyenkhoa else{
-                btnHospital.setTitle("Chọn chyên khoa", for: .normal)
-                MDProvider.instance.changeClTextBtn(btn: btnSpecialize, index: index)
-                return
-            }
-            btnSpecialize.setTitle(self.cnvArrInfoToArrString(arrFrom: arrSpecialize, temp: "Chọn chuyên khoa")[index], for: .normal)
+            btnSpecialize.setTitle(arrSpecialize[index], for: .normal)
             MDProvider.instance.changeClTextBtn(btn: btnSpecialize, index: index)
         case 2:
-            guard let arrCertificate = infoFindDoctor?.hocham else{
-                btnHospital.setTitle("Chọn học hàm", for: .normal)
-                MDProvider.instance.changeClTextBtn(btn: btnCertificate, index: index)
-                return
-            }
-            btnCertificate.setTitle(self.cnvArrInfoToArrString(arrFrom: arrCertificate, temp: "Chọn học hàm")[index], for: .normal)
+            btnCertificate.setTitle(arrCertificate[index], for: .normal)
             MDProvider.instance.changeClTextBtn(btn: btnCertificate, index: index)
         case 3:
-            guard let arrGender = infoFindDoctor?.gioitinh else{
-                btnHospital.setTitle("Chọn giới tính", for: .normal)
-                MDProvider.instance.changeClTextBtn(btn: btnGender, index: index)
-                return
-            }
-            btnGender.setTitle(self.cnvArrInfoToArrString(arrFrom: arrGender, temp: "Chọn giới tính")[index], for: .normal)
+            btnGender.setTitle(arrGender[index], for: .normal)
             MDProvider.instance.changeClTextBtn(btn: btnGender, index: index)
         default:
             print("choose " , index , "on button ", idIndex)

@@ -63,6 +63,8 @@ let kAPIGetAllHospital = kServerDomain + "getAllHospital.php"
 let kAPIGetAllPharmacy = kServerDomain + "getAllMedicalShop.php"
 let kAPIGetAllEmergency = kServerDomain + "getAllEmergency.php"
 let kAPIGetAllInfoFindDoctor = kServerDomain + "getAllInfoFindDoctor.php"
+let kAPIGetAllInfoDoctor = kServerDomain + "getDoctor.php"
+let kAPIGetAllHospitalWithDoctorId = kServerDomain + "getHospitalWithDoctor.php"
 
 //---------Key ----------
 var defaultLogin = UserDefaults.standard

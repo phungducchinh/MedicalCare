@@ -32,6 +32,7 @@
 		0E6B9232216FA290009662C5 /* Emergency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9231216FA290009662C5 /* Emergency.swift */; };
 		0E6B9234216FA75E009662C5 /* InfoFinđoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */; };
 		0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E712B1B216E2B18002FA421 /* MDAPIManager.swift */; };
+		0EA134132170EB3C00A76A5E /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA134122170EB3C00A76A5E /* Doctor.swift */; };
 		0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */; };
 		0EB3FD70215BCC4100C65EB7 /* DoctorHospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */; };
 		0EB3FD73215BDE6E00C65EB7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */; };
@@ -84,6 +85,7 @@
 		0E6B9231216FA290009662C5 /* Emergency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emergency.swift; sourceTree = "<group>"; };
 		0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoFinđoctor.swift"; sourceTree = "<group>"; };
 		0E712B1B216E2B18002FA421 /* MDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAPIManager.swift; sourceTree = "<group>"; };
+		0EA134122170EB3C00A76A5E /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalViewController.swift; sourceTree = "<group>"; };
 		0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalCell.swift; sourceTree = "<group>"; };
 		0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -174,10 +176,8 @@
 			children = (
 				0E0861BC21593C92001847D9 /* FindoctorViewController.swift */,
 				0E49BA4E215A6C8F0085C20E /* DoctorListViewController.swift */,
-				0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */,
 				0E49BA50215A70FB0085C20E /* ListDoctorCell.swift */,
 				0E49BA52215A75690085C20E /* DoctorPresentViewController.swift */,
-				0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */,
 				0E49BA56215A98DA0085C20E /* DoctorDetail */,
 			);
 			path = Doctor;
@@ -186,7 +186,9 @@
 		0E49BA56215A98DA0085C20E /* DoctorDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */,
 				0E49BA54215A95030085C20E /* DoctorDetailViewController.swift */,
+				0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */,
 				0E49BA57215A99020085C20E /* DoctorInfoCell.swift */,
 				0E49BA59215A99130085C20E /* DoctorInfoWithImageCell.swift */,
 			);
@@ -236,6 +238,7 @@
 				0E3F682D216F907B00D0AC7B /* Hospital.swift */,
 				0E6B9231216FA290009662C5 /* Emergency.swift */,
 				0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */,
+				0EA134122170EB3C00A76A5E /* Doctor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				0EFDFF512156C63900627A59 /* TutorialViewControllerTwo.swift in Sources */,
 				0E123BD3215E84A300AFAE47 /* MakeAppointmentViewController.swift in Sources */,
 				0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */,
+				0EA134132170EB3C00A76A5E /* Doctor.swift in Sources */,
 				0EC69048215FBE6B00B074F0 /* HospitalListViewController.swift in Sources */,
 				0EC6904E2160FC4700B074F0 /* User.swift in Sources */,
 				0E5372F42163C30500F5F260 /* Cell.swift in Sources */,

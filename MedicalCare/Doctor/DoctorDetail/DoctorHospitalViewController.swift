@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class DoctorHospitalViewController: MDBaseViewController {
 
@@ -14,6 +15,9 @@ class DoctorHospitalViewController: MDBaseViewController {
     
     let arrName = ["Jym Hospital","Apex Hospital", "Safe Zone Hospital"]
     let arrAddress = ["Plot no 5, Atharv nagar,Ring road, Nagpur", "Plot no 5, Atharv nagar,Ring road, Nagpur" , "Plot no 5, Atharv nagar,Ring road, Nagpur"]
+    var objDoctor : Doctor?
+    var arrHospital : [Hospital] = []
+    let hud = JGProgressHUD(style: .dark)
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +36,9 @@ class DoctorHospitalViewController: MDBaseViewController {
         tbvDoctorHospital.estimatedRowHeight = 80
         tbvDoctorHospital.rowHeight = UITableViewAutomaticDimension
         tbvDoctorHospital.separatorStyle = .none
+        DispatchQueue.main.async {
+            self.getData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,6 +46,21 @@ class DoctorHospitalViewController: MDBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func getData(){
+        hud.show(in: self.view)
+        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospitalWithDoctorId, success: {success in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            self.arrHospital = success
+            self.tbvDoctorHospital.reloadData()
+        }, failure: {fail, err in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            MDProvider.loadAlert(title: "", message: err)
+        })
+    }
 }
 
 extension DoctorHospitalViewController: UITableViewDataSource, UITableViewDelegate{
@@ -46,21 +68,28 @@ extension DoctorHospitalViewController: UITableViewDataSource, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }else{
-            return arrName.count
+            return arrHospital.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ListDoctorCell", for: indexPath) as! ListDoctorCell
+            cell.lblName.text = objDoctor?.name ?? ""
+            cell.lblSpecallize.text = objDoctor?.specialize ?? ""
+            MDProvider.instance.setupImage(strAva: objDoctor?.avatar ?? "", imgView: cell.imgAvatar)
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorHospitalCell", for: indexPath) as! DoctorHospitalCell
-            cell.idCell = indexPath.row
+            if arrHospital.count > indexPath.row{
+                let info = arrHospital[indexPath.row]
+                cell.setupEmergencyCell(name: info.name ?? "", address: info.address ?? "", phone: info.phone_number ?? "")
+            }
             return cell
         }
     }
