@@ -27,6 +27,17 @@ struct  Doctor : Codable {
     var avatar: String?
 }
 
+struct AllDoctorWithHospitalApi: Codable{
+    let success : Int?
+    let msg : String?
+    let data : [DoctorShow]?
+}
 
-
+struct DoctorShow: Codable {
+    var id : Int?
+    var name : String?
+    var type_time : Int?
+    var fee: Int?
+    var list_time : [String]?
+}
 

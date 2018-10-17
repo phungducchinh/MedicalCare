@@ -52,9 +52,11 @@ let kErrorTimeOutText = "Time out when call api"
 let kErrorText = "Xảy ra lỗi trong quá trình kết nối database.\nVui lòng thử lại."
 let errorFailLogin = "Đăng nhập không thành công!\nVui lòng thử lại."
 let errorFailRegister = "Đăng ký không thành công.\nVui lòng thử lại."
+let errorMissInfoBookAppointment = "Thiếu thông tin đăng ký lịch khám.\nVui lòng thử lại."
 
 //---------Api doucument-----
-let kServerDomain = "http://192.168.1.121:8080/medicalcare/" //local server
+//let kServerDomain = "http://192.168.1.134:8080/medicalcare/" //local server tokyo
+let kServerDomain = "http://192.168.1.121:8080/medicalcare/" //local server home
 
 let kAPILogin = kServerDomain + "login.php"
 let kAPIGetUserInfo = kServerDomain + "getUserInfo.php"
@@ -65,7 +67,8 @@ let kAPIGetAllEmergency = kServerDomain + "getAllEmergency.php"
 let kAPIGetAllInfoFindDoctor = kServerDomain + "getAllInfoFindDoctor.php"
 let kAPIGetAllInfoDoctor = kServerDomain + "getDoctor.php"
 let kAPIGetAllHospitalWithDoctorId = kServerDomain + "getHospitalWithDoctor.php"
-
+let kAPIGetAllDoctorWithHospitalId = kServerDomain + "getDoctorWithHospital.php"
+let kAPIBookAppointment = kServerDomain + "bookAppointment.php"
 //---------Key ----------
 var defaultLogin = UserDefaults.standard
 let kUserDefaultkeyLogin = "loginname"

@@ -74,6 +74,7 @@ class DropDownListView :NSObject, UITableViewDelegate, UITableViewDataSource{
         tbvDrop.frame = CGRect(x: x, y: y, width: width, height: height)
         tbvDrop.backgroundColor = .white
         tbvDrop.separatorStyle = .none
+        tbvDrop.estimatedRowHeight = 40
         
 //        viewDrop.backgroundColor = .green
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
