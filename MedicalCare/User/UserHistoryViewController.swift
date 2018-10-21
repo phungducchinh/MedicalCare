@@ -29,6 +29,8 @@ class UserHistoryViewController: MDBaseViewController {
         tbvListAppointment.rowHeight = UITableViewAutomaticDimension
         tbvListAppointment.separatorStyle = .none
     }
+    
+    // check type of user and chose api for show info
 
     /*
     // MARK: - Navigation
@@ -47,7 +49,7 @@ extension UserHistoryViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentDetailViewCell", for: indexPath) as! AppointmentDetailViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserAppointmentDetailViewCell", for: indexPath) as! AppointmentDetailViewCell
         return cell
     }
 }

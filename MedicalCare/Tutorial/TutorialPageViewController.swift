@@ -32,6 +32,7 @@ class TutorialPageViewController: UIPageViewController {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
         if dem == 0{
             if let firstVC = pages.first

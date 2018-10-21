@@ -41,3 +41,16 @@ struct DoctorShow: Codable {
     var list_time : [String]?
 }
 
+struct DoctorAppoinmentAPI : Codable {
+    let success : Int?
+    let msg : String?
+    let data : DoctorAppoinment?
+}
+
+struct DoctorAppoinment: Codable{
+    var id : Int?
+    var doctor_name : String?
+    var specialize : String?
+    var avatar: String?
+    var hospital : String?
+}

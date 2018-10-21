@@ -458,4 +458,133 @@ class MDAPIManager{
             
         }
     }
+    
+    func getAllAppointmentWithUserID(id: Int,success: @escaping ([AppointmentShow]) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+        guard Connectivity.isConnectedToInternet()  else {
+            failure(false, errorMessageNoInternet)
+            return
+        }
+        
+        let urlgetInfo = URL(string: kAPIGetAllAppointmentWithUserId)
+        let param  : Parameters = ["user_id" : id]
+        let manager = self.sessionManager
+        manager.request(urlgetInfo!, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            if response.result.isSuccess{
+                guard let result = response.result.value as? Dictionary<String,Any> else{
+                    failure( false, kErrorText)
+                    return
+                }
+                
+                let code = result["success"] as? Int ?? 0
+                let msg = result["msg"] as? String ?? ""
+                if code == 200{
+                    do{
+                        let dataProduct = try JSONDecoder().decode(AllAppointmentShowApi.self, from: response.data!)
+                        success(dataProduct.data!)
+                    }catch{
+                        failure(false, kErrorText)
+                    }
+                    
+                }else if code == 400 || code == 401{
+                    failure(true,  msg)  // add target goto login view
+                }else{
+                    failure(false,  msg)
+                }
+                
+            }else{
+                if let error = response.result.error{
+                    print(error)
+                    if error._code == NSURLErrorTimedOut{
+                        failure(false, kErrorTimeOutText)
+                        return
+                    }
+                }
+                failure(false, kErrorText)
+            }
+        }
+    }
+    
+    func getDoctorAppointmentWithID(doctor_id: Int,hospital_id: Int,success: @escaping (DoctorAppoinment) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+        guard Connectivity.isConnectedToInternet()  else {
+            failure(false, errorMessageNoInternet)
+            return
+        }
+        
+        let urlgetInfo = URL(string: kAPIGetDoctorAppointmentWithId)
+        let param  : Parameters = ["doctor_id" : doctor_id,"hospital_id" : hospital_id]
+        let manager = self.sessionManager
+        manager.request(urlgetInfo!, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            if response.result.isSuccess{
+                guard let result = response.result.value as? Dictionary<String,Any> else{
+                    failure( false, kErrorText)
+                    return
+                }
+                
+                let code = result["success"] as? Int ?? 0
+                let msg = result["msg"] as? String ?? ""
+                if code == 200{
+                    do{
+                        let dataProduct = try JSONDecoder().decode(DoctorAppoinmentAPI.self, from: response.data!)
+                        success(dataProduct.data!)
+                    }catch{
+                        failure(false, kErrorText)
+                    }
+                    
+                }else if code == 400 || code == 401{
+                    failure(true,  msg)  // add target goto login view
+                }else{
+                    failure(false,  msg)
+                }
+                
+            }else{
+                if let error = response.result.error{
+                    print(error)
+                    if error._code == NSURLErrorTimedOut{
+                        failure(false, kErrorTimeOutText)
+                        return
+                    }
+                }
+                failure(false, kErrorText)
+            }
+        }
+    }
+    
+    func cancelAppointmentWithID(idAppointment: Int,user_id: Int, doctor_id: Int, success: @escaping (String) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+        guard Connectivity.isConnectedToInternet()  else {
+            failure(false, errorMessageNoInternet)
+            return
+        }
+        
+        let urlgetInfo = URL(string: kAPICancelAppointmentWithId)
+        let param  : Parameters = ["idAppointment" : idAppointment,"user_id": user_id,"doctor_id": doctor_id ]
+        let manager = self.sessionManager
+        manager.request(urlgetInfo!, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            if response.result.isSuccess{
+                guard let result = response.result.value as? Dictionary<String,Any> else{
+                    failure( false, kErrorText)
+                    return
+                }
+                
+                let code = result["success"] as? Int ?? 0
+                let msg = result["msg"] as? String ?? ""
+                if code == 200{
+                    success(msg)
+                }else if code == 400 || code == 401{
+                    failure(true,  msg)  // add target goto login view
+                }else{
+                    failure(false,  msg)
+                }
+                
+            }else{
+                if let error = response.result.error{
+                    print(error)
+                    if error._code == NSURLErrorTimedOut{
+                        failure(false, kErrorTimeOutText)
+                        return
+                    }
+                }
+                failure(false, kErrorText)
+            }
+        }
+    }
 }

@@ -7,19 +7,15 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class AppointmentConfirmViewController: MDBaseViewController {
 
     @IBOutlet weak var tvListAppointment: UITableView!
+    let hud = JGProgressHUD(style: .dark)
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if tvListAppointment.contentSize.height > tvListAppointment.frame.height {
-//            tvListAppointment.isScrollEnabled = true
-//        }else{
-//            tvListAppointment.isScrollEnabled = false
-//        }
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,8 +25,9 @@ class AppointmentConfirmViewController: MDBaseViewController {
         tvListAppointment.rowHeight = UITableViewAutomaticDimension
         tvListAppointment.separatorStyle = .none
         self.navigationItem.title = "Chi tiết cuộc hẹn"
-    }
 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

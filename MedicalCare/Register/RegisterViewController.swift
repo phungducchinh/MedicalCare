@@ -17,7 +17,12 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var tfRepass: UITextField!
     @IBOutlet weak var tfAddress: UITextField!
     
+    @IBOutlet weak var lblDangnhap: UILabel!
+    @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
+    
     var userinfo : UserObject?
+    var isChangeInfo = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,19 @@ class RegisterViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isChangeInfo{
+            lblDangnhap.isHidden = true
+            lblTitle.text = "Cập nhật thông tin"
+            self.tabBarController?.tabBar.isHidden = true
+        }else{
+            lblDangnhap.isHidden = false
+            lblTitle.text = "Đăng ký tài khoản"
+            self.tabBarController?.tabBar.isHidden = false
+        }
     }
     
     @IBAction func actionNext(_ sender: Any) {
@@ -84,5 +102,13 @@ class RegisterViewController: UIViewController {
             }
         }
     }
-
+    
+    @IBAction func actionback(_ sender: Any) {
+        if isChangeInfo{
+            self.performSegue(withIdentifier: kSegueRegisterToHomeScreen, sender: nil)
+        }else{
+            self.performSegue(withIdentifier: kSegueRegisterToLogin, sender: nil)
+        }
+    }
+    
 }

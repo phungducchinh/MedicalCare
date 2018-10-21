@@ -189,6 +189,18 @@ class MDProvider  {
             btn.setTitleColor(clDarkTex, for: .normal)
         }
     }
+    
+    func formatPrice(price: Int) -> String{
+        var priceString = price.description;
+        var index = priceString.count - 3;
+        
+        while index > 0 {
+            priceString.insert(".", at: priceString.index(priceString.startIndex, offsetBy: index));
+            index = index - 3;
+        }
+        
+        return priceString;
+    }
 }
 
 

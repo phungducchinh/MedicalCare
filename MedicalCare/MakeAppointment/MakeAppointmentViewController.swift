@@ -69,11 +69,10 @@ class MakeAppointmentViewController: MDBaseViewController {
                 MDProvider.loadAlert(title: "", message: errorMissInfoBookAppointment)
                 return
             }
-            let appointment = Appointment(id: 0, user_id: idUser, doctor_id: idDoctor, hospital_id: idHospital, dateBook: date, timeBook: time, problem: self.tvProblem.text ?? "", fee: getDoctor(name: btnDoctor.titleLabel?.text ?? "").fee ?? 0)
+            let appointment = Appointment(id: 0, user_id: idUser, doctor_id: idDoctor, hospital_id: idHospital, dateBook: date, timeBook: time, problem: self.tvProblem.text ?? "", fee: getDoctor(name: btnDoctor.titleLabel?.text ?? "").fee ?? 0, status: 0)
             DispatchQueue.main.async {
                 self.bookAppointment(appointment: appointment)
             }
-            self.performSegue(withIdentifier: kSegueMakeToCfAppointment, sender: nil)
         }
     }
 
@@ -191,6 +190,7 @@ class MakeAppointmentViewController: MDBaseViewController {
                 self.btnDoctor.setTitleColor(clDarkTex, for: .normal)
                 self.btnTime.setTitleColor(clDarkTex, for: .normal)
                 self.tvProblem.text = "Mô tả triệu chứng"
+                self.performSegue(withIdentifier: kSegueMakeToCfAppointment, sender: nil)
             }
         }, failure: {fail, err in
             DispatchQueue.main.async {

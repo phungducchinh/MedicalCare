@@ -114,6 +114,14 @@ class UserViewController: MDBaseViewController {
         self.view.layer.addSublayer(gradientLayer)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueUserToUpdateInfo{
+            if let vc = segue.destination as? RegisterViewController{
+                vc.isChangeInfo = true
+            }
+        }
+    }
+    
 }
 
 extension UserViewController : UITableViewDataSource, UITableViewDelegate{
@@ -134,7 +142,11 @@ extension UserViewController : HomeCellDelegate{
         switch id {
         case 0:
             print("update user info")
-            self.performSegue(withIdentifier: kSegueUserToUpdateInfo, sender: self)
+//            self.performSegue(withIdentifier: kSegueUserToUpdateInfo, sender: self)
+            let vc : RegisterViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
+//            self.navigationController?.pushViewController(vc, animated: true)
+            vc.isChangeInfo = true
+            self.present(vc, animated: true, completion: nil)
         case 1:
             self.performSegue(withIdentifier: kSegueUserToListAppointment, sender: self)
         default:
