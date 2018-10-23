@@ -121,12 +121,12 @@ class MDAPIManager{
         }
     }
     
-    func register(userInfo : UserObject,success: @escaping (String) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+    func register(userInfo : UserObject, apiStr: String, success: @escaping (String) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
         guard Connectivity.isConnectedToInternet()  else {
             failure(false, errorMessageNoInternet)
             return
         }
-        let urlLogin = URL(string: kAPIRegister)
+        let urlLogin = URL(string: apiStr)
         
         let jsonData = try! JSONEncoder().encode(userInfo)
         let jsonString = String(data: jsonData, encoding: .utf8)!

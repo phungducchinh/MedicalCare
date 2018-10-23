@@ -9,7 +9,7 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-
+    
     @IBOutlet weak var tfFullName: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPhone: UITextField!
@@ -30,16 +30,10 @@ class RegisterViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        tfFullName.text = "Nguyen van a"
-        tfEmail.text = "nguyenvana@gmail.com"
-        tfPhone.text = "0876522232"
-        tfPass.text = "12345678"
-        tfPass.text = "12345678"
-        tfRepass.text = "12345678"
-        tfAddress.text = "97 Man Thiện, Phường Tăng Nhơn Phú A, Quận 9"
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,14 +42,39 @@ class RegisterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isChangeInfo{
-            lblDangnhap.isHidden = true
-            lblTitle.text = "Cập nhật thông tin"
-            self.tabBarController?.tabBar.isHidden = true
+            setUpChangeInfo()
         }else{
-            lblDangnhap.isHidden = false
-            lblTitle.text = "Đăng ký tài khoản"
-            self.tabBarController?.tabBar.isHidden = false
+            setupNotChange()
         }
+    }
+    
+    func setUpChangeInfo(){
+        lblDangnhap.isHidden = true
+        lblTitle.text = "Cập nhật thông tin"
+        self.tabBarController?.tabBar.isHidden = true
+        
+        if let userData = defaultLogin.data(forKey: kUserDefaultkeyLogin), let user = try?JSONDecoder().decode(UserObject.self, from: userData) {
+            userinfo = user
+            tfFullName.text = user.name
+            tfEmail.text = user.email
+            tfPhone.text = user.phone_number
+            tfPass.text = user.password
+            tfRepass.text = user.password
+            tfAddress.text = user.address
+        }else{
+            setupNotChange()
+        }
+    }
+    
+    func setupNotChange(){
+        lblDangnhap.isHidden = false
+        lblTitle.text = "Đăng ký tài khoản"
+        tfFullName.text = ""
+        tfEmail.text = ""
+        tfPhone.text = ""
+        tfPass.text = ""
+        tfRepass.text = ""
+        tfAddress.text = ""
     }
     
     @IBAction func actionNext(_ sender: Any) {
@@ -90,8 +109,12 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        userinfo = UserObject(id: 0, name: tfFullName.text, email: tfEmail.text, password: tfPass.text, phone_number: tfPhone.text, birthday: "", weight: 0, height: 0,gender: "", type : 0,avatar: "", address : tfAddress.text )
-    
+        if isChangeInfo{
+            userinfo = UserObject(id: userinfo?.id ?? 0, name: tfFullName.text, email: tfEmail.text, password: tfPass.text, phone_number: tfPhone.text, birthday: userinfo?.birthday ?? "", weight: userinfo?.weight ?? 0, height:  userinfo?.height ?? 0,gender: userinfo?.gender ?? "", doctor_id : userinfo?.doctor_id ?? 0,avatar:  userinfo?.avatar ?? "", address :  userinfo?.address ?? "" )
+        }else{
+            userinfo = UserObject(id: 0, name: tfFullName.text, email: tfEmail.text, password: tfPass.text, phone_number: tfPhone.text, birthday: "", weight: 0, height: 0,gender: "", doctor_id : 0,avatar: "", address : tfAddress.text )
+        }
+        
         self.performSegue(withIdentifier: kSegueRegisterToBirthday, sender: self)
     }
     
@@ -99,6 +122,7 @@ class RegisterViewController: UIViewController {
         if segue.identifier == kSegueRegisterToBirthday {
             if let vc = segue.destination as? BirthDayViewController{
                 vc.userInfo = userinfo
+                vc.isChangeInfo = isChangeInfo
             }
         }
     }
@@ -112,3 +136,4 @@ class RegisterViewController: UIViewController {
     }
     
 }
+

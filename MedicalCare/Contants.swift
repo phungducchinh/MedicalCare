@@ -58,7 +58,7 @@ let errorMissInfoBookAppointment = "Thiếu thông tin đăng ký lịch khám.\
 
 //---------Api doucument-----
 //let kServerDomain = "http://192.168.1.134:8080/medicalcare/" //local server tokyo
-let kServerDomain = "http://172.16.1.235:8080/medicalcare/" //local server home
+let kServerDomain = "http://192.168.1.122:8080/medicalcare/" //local server home
 
 let kAPILogin = kServerDomain + "login.php"
 let kAPIGetUserInfo = kServerDomain + "getUserInfo.php"
@@ -74,6 +74,7 @@ let kAPIBookAppointment = kServerDomain + "bookAppointment.php"
 let kAPIGetAllAppointmentWithUserId = kServerDomain + "getAllAppointment.php"
 let kAPIGetDoctorAppointmentWithId = kServerDomain + "getDoctorWithID.php"
 let kAPICancelAppointmentWithId = kServerDomain + "deleteAppointment.php"
+let kAPIUpdateUserInfo = kServerDomain + "updateInfoUser.php"
 
 //---------Key ----------
 var defaultLogin = UserDefaults.standard

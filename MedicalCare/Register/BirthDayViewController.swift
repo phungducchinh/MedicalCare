@@ -15,6 +15,7 @@ class BirthDayViewController: UIViewController , UINavigationControllerDelegate,
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var userInfo : UserObject?
     var imagePicker: UIImagePickerController!
+    var isChangeInfo = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,23 @@ class BirthDayViewController: UIViewController , UINavigationControllerDelegate,
         self.navigationController?.navigationBar.isHidden = true
         MDProvider.instance.setShadown(view: pkBirthday, borderShadow: 2.0, bgColor :.white , shadownColor : .black)
         // Do any additional setup after loading the view.
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        if isChangeInfo{
+            let date = userInfo?.birthday ?? "23-10-2018"
+            let userBirthday = dateFormatter.date(from: date)
+            pkBirthday.setDate(userBirthday!, animated: false)
+            MDProvider.instance.setupImage(strAva: userInfo?.avatar ?? "", imgView: self.imgAvatar)
+        }else{
+            pkBirthday.setDate(dateFormatter.date(from: "23-10-2018")!, animated: false)
+            imgAvatar.image = #imageLiteral(resourceName: "default-avatar")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +58,7 @@ class BirthDayViewController: UIViewController , UINavigationControllerDelegate,
         dateFormatter.dateFormat = "dd-MM-yyyy"
         self.userInfo?.birthday = dateFormatter.string(from: (sender as AnyObject).date)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == kSegueBirthdayToWeight {
             if let img1 : UIImage = imgAvatar.image{//?.cropImage(navigationSize: 44){
@@ -47,10 +66,14 @@ class BirthDayViewController: UIViewController , UINavigationControllerDelegate,
             }
             if let vc = segue.destination as? ProfileRegiterViewController{
                 vc.userInfo = self.userInfo
+                vc.isChangeInfo = self.isChangeInfo
             }
         }
     }
-
+    @IBAction func actionBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func actionOpenCamera(_ sender: Any) {
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self

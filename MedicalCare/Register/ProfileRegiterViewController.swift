@@ -12,6 +12,7 @@ import JGProgressHUD
 class ProfileRegiterViewController: UIViewController {
 
     @IBOutlet weak var pickerUserInfo: UIPickerView!
+    @IBOutlet weak var btnRegister: UIButton!
     
     var userInfo : UserObject?
     
@@ -22,6 +23,7 @@ class ProfileRegiterViewController: UIViewController {
     var arrGender = ["Nam", "Nữ"]
     
     let hud = JGProgressHUD(style: .dark)
+    var isChangeInfo = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +34,58 @@ class ProfileRegiterViewController: UIViewController {
         }
         
         pickerData = [arrWeight, arrHeight, arrGender]
-        pickerUserInfo.selectRow(50, inComponent: 0, animated: true)
-        pickerUserInfo.selectRow(150, inComponent: 1, animated: true)
         
         MDProvider.instance.setShadown(view: pickerUserInfo, borderShadow: 2.0, bgColor :.white, shadownColor : .black)
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isChangeInfo{
+            self.btnRegister.setImage(#imageLiteral(resourceName: "btn_Update_User_Info"), for: .normal)
+            if let weight = userInfo?.weight {
+                for i in 0..<arrWeight.count{
+                    if arrWeight[i] == weight{
+                        pickerUserInfo.selectRow(i, inComponent: 0, animated: false)
+                    }
+                }
+            }else{
+                pickerUserInfo.selectRow(50, inComponent: 0, animated: true)
+            }
+            
+            if let height = userInfo?.height {
+                for i in 0..<arrHeight.count{
+                    if arrHeight[i] == height{
+                        pickerUserInfo.selectRow(i, inComponent: 1, animated: false)
+                    }
+                }
+            }else{
+                pickerUserInfo.selectRow(150, inComponent: 1, animated: true)
+            }
+            
+            if let gender = userInfo?.gender {
+                for i in 0..<arrGender.count{
+                    if arrGender[i] == gender{
+                        pickerUserInfo.selectRow(i, inComponent: 2, animated: false)
+                    }
+                }
+            }else{
+                pickerUserInfo.selectRow(0, inComponent: 2, animated: false)
+            }
+        }else{
+            self.btnRegister.setImage(#imageLiteral(resourceName: "btn_registrr"), for: .normal)
+            pickerUserInfo.selectRow(50, inComponent: 0, animated: true)
+            pickerUserInfo.selectRow(150, inComponent: 1, animated: true)
+            pickerUserInfo.selectRow(0, inComponent: 2, animated: false)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func actionBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func actionRegister(_ sender: Any) {
@@ -51,12 +95,30 @@ class ProfileRegiterViewController: UIViewController {
             return
         }
         hud.show(in: self.view)
-        MDAPIManager.instance.register(userInfo: userInfo!, success: {success in
+        
+        var apiStr = ""
+        if isChangeInfo{
+            apiStr = kAPIUpdateUserInfo
+        }else{
+            apiStr = kAPIRegister
+        }
+        
+        MDAPIManager.instance.register(userInfo: userInfo!, apiStr: apiStr, success: {success in
             print("thanh cong")
             DispatchQueue.main.async {
                 self.hud.dismiss()
             }
-            self.performSegue(withIdentifier: kSegueRegisterToTabbar, sender: nil)
+            let alertController = UIAlertController(title: "", message: success, preferredStyle: .alert)
+            var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!.topMostViewController()
+            while ((topController.presentedViewController) != nil) {
+                topController = topController.presentedViewController!;
+            }
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
+                self.performSegue(withIdentifier: kSegueRegisterToTabbar, sender: nil)
+            }
+            alertController.addAction(okAction)
+            
+            topController.present(alertController, animated: true, completion: nil)
         }, failure: {fail, err in
             DispatchQueue.main.async {
                 self.hud.dismiss()

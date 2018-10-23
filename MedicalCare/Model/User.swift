@@ -25,7 +25,7 @@ struct  UserObject : Codable {
     var weight : Int?
     var height : Int?
     var gender : String?
-    var type : Int?
+    var doctor_id : Int?
     var avatar : String?
     var address : String?
     
