@@ -33,6 +33,7 @@
 		0E6B9234216FA75E009662C5 /* InfoFinđoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */; };
 		0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E712B1B216E2B18002FA421 /* MDAPIManager.swift */; };
 		0E7ECB122177947E00E83B6C /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7ECB112177947E00E83B6C /* Appointment.swift */; };
+		0E8D4FF521873B6B0098A1F8 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D4FF421873B6B0098A1F8 /* MessageViewController.swift */; };
 		0EA134132170EB3C00A76A5E /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA134122170EB3C00A76A5E /* Doctor.swift */; };
 		0EB3FD6E215BCAF700C65EB7 /* DoctorHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */; };
 		0EB3FD70215BCC4100C65EB7 /* DoctorHospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */; };
@@ -87,6 +88,7 @@
 		0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoFinđoctor.swift"; sourceTree = "<group>"; };
 		0E712B1B216E2B18002FA421 /* MDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAPIManager.swift; sourceTree = "<group>"; };
 		0E7ECB112177947E00E83B6C /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		0E8D4FF421873B6B0098A1F8 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		0EA134122170EB3C00A76A5E /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		0EB3FD6D215BCAF700C65EB7 /* DoctorHospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalViewController.swift; sourceTree = "<group>"; };
 		0EB3FD6F215BCC4100C65EB7 /* DoctorHospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHospitalCell.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				0EB3FD72215BDE6E00C65EB7 /* UserViewController.swift */,
 				0EB3FD74215BE12600C65EB7 /* UserSetingViewCell.swift */,
 				0EC690512161263300B074F0 /* UserHistoryViewController.swift */,
+				0E8D4FF421873B6B0098A1F8 /* MessageViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				0EA134132170EB3C00A76A5E /* Doctor.swift in Sources */,
 				0EC69048215FBE6B00B074F0 /* HospitalListViewController.swift in Sources */,
 				0EC6904E2160FC4700B074F0 /* User.swift in Sources */,
+				0E8D4FF521873B6B0098A1F8 /* MessageViewController.swift in Sources */,
 				0E5372F42163C30500F5F260 /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,7 +645,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DUCCHINH.MedicalCare;
+				PRODUCT_BUNDLE_IDENTIFIER = DC.MedicalCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -662,7 +666,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DUCCHINH.MedicalCare;
+				PRODUCT_BUNDLE_IDENTIFIER = DC.MedicalCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -37,6 +37,7 @@ let kSegueUserToUpdateInfo = "UserToUpdateInfo"
 let kSegueHomeToEmergency = "HomeToEmergency"
 let kSegueRegisterToLogin = "RegisterToLogin"
 let kSegueRegisterToHomeScreen = "RegisterToHomeScreen"
+let kSegueUserToMessengerView = "UserToMessengerView"
 
 //------------Error text ----
 let errNoInterNet = "Không có kết nối internet.\nVui lòng thử lại."
@@ -55,9 +56,10 @@ let kErrorText = "Xảy ra lỗi trong quá trình kết nối database.\nVui l�
 let errorFailLogin = "Đăng nhập không thành công!\nVui lòng thử lại."
 let errorFailRegister = "Đăng ký không thành công.\nVui lòng thử lại."
 let errorMissInfoBookAppointment = "Thiếu thông tin đăng ký lịch khám.\nVui lòng thử lại."
+let errorMissInfoSendMessage = "Vui lòng điền nội dung tin nhắn muốn gửi đi."
 
 //---------Api doucument-----
-//let kServerDomain = "http://192.168.1.134:8080/medicalcare/" //local server tokyo
+//let kServerDomain = "http://192.168.1.158:8080/medicalcare/" //local server tokyo
 let kServerDomain = "http://192.168.1.122:8080/medicalcare/" //local server home
 
 let kAPILogin = kServerDomain + "login.php"
@@ -75,8 +77,14 @@ let kAPIGetAllAppointmentWithUserId = kServerDomain + "getAllAppointment.php"
 let kAPIGetDoctorAppointmentWithId = kServerDomain + "getDoctorWithID.php"
 let kAPICancelAppointmentWithId = kServerDomain + "deleteAppointment.php"
 let kAPIUpdateUserInfo = kServerDomain + "updateInfoUser.php"
+let kAPISendMessage = kServerDomain + "sendMessage.php"
+let kAPIGetAllAppointmentOfDoctor = kServerDomain + "getAllAppointmentDoctor.php"
+let kAPIGetAllAppointmentWithId = kServerDomain + "getAppointmentWithId.php"
+
 
 //---------Key ----------
 var defaultLogin = UserDefaults.standard
 let kUserDefaultkeyLogin = "loginname"
 
+//---------Number---------
+let MESSAGE_LIMIT = 500

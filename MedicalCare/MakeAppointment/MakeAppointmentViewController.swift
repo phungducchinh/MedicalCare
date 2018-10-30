@@ -44,7 +44,7 @@ class MakeAppointmentViewController: MDBaseViewController {
     var arrShowTime: [String] = ["Chọn thời gian"]
     var time = ""
     var date = ""
-    
+    var idAppointment = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         tvProblem.delegate = self
@@ -74,12 +74,6 @@ class MakeAppointmentViewController: MDBaseViewController {
                 self.bookAppointment(appointment: appointment)
             }
         }
-    }
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 
     @IBAction func acChooseHospital(_ sender: Any) {
@@ -177,12 +171,10 @@ class MakeAppointmentViewController: MDBaseViewController {
     func bookAppointment(appointment: Appointment){
         hud.show(in: self.view)
         MDAPIManager.instance.bookAppointment(appointment: appointment,success: {success in
+            print(success)
+            self.idAppointment = success
             DispatchQueue.main.async {
                 self.hud.dismiss()
-            }
-            print(success)
-            MDProvider.loadAlert(title: "", message: success)
-            DispatchQueue.main.async {
                 self.btnHospital.setTitle(self.arrShowDoctor[0], for: .normal)
                 self.btnDoctor.setTitle(self.arrShowDoctor[0], for: .normal)
                 self.btnTime.setTitle(self.arrShowTime[0], for: .normal)
@@ -190,7 +182,17 @@ class MakeAppointmentViewController: MDBaseViewController {
                 self.btnDoctor.setTitleColor(clDarkTex, for: .normal)
                 self.btnTime.setTitleColor(clDarkTex, for: .normal)
                 self.tvProblem.text = "Mô tả triệu chứng"
-                self.performSegue(withIdentifier: kSegueMakeToCfAppointment, sender: nil)
+                
+                let alertController = UIAlertController(title: "", message:  "Đặt lịch hẹn thành công!\nMã lịch hẹn của bạn là: \(success)", preferredStyle: .alert)
+                var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!.topMostViewController()
+                while ((topController.presentedViewController) != nil) {
+                    topController = topController.presentedViewController!;
+                }
+                let okAction = UIAlertAction(title: "Đống ý", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
+                    self.performSegue(withIdentifier: kSegueMakeToCfAppointment, sender: nil)
+                }
+                alertController.addAction(okAction)
+                topController.present(alertController, animated: true, completion: nil)
             }
         }, failure: {fail, err in
             DispatchQueue.main.async {
@@ -198,6 +200,14 @@ class MakeAppointmentViewController: MDBaseViewController {
             }
             MDProvider.loadAlert(title: "", message: err)
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueMakeToCfAppointment{
+            if let vc = segue.destination as? AppointmentConfirmViewController{
+                vc.id = self.idAppointment
+            }
+        }
     }
 }
 

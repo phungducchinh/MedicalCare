@@ -20,11 +20,12 @@ class UserViewController: MDBaseViewController {
     @IBOutlet weak var lblUserGender: UILabel!
     
     var gradientLayer: CAGradientLayer!
-    var arrImgTitle : [UIImage] = [#imageLiteral(resourceName: "ico_change_userinfo") , #imageLiteral(resourceName: "ico_history")]
-    var arrImgButton : [UIImage] = [#imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow")]
-    var arrTitle : [String] = ["Cập nhật thông tin" , "Xem lịch hẹn" ]
+    var arrImgTitle : [UIImage] = [#imageLiteral(resourceName: "ico_change_userinfo") , #imageLiteral(resourceName: "ico_email"), #imageLiteral(resourceName: "ico_history")]
+    var arrImgButton : [UIImage] = [#imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow")]
+    var arrTitle : [String] = ["Cập nhật thông tin" , "Gửi thư góp ý", "Lịch khám bệnh" ]
     let firstCl = UIColor(red: 25/255, green: 115/255, blue: 159/255, alpha: 1).cgColor
     let secondCl = UIColor(red: 53/255, green: 216/255, blue: 166/255, alpha: 1).cgColor
+    var doctor_id = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +72,7 @@ class UserViewController: MDBaseViewController {
             lblUserHeight.text = "\(user.height ?? 0)"
             lblUserWeight.text = "\(user.weight ?? 0)"
             lblUserGender.text = user.gender
+            self.doctor_id = user.doctor_id ?? 0
             
             let defaultImg : UIImage = #imageLiteral(resourceName: "default-avatar")
             
@@ -120,11 +122,24 @@ class UserViewController: MDBaseViewController {
                 vc.isChangeInfo = true
             }
         }
+        if segue.identifier == kSegueUserToListAppointment{
+            if let vc = segue.destination as? UserHistoryViewController{
+                vc.doctor_id = self.doctor_id
+            }
+        }
     }
     
 }
 
 extension UserViewController : UITableViewDataSource, UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.doctor_id == 0 && indexPath.row == 2{
+            return 0
+        }else{
+            return UITableViewAutomaticDimension
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrImgTitle.count
     }
@@ -148,6 +163,8 @@ extension UserViewController : HomeCellDelegate{
             vc.isChangeInfo = true
             self.present(vc, animated: true, completion: nil)
         case 1:
+            self.performSegue(withIdentifier: kSegueUserToMessengerView, sender: self)
+        case 2:
             self.performSegue(withIdentifier: kSegueUserToListAppointment, sender: self)
         default:
             print(id)

@@ -27,6 +27,9 @@ class AppointmentDetailViewCell: UITableViewCell {
     weak var delegate : AppointmentDetailDelegate?
     var appointment : AppointmentShow?
     var doctor: DoctorAppoinment?
+    var appointmentDoctor : AppointmentDoctorShow?
+    var doctorApm : DoctorAppoinmentShow?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -57,18 +60,41 @@ class AppointmentDetailViewCell: UITableViewCell {
         self.setNeedsLayout()
     }
     
+    func settingDoctorApm(appoint: AppointmentDoctorShow){
+        self.appointmentDoctor = appoint
+        let doctor = self.appointmentDoctor?.doctor
+        let date = self.appointmentDoctor?.dateBook ?? ""
+        let time = self.appointmentDoctor?.timeBook ?? ""
+        
+        imgAvaDoctor.image = #imageLiteral(resourceName: "default-avatar")
+        lblDoctorName.text = self.appointmentDoctor?.user_name ?? ""
+        lblSpecilize.text = doctor?.specialize ?? ""
+        lblHospital.text = doctor?.hospital ?? ""
+        lblDateTim.text = date + " " + time
+        tvNote.text = appointmentDoctor?.problem ?? ""
+        lblFee.text = MDProvider.instance.formatPrice(price: appointmentDoctor?.fee ?? 0)
+        self.layoutIfNeeded()
+        self.setNeedsLayout()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        print(self.reuseIdentifier as Any)
-        guard self.reuseIdentifier == "AppointmentDetailViewCell" else{
-            return
-        }
-        let status = appointment?.status ?? 0
-        
-        if status != 0{
-            ctrHeightBtn.constant = 0
-        }else{
-            ctrHeightBtn.constant = 40
+        if self.reuseIdentifier == "AppointmentDetailViewCell" {
+            let status = appointment?.status ?? 0
+            
+            if status != 0{
+                ctrHeightBtn.constant = 0
+            }else{
+                ctrHeightBtn.constant = 40
+            }
+        }else if self.reuseIdentifier == "UserAppointmentDetailViewCell" {
+            let status = appointmentDoctor?.status ?? 0
+            
+            if status != 0{
+                ctrHeightBtn.constant = 0
+            }else{
+                ctrHeightBtn.constant = 40
+            }
         }
     }
     
