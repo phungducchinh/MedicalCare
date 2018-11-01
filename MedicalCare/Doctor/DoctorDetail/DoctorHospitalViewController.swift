@@ -18,6 +18,7 @@ class DoctorHospitalViewController: MDBaseViewController {
     var objDoctor : Doctor?
     var arrHospital : [Hospital] = []
     let hud = JGProgressHUD(style: .dark)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,7 +49,7 @@ class DoctorHospitalViewController: MDBaseViewController {
     
     func getData(){
         hud.show(in: self.view)
-        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospitalWithDoctorId, success: {success in
+        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospitalWithDoctorId, idquest: objDoctor?.id ?? 0, success: {success in
             DispatchQueue.main.async {
                 self.hud.dismiss()
             }

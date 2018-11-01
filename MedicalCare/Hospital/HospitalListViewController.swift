@@ -39,7 +39,7 @@ class HospitalListViewController: MDBaseViewController {
     
     func getAllHospital(){
         hud.show(in: self.view)
-        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospital, success: {success in
+        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospital, idquest: 0, success: {success in
             DispatchQueue.main.async {
                 self.hud.dismiss()
             }

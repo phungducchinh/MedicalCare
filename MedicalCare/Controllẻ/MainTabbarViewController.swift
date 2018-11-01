@@ -8,10 +8,11 @@
 
 import UIKit
 
-class MainTabbarViewController: UITabBarController {
+class MainTabbarViewController: UITabBarController  , UITabBarControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         self.tabBar.tintColor = clTextTitle
         if #available(iOS 10.0, *) {
             self.tabBar.unselectedItemTintColor = clDark
@@ -27,7 +28,6 @@ class MainTabbarViewController: UITabBarController {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
         // self is Application Delegate
         navigationController?.popToRootViewController(animated: false)
         if (viewController is UINavigationController) {
@@ -35,5 +35,5 @@ class MainTabbarViewController: UITabBarController {
         }
         
     }
-
+    
 }

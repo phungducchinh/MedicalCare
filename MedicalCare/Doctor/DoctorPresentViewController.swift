@@ -11,6 +11,7 @@ import UIKit
 @objc protocol DoctorPresentDelegate : class {
     @objc optional func closeView()
     @objc optional func sendDate(date : String)
+    @objc optional func bookAppointment()
 }
 
 class DoctorPresentViewController: UIViewController {
@@ -72,6 +73,15 @@ class DoctorPresentViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueDoctorToDoctorHospital{
+            if let vc = segue.destination as? DoctorHospitalViewController{
+                
+            }
+        }
+        
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         self.delegate?.closeView!()
     }
@@ -98,6 +108,8 @@ class DoctorPresentViewController: UIViewController {
     
     @IBAction func actionMakeAppointment(_ sender: Any) {
         print("book appointment")
+        self.delegate?.closeView!()
+        self.delegate?.bookAppointment!()
     }
     
 }

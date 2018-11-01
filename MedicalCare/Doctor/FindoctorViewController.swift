@@ -125,6 +125,16 @@ class FindoctorViewController: MDBaseViewController {
         self.performSegue(withIdentifier: kSegueFindDoctorToListDoctor, sender: self)
     }
 
+    func clearData(){
+        btnHospital.setTitle(arrHospital[0], for: .normal)
+        btnSpecialize.setTitle(arrSpecialize[0], for: .normal)
+        btnCertificate.setTitle(arrCertificate[0], for: .normal)
+        btnGender.setTitle(arrGender[0], for: .normal)
+        MDProvider.instance.changeClTextBtn(btn: btnHospital, index: 0)
+        MDProvider.instance.changeClTextBtn(btn: btnSpecialize, index: 0)
+        MDProvider.instance.changeClTextBtn(btn: btnCertificate, index: 0)
+        MDProvider.instance.changeClTextBtn(btn: btnGender, index: 0)
+    }
     
     // MARK: - Navigation
 
@@ -139,7 +149,10 @@ class FindoctorViewController: MDBaseViewController {
         }
     }
  
-
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        clearData()
+    }
 }
 
 extension FindoctorViewController : DropDownDelegate{

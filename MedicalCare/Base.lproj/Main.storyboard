@@ -1820,17 +1820,17 @@ Ring road, Nagpur</string>
             <objects>
                 <viewController storyboardIdentifier="MessageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m73-WP-wab" customClass="MessageViewController" customModule="MedicalCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u8Q-Bm-GhU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nội dung góp ý của bạn sẽ được gửi cho nhà phát triển ứng dụng. Thông tin người gửi sẽ được giữ bí mật. Trân trọng cảm ơn!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2g-rV-Xg7">
-                                <rect key="frame" x="20" y="99" width="335" height="57.5"/>
+                                <rect key="frame" x="20" y="55" width="335" height="57.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VZn-mX-u0b">
-                                <rect key="frame" x="20" y="186.5" width="335" height="140"/>
+                                <rect key="frame" x="20" y="142.5" width="335" height="140"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="EI2-fy-NPo"/>
@@ -1850,14 +1850,14 @@ Ring road, Nagpur</string>
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBu-Pu-ffq">
-                                <rect key="frame" x="20" y="384.5" width="335" height="73"/>
+                                <rect key="frame" x="20" y="340.5" width="335" height="73"/>
                                 <state key="normal" image="btn_send_mess"/>
                                 <connections>
                                     <action selector="actionSendMess:" destination="m73-WP-wab" eventType="touchUpInside" id="bN8-fH-jFs"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500/500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzZ-sy-Euw">
-                                <rect key="frame" x="295" y="336.5" width="60" height="18"/>
+                                <rect key="frame" x="295" y="292.5" width="60" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2132,11 +2132,11 @@ Ring road, Nagpur</string>
             <objects>
                 <viewController storyboardIdentifier="UserHistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K8E-gG-00g" customClass="UserHistoryViewController" customModule="MedicalCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lFu-LB-1Ii">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-rD-RHR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserAppointmentDetailViewCell" rowHeight="520" id="6Rb-NU-5gi" customClass="AppointmentDetailViewCell" customModule="MedicalCare" customModuleProvider="target">

@@ -10,7 +10,7 @@ import UIKit
 import JGProgressHUD
 
 class MakeAppointmentViewController: MDBaseViewController {
-
+    
     // MARK: - Private View Controller
     private lazy var chooseTimeView: ChooseTimeViewController = {
         // Load Storyboard
@@ -34,7 +34,7 @@ class MakeAppointmentViewController: MDBaseViewController {
     @IBOutlet weak var btnTime: UIButton!
     @IBOutlet weak var tvProblem: UITextView!
     
-     let arr = ["Chọn bác sĩ","Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B" , "Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B", "Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B", "Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B"]
+    let arr = ["Chọn bác sĩ","Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B" , "Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B", "Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B", "Bác sĩ Nguyễn Văn A" , "Bác sĩ Nguyễn Thị B"]
     
     let hud = JGProgressHUD(style: .dark)
     var arrHospital : [Hospital] = []
@@ -45,15 +45,26 @@ class MakeAppointmentViewController: MDBaseViewController {
     var time = ""
     var date = ""
     var idAppointment = 0
+    var doctor : Doctor?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tvProblem.delegate = self
-        DispatchQueue.main.async {
-            self.getAllHospital()
-        }
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async {
+            if self.doctor == nil{
+                self.getAllHospital()
+            }else{
+                self.getAllHospitalWithIdDoctor()
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,7 +86,7 @@ class MakeAppointmentViewController: MDBaseViewController {
             }
         }
     }
-
+    
     @IBAction func acChooseHospital(_ sender: Any) {
         MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: arrShowHospital, controller: self, idButton: 0)
     }
@@ -86,10 +97,10 @@ class MakeAppointmentViewController: MDBaseViewController {
     @IBAction func acChooseTime(_ sender: Any) {
         MDProvider.instance.showDropDown(button: sender as! UIButton, datasource: arrShowTime, controller: self, idButton: 2)
     }
-   
+    
     func getAllHospital(){
         hud.show(in: self.view)
-        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospital, success: {success in
+        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospital, idquest: 0, success: {success in
             DispatchQueue.main.async {
                 self.hud.dismiss()
             }
@@ -99,9 +110,41 @@ class MakeAppointmentViewController: MDBaseViewController {
                 self.arrShowDoctor = ["Chọn bác sĩ"]
                 self.arrShowTime = ["Chọn thời gian"]
                 DispatchQueue.main.async {
+                    self.btnHospital.setTitle(self.arrShowHospital[0], for: .normal)
                     self.btnDoctor.setTitle(self.arrShowDoctor[0], for: .normal)
                     self.btnTime.setTitle(self.arrShowTime[0], for: .normal)
+                    self.btnHospital.setTitleColor(clDarkTex, for: .normal)
                     self.btnDoctor.setTitleColor(clDarkTex, for: .normal)
+                    self.btnTime.setTitleColor(clDarkTex, for: .normal)
+                }
+                for i in self.arrHospital{
+                    self.arrShowHospital.append(i.name ?? "")
+                }
+            }
+        }, failure: {fail, err in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            MDProvider.loadAlert(title: "", message: err)
+        })
+    }
+    
+    func getAllHospitalWithIdDoctor(){
+        hud.show(in: self.view)
+        MDAPIManager.instance.getAllHospital(url: kAPIGetAllHospitalWithDoctorId, idquest: doctor?.id ?? 0, success: {success in
+            DispatchQueue.main.async {
+                self.hud.dismiss()
+            }
+            self.arrHospital = success
+            if self.arrHospital.count > 0{
+                self.arrShowHospital  = ["Chọn bệnh viện"]
+                self.arrShowDoctor[0] = self.doctor?.name ?? ""
+                DispatchQueue.main.async {
+                    self.btnHospital.setTitle(self.arrShowHospital[0], for: .normal)
+                    self.btnDoctor.setTitle(self.arrShowDoctor[0], for: .normal)
+                    self.btnTime.setTitle(self.arrShowTime[0], for: .normal)
+                    self.btnHospital.setTitleColor(clDarkTex, for: .normal)
+                    self.btnDoctor.setTitleColor(clTextTitle, for: .normal)
                     self.btnTime.setTitleColor(clDarkTex, for: .normal)
                 }
                 for i in self.arrHospital{
@@ -147,7 +190,10 @@ class MakeAppointmentViewController: MDBaseViewController {
                 self.hud.dismiss()
             }
             self.arrDoctor = success
-            if self.arrDoctor.count > 0{
+            guard self.arrDoctor.count > 0 else{
+                return
+            }
+            if self.doctor == nil{
                 self.arrShowDoctor = ["Chọn bác sĩ"]
                 self.arrShowTime = ["Chọn thời gian"]
                 DispatchQueue.main.async {
@@ -159,6 +205,13 @@ class MakeAppointmentViewController: MDBaseViewController {
                 for i in self.arrDoctor{
                     self.arrShowDoctor.append(i.name ?? "")
                 }
+            }else{
+                self.arrShowTime = ["Chọn thời gian"]
+                for i in self.arrDoctor{
+                    if i.id == self.doctor?.id{
+                        self.arrShowTime += self.getDoctor(name: self.btnDoctor.titleLabel?.text ?? "").list_time ?? []
+                    }
+                }
             }
         }, failure: {fail, err in
             DispatchQueue.main.async {
@@ -168,6 +221,20 @@ class MakeAppointmentViewController: MDBaseViewController {
         })
     }
     
+    func clearData(){
+        self.arrShowHospital  = ["Chọn bệnh viện"]
+        self.arrShowDoctor = ["Chọn bác sĩ"]
+        self.arrShowTime = ["Chọn thời gian"]
+        self.btnHospital.setTitle(self.arrShowDoctor[0], for: .normal)
+        self.btnDoctor.setTitle(self.arrShowDoctor[0], for: .normal)
+        self.btnTime.setTitle(self.arrShowTime[0], for: .normal)
+        self.btnHospital.setTitleColor(clDarkTex, for: .normal)
+        self.btnDoctor.setTitleColor(clDarkTex, for: .normal)
+        self.btnTime.setTitleColor(clDarkTex, for: .normal)
+        self.tvProblem.text = "Mô tả triệu chứng"
+        self.doctor = nil
+    }
+    
     func bookAppointment(appointment: Appointment){
         hud.show(in: self.view)
         MDAPIManager.instance.bookAppointment(appointment: appointment,success: {success in
@@ -175,14 +242,8 @@ class MakeAppointmentViewController: MDBaseViewController {
             self.idAppointment = success
             DispatchQueue.main.async {
                 self.hud.dismiss()
-                self.btnHospital.setTitle(self.arrShowDoctor[0], for: .normal)
-                self.btnDoctor.setTitle(self.arrShowDoctor[0], for: .normal)
-                self.btnTime.setTitle(self.arrShowTime[0], for: .normal)
-                self.btnHospital.setTitleColor(clDarkTex, for: .normal)
-                self.btnDoctor.setTitleColor(clDarkTex, for: .normal)
-                self.btnTime.setTitleColor(clDarkTex, for: .normal)
-                self.tvProblem.text = "Mô tả triệu chứng"
                 
+                self.clearData()
                 let alertController = UIAlertController(title: "", message:  "Đặt lịch hẹn thành công!\nMã lịch hẹn của bạn là: \(success)", preferredStyle: .alert)
                 var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!.topMostViewController()
                 while ((topController.presentedViewController) != nil) {
@@ -209,6 +270,12 @@ class MakeAppointmentViewController: MDBaseViewController {
             }
         }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("aaaaaa")
+        clearData()
+    }
 }
 
 extension MakeAppointmentViewController: UITextViewDelegate{
@@ -233,10 +300,11 @@ extension MakeAppointmentViewController : DropDownDelegate{
         case 0:
             btnHospital.setTitle(arrShowHospital[index], for: .normal)
             MDProvider.instance.changeClTextBtn(btn: btnHospital, index: index)
-            if index != 0{
-                DispatchQueue.main.async {
-                    self.getAllDoctor(id: self.getHospital(name: self.btnHospital.titleLabel?.text ?? "").id ?? 0)
-                }
+            guard index != 0 else {
+                return
+            }
+            DispatchQueue.main.async {
+                self.getAllDoctor(id: self.getHospital(name: self.btnHospital.titleLabel?.text ?? "").id ?? 0)
             }
         case 1:
             btnDoctor.setTitle(arrShowDoctor[index], for: .normal)
@@ -282,3 +350,4 @@ extension MakeAppointmentViewController : DoctorPresentDelegate{
         btnTime.setTitle((btnTime.titleLabel?.text)! + " " + date, for: .normal)
     }
 }
+

@@ -124,6 +124,7 @@ extension DoctorListViewController : UITableViewDelegate, UITableViewDataSource{
 }
 
 extension DoctorListViewController : DoctorPresentDelegate{
+    
     func closeView() {
         UIView.animate(withDuration: 0.3, animations: {
             let statusFrame = UIApplication.shared.statusBarFrame
@@ -132,5 +133,17 @@ extension DoctorListViewController : DoctorPresentDelegate{
         }) { (finish) in
         }
     }
+    
+    func bookAppointment() {
+        self.tabBarController?.selectedIndex = 1
+        if let nav = self.tabBarController?.viewControllers?[1] as? UINavigationController {
+            if let vc : MakeAppointmentViewController = nav.viewControllers[0] as? MakeAppointmentViewController{
+                print("hhhhhh")
+                vc.doctor = self.arrDoctor[self.row]
+            }
+            nav.popToRootViewController(animated: true)
+        }
+    }
+
 }
 

@@ -182,14 +182,14 @@ class MDAPIManager{
         return nil
     }
     
-    func getAllHospital(url : String ,success: @escaping ([Hospital]) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
+    func getAllHospital(url : String , idquest: Int,success: @escaping ([Hospital]) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void){
         guard Connectivity.isConnectedToInternet()  else {
             failure(false, errorMessageNoInternet)
             return
         }
         
         let urlgetInfo = URL(string: url)
-        let param  : Parameters = ["idquest" : "1"]
+        let param  : Parameters = ["idquest" : idquest]
         let manager = self.sessionManager
         manager.request(urlgetInfo!, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             if response.result.isSuccess{
