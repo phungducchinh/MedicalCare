@@ -10,54 +10,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MedicalCare/MDAPIManager.swift"
-            timestampString = "562782937.541594"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "login(email:password:success:failure:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in MedicalCare.MDAPIManager.login(email: Swift.String, password: Swift.String, success: (Swift.String) -&gt; (), failure: (Swift.Bool, Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "MedicalCare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macintoshhd/MedicalCare/MedicalCare/MDAPIManager.swift"
-                  timestampString = "562782937.561257"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "1814">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; () in closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in MedicalCare.MDAPIManager.login(email: Swift.String, password: Swift.String, success: (Swift.String) -&gt; (), failure: (Swift.Bool, Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "MedicalCare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macintoshhd/MedicalCare/MedicalCare/MDAPIManager.swift"
-                  timestampString = "562782937.564106"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "33">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MedicalCare/MDAPIManager.swift"
             timestampString = "562782937.541684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

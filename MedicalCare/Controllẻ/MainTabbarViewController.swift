@@ -29,9 +29,10 @@ class MainTabbarViewController: UITabBarController  , UITabBarControllerDelegate
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         // self is Application Delegate
-        navigationController?.popToRootViewController(animated: false)
+//        navigationController?.popToRootViewController(animated: false)
         if (viewController is UINavigationController) {
-            (viewController as? UINavigationController)?.popToRootViewController(animated: false)
+//            (viewController as? UINavigationController)?.popToRootViewController(animated: false)
+            (viewController as? UINavigationController)?.popViewController(animated: true)
         }
         
     }

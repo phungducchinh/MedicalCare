@@ -60,8 +60,8 @@ let errorMissInfoSendMessage = "Vui lòng điền nội dung tin nhắn muốn g
 
 //---------Api doucument-----
 //let kServerDomain = "http://192.168.1.158:8080/medicalcare/" //local server tokyo
-let kServerDomain = "http://192.168.1.122:8080/medicalcare/" //local server home
-//let kServerDomain = "http://192.168.43.220:8080/medicalcare/" //local host server
+let kServerDomain = "http://192.168.1.142:8080/medicalcare/" //local server home
+//let kServerDomain = "http://172.16.1.129:8080/medicalcare/" //local server the coffe house
 
 let kAPILogin = kServerDomain + "login.php"
 let kAPIGetUserInfo = kServerDomain + "getUserInfo.php"
