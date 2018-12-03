@@ -15,6 +15,7 @@ let clShadownBlue = UIColor(red: 0/255, green: 153/255, blue: 255/255, alpha: 0.
 let clDark = UIColor(red: 168/255, green: 168/255, blue: 168/255, alpha: 1)
 let clDarkTex = UIColor(red: 154/255, green: 154/255, blue: 154/255, alpha: 1)
 let clGreenGardient = UIColor(red: 53/255, green: 216/255, blue: 166/255, alpha: 1)
+let clProgressbar = UIColor(red: 95/255, green: 229/255, blue: 188/255, alpha: 1)
 
 //-----------Segue text ----
 let kSegueHomeToFindDoctor = "homeToFindDoctor"
@@ -38,6 +39,7 @@ let kSegueHomeToEmergency = "HomeToEmergency"
 let kSegueRegisterToLogin = "RegisterToLogin"
 let kSegueRegisterToHomeScreen = "RegisterToHomeScreen"
 let kSegueUserToMessengerView = "UserToMessengerView"
+let kSegueUserToHealthView = "UserInfoToHealthInfo"
 
 //------------Error text ----
 let errNoInterNet = "Không có kết nối internet.\nVui lòng thử lại."
@@ -60,7 +62,7 @@ let errorMissInfoSendMessage = "Vui lòng điền nội dung tin nhắn muốn g
 
 //---------Api doucument-----
 //let kServerDomain = "http://192.168.1.158:8080/medicalcare/" //local server tokyo
-let kServerDomain = "http://192.168.1.142:8080/medicalcare/" //local server home
+let kServerDomain = "http://192.168.1.156:8080/medicalcare/" //local server home
 //let kServerDomain = "http://172.16.1.129:8080/medicalcare/" //local server the coffe house
 
 let kAPILogin = kServerDomain + "login.php"

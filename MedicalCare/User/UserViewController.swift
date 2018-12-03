@@ -20,9 +20,9 @@ class UserViewController: MDBaseViewController {
     @IBOutlet weak var lblUserGender: UILabel!
     
     var gradientLayer: CAGradientLayer!
-    var arrImgTitle : [UIImage] = [#imageLiteral(resourceName: "ico_change_userinfo") , #imageLiteral(resourceName: "ico_email"), #imageLiteral(resourceName: "ico_history")]
-    var arrImgButton : [UIImage] = [#imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow")]
-    var arrTitle : [String] = ["Cập nhật thông tin" , "Gửi thư góp ý", "Lịch khám bệnh" ]
+    var arrImgTitle : [UIImage] = [#imageLiteral(resourceName: "ico_change_userinfo") , #imageLiteral(resourceName: "ico_email"), #imageLiteral(resourceName: "ico_history") ,#imageLiteral(resourceName: "img_target") ]
+    var arrImgButton : [UIImage] = [#imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow"), #imageLiteral(resourceName: "btn_left_arrow")]
+    var arrTitle : [String] = ["Cập nhật thông tin" , "Gửi thư góp ý", "Lịch khám bệnh", "Thông tin sức khoẻ" ]
     let firstCl = UIColor(red: 25/255, green: 115/255, blue: 159/255, alpha: 1).cgColor
     let secondCl = UIColor(red: 53/255, green: 216/255, blue: 166/255, alpha: 1).cgColor
     var doctor_id = 0
@@ -41,9 +41,9 @@ class UserViewController: MDBaseViewController {
         tbvButton.rowHeight = UITableViewAutomaticDimension
         
         if tbvButton.contentSize.height > tbvButton.frame.height {
-            tbvButton.isScrollEnabled = true
-        }else{
             tbvButton.isScrollEnabled = false
+        }else{
+            tbvButton.isScrollEnabled = true
         }
         // Do any additional setup after loading the view.
         
@@ -166,6 +166,8 @@ extension UserViewController : HomeCellDelegate{
             self.performSegue(withIdentifier: kSegueUserToMessengerView, sender: self)
         case 2:
             self.performSegue(withIdentifier: kSegueUserToListAppointment, sender: self)
+        case 3:
+            self.performSegue(withIdentifier: kSegueUserToHealthView, sender: self)
         default:
             print(id)
         }

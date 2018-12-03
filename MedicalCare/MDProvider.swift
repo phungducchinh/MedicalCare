@@ -36,6 +36,20 @@ class MDProvider  {
         view.navigationController?.navigationBar.setGradientBackground(colors: colors)
     }
     
+    func setGradientBackground(view : UIView) {
+        let colorTop =  UIColor(red: 25/255, green: 115/255, blue: 159/255, alpha: 1).cgColor
+        let colorBottom = UIColor(red: 53/255, green: 216/255, blue: 166/255, alpha: 1).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0,1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+        gradientLayer.frame = view.bounds
+        
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setUpNavigation(controller : UIViewController){
         let btn1 = UIButton(type: .custom)
         btn1.setImage(#imageLiteral(resourceName: "btn_back_white"), for: .normal)
@@ -63,11 +77,10 @@ class MDProvider  {
     }
     
     func ConvertBase64StringToImage (imageBase64String:String) -> UIImage {
-        let imageData = Data.init(base64Encoded: imageBase64String, options: .init(rawValue: 0))
-        guard  imageData != nil else {
+        guard let imageData = Data.init(base64Encoded: imageBase64String, options: .init(rawValue: 0)) else{
             return #imageLiteral(resourceName: "default-avatar")
         }
-        return (UIImage(data: imageData!))!
+        return (UIImage(data: imageData) ?? #imageLiteral(resourceName: "default-avatar"))
     }
     
     func openMap(address : String){

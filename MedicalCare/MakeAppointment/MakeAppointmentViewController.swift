@@ -249,7 +249,7 @@ class MakeAppointmentViewController: MDBaseViewController {
                 while ((topController.presentedViewController) != nil) {
                     topController = topController.presentedViewController!;
                 }
-                let okAction = UIAlertAction(title: "Đống ý", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
+                let okAction = UIAlertAction(title: "Đồng ý", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
                     self.performSegue(withIdentifier: kSegueMakeToCfAppointment, sender: nil)
                 }
                 alertController.addAction(okAction)
