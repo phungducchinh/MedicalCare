@@ -24,7 +24,7 @@ class HealthViewController: UIViewController {
     var nbDistance = 0.0
     var arrRealData : [Double] = [0,0,0]
     var arrTitle = ["Quãng đường đi + chạy","Số bước chân","Số tầng đã leo"]
-    var arrInfo : [String] = ["1000 m","10000 bước","5 tầng"]
+    var arrInfo : [String] = ["3200 m","10000 bước","5 tầng"]
     var arrNumberInfo : [Double] = [1000,10000,5]
     
     override func viewDidLoad() {
