@@ -54,7 +54,7 @@ class HealthViewController: UIViewController {
         print(nbDistance, " ", nbWalk, " ", nbFloor )
         DispatchQueue.main.async {
             self.tbHealth.reloadData()
-            self.lblInfo.text = "\(Double((self.arrRealData[0]/self.arrNumberInfo[0] + self.arrRealData[1]/self.arrNumberInfo[1] + self.arrRealData[2]/self.arrNumberInfo[2])/0.03).roundToDecimal(1)) %"
+            self.lblInfo.text = "\(Double((self.arrRealData[0]/self.arrNumberInfo[0] + self.arrRealData[1]/self.arrNumberInfo[1] + self.arrRealData[2]/self.arrNumberInfo[2])/3).roundToDecimal(1)) %"
         }
     }
     

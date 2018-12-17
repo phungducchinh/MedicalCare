@@ -6,7 +6,7 @@
 //  Copyright © 2018 DUCCHINH. All rights reserved.
 //
 
-import Foundation
+import Foundation 
 import UIKit
 
 struct AllEmergencyApi : Codable {

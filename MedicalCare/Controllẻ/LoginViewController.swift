@@ -21,8 +21,8 @@ class LoginViewController: MDBaseViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
-        tfEmail.text = "ducchinhptit@gmail.com"
-        tfPass.text = "12345678"
+        tfEmail.text = "ducchinhn1k19@gmail.com"
+        tfPass.text = "123456789"
         // Do any additional setup after loading the view.
     }
 

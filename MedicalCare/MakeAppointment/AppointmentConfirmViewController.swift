@@ -71,17 +71,24 @@ class AppointmentConfirmViewController: MDBaseViewController {
     
     func cancelAppointmentWithID(idAppointment: Int){
         hud.show(in: self.view)
-        MDAPIManager.instance.cancelAppointmentWithID(idAppointment: self.appointment?.id ?? 0, user_id: self.appointment?.user_id ?? 0, doctor_id: self.appointment?.doctor?.id ?? 0,  success: {success in
+        if checkDate(dateBook: self.appointment?.dateBook ?? ""){
+            MDAPIManager.instance.cancelAppointmentWithID(idAppointment: self.appointment?.id ?? 0, user_id: self.appointment?.user_id ?? 0, doctor_id: self.appointment?.doctor?.id ?? 0,  success: {success in
+                DispatchQueue.main.async {
+                    self.hud.dismiss()
+                    self.getAllAppointment()
+                }
+            }, failure: {fail, err in
+                DispatchQueue.main.async {
+                    self.hud.dismiss()
+                }
+                MDProvider.loadAlert(title: "", message: err)
+            })
+        }else{
             DispatchQueue.main.async {
-                self.hud.dismiss()
-                self.getAllAppointment()
+            self.hud.dismiss()
             }
-        }, failure: {fail, err in
-            DispatchQueue.main.async {
-                self.hud.dismiss()
-            }
-            MDProvider.loadAlert(title: "", message: err)
-        })
+            MDProvider.loadAlert(title: "", message: errorCancelAppointment )
+        }
     }
     
 
@@ -90,7 +97,19 @@ class AppointmentConfirmViewController: MDBaseViewController {
         // Pass the selected object to the new view controller.
     }
  
-
+    func checkDate(dateBook: String) -> Bool{
+        let date = Date()
+//        let calendar = Calendar.current
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let bookday = dateFormatter.date(from: dateBook)
+        if date < bookday!{
+            return true
+        }else{
+            return false
+        }
+    }
 }
 
 extension AppointmentConfirmViewController: UITableViewDelegate, UITableViewDataSource{

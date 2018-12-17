@@ -156,6 +156,7 @@ class MDProvider  {
     }
     
     func caculateYears(birthDay: String) -> Int{
+        _ = Locale.init(identifier: "vi_VN")
         guard birthDay != "" else {
             return 0
         }

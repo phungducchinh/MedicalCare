@@ -70,17 +70,24 @@ class HistoryViewController: MDBaseViewController {
     func cancelAppointmentWithID(idAppointment: Int){
         hud.show(in: self.view)
         let appoint = self.getAppointmentInArr(id: idAppointment)
-        MDAPIManager.instance.cancelAppointmentWithID(idAppointment: appoint.id ?? 0, user_id: appoint.user_id ?? 0, doctor_id: appoint.doctor?.id ?? 0,  success: {success in
+        if checkDate(dateBook: appoint.dateBook ?? ""){
+            MDAPIManager.instance.cancelAppointmentWithID(idAppointment: appoint.id ?? 0, user_id: appoint.user_id ?? 0, doctor_id: appoint.doctor?.id ?? 0,  success: {success in
+                DispatchQueue.main.async {
+                    self.hud.dismiss()
+                    self.getAllAppointment()
+                }
+            }, failure: {fail, err in
+                DispatchQueue.main.async {
+                    self.hud.dismiss()
+                }
+                MDProvider.loadAlert(title: "", message: err)
+            })
+        }else{
             DispatchQueue.main.async {
                 self.hud.dismiss()
-                self.getAllAppointment()
             }
-        }, failure: {fail, err in
-            DispatchQueue.main.async {
-                self.hud.dismiss()
-            }
-            MDProvider.loadAlert(title: "", message: err)
-        })
+            MDProvider.loadAlert(title: "", message: errorCancelAppointment )
+        }
     }
     
     func getAppointmentInArr(id: Int) -> AppointmentShow{
@@ -91,6 +98,20 @@ class HistoryViewController: MDBaseViewController {
             }
         }
         return result
+    }
+    
+    func checkDate(dateBook: String) -> Bool{
+        let date = Date()
+        //        let calendar = Calendar.current
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let bookday = dateFormatter.date(from: dateBook)
+        if date < bookday!{
+            return true
+        }else{
+            return false
+        }
     }
     
 }

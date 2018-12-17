@@ -59,10 +59,11 @@ let errorFailLogin = "Đăng nhập không thành công!\nVui lòng thử lại.
 let errorFailRegister = "Đăng ký không thành công.\nVui lòng thử lại."
 let errorMissInfoBookAppointment = "Thiếu thông tin đăng ký lịch khám.\nVui lòng thử lại."
 let errorMissInfoSendMessage = "Vui lòng điền nội dung tin nhắn muốn gửi đi."
+let errorCancelAppointment = "Không thể huỷ lịch hẹn!\nVui lòng huỷ lịch hẹn trước ít nhất 1 ngày"
 
 //---------Api doucument-----
 //let kServerDomain = "http://192.168.1.158:8080/medicalcare/" //local server tokyo
-let kServerDomain = "http://192.168.58.67:8080/medicalcare/" //local server home
+let kServerDomain = "http://192.168.35.25:8080/medicalcare/" //local server home
 //let kServerDomain = "http://172.16.1.129:8080/medicalcare/" //local server the coffe house
 
 let kAPILogin = kServerDomain + "login.php"
