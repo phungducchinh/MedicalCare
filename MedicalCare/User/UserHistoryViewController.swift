@@ -15,9 +15,16 @@ class UserHistoryViewController: MDBaseViewController {
     var doctor_id = 0
     let hud = JGProgressHUD(style: .dark)
     var arrAppointmentDoctor : [AppointmentDoctorShow] = []
+    var isAll = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let btn1 = UIButton(type: .custom)
+        btn1.setImage(#imageLiteral(resourceName: "ico_filter"), for: .normal)
+        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btn1.addTarget(self, action: #selector(filter), for: .touchUpInside)
+        let item1 = UIBarButtonItem(customView: btn1)
+        self.navigationItem.setRightBarButton(item1, animated: true)
         // Do any additional setup after loading the view.
     }
     
@@ -31,7 +38,7 @@ class UserHistoryViewController: MDBaseViewController {
         self.navigationItem.title = "Lịch sử cuộc hẹn"
         MDProvider.instance.setUpNavigation(controller: self)
         tbvListAppointment.estimatedRowHeight = 80
-        tbvListAppointment.rowHeight = UITableViewAutomaticDimension
+//        tbvListAppointment.rowHeight = UITableViewAutomaticDimension
         tbvListAppointment.separatorStyle = .none
 //        DispatchQueue.global(qos: .background).async {
 //            self.getAllAppointment()
@@ -93,12 +100,74 @@ class UserHistoryViewController: MDBaseViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    @objc func filter(){
+        var topController:UIViewController = UIApplication.shared.keyWindow!.rootViewController!
+        while ((topController.presentedViewController) != nil) {
+            topController = topController.presentedViewController!;
+        }
+        
+        let alertController = UIAlertController(title: "", message: "Vui lòng chọn hình thức hiển thị", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Tất cả", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            print("all")
+            self.isAll = true
+            DispatchQueue.main.async {
+                self.tbvListAppointment.reloadData()
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Hôm nay", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            print("today")
+            self.isAll = false
+            DispatchQueue.main.async {
+                self.tbvListAppointment.reloadData()
+            }
+        }))
+        
+        topController.present(alertController, animated:true, completion:nil)
+    }
     
+    func checkDay(day: String) -> Bool{
+        _ = Locale.init(identifier: "vi_VN")
+        guard day != "" else {
+            return false
+        }
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let today = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let dateBook = dateFormatter.date(from: day)
+        let unitFlags = Set<Calendar.Component>([.day, .month, .year])
+        
+        let components = calendar.dateComponents(unitFlags, from: dateBook!)
+        if components.day == today && components.month == month && components.year == year{
+            return true
+        }else{
+            return false
+        }
+    }
 }
 extension UserHistoryViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrAppointmentDoctor.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isAll{
+            return UITableViewAutomaticDimension
+        }else{
+            if checkDay(day: arrAppointmentDoctor[indexPath.row].dateBook ?? ""){
+                return UITableViewAutomaticDimension
+            }else{
+                return 0
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

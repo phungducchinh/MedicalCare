@@ -29,10 +29,6 @@ class DoctorPresentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewBg.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)
-        self.view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        viewBg.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
 
@@ -45,6 +41,15 @@ class DoctorPresentViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.viewBg.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)
+        self.view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        viewBg.addGestureRecognizer(tap)
+    }
+    
     func upateData(objDoc: Doctor){
         self.objDoctor = objDoc
         MDProvider.instance.setupImage(strAva: objDoctor?.avatar ?? "", imgView: self.imgAvatar)
@@ -55,8 +60,11 @@ class DoctorPresentViewController: UIViewController {
         }else{
             self.lblCertificate.text = ""
         }
-        MDProvider.instance.getCoordinate(addressString: objDoctor?.address ?? "", lblPlace: self.lblPlace, completionHandler: {distance , err in
-        })
+        DispatchQueue.main.async {
+            MDProvider.instance.getCoordinate(addressString: self.objDoctor?.address ?? "", lblPlace: self.lblPlace, completionHandler: {distance , err in
+                print(distance)
+            })
+        }
     }
     
     func cvtArrToString(info: [Info]) -> String{
@@ -75,9 +83,9 @@ class DoctorPresentViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == kSegueDoctorToDoctorHospital{
-            if let vc = segue.destination as? DoctorHospitalViewController{
-                
-            }
+//            if let vc = segue.destination as? DoctorHospitalViewController{
+//
+//            }
         }
         
     }

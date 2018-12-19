@@ -113,12 +113,14 @@ extension DoctorListViewController : UITableViewDelegate, UITableViewDataSource{
         let statusFrame = UIApplication.shared.statusBarFrame
         let flTrueY = statusFrame.height //+ CGFloat(self.navigationController?.navigationBar.frame.height ?? 0)
         self.row = indexPath.row
-        self.doctorPresentView.upateData(objDoc: arrDoctor[indexPath.row])
-        self.doctorPresentView.view.frame = CGRect(x: -self.view.frame.size.width, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
-        UIView.animate(withDuration: 0.3, animations: {
-            self.doctorPresentView.view.frame = CGRect(x: 0, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
-        }) { (finish) in
-            
+        DispatchQueue.main.async {
+            self.doctorPresentView.upateData(objDoc: self.arrDoctor[indexPath.row])
+            self.doctorPresentView.view.frame = CGRect(x: -self.view.frame.size.width, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
+            UIView.animate(withDuration: 0.3, animations: {
+                self.doctorPresentView.view.frame = CGRect(x: 0, y: CGFloat(flTrueY), width: self.doctorPresentView.view.frame.size.width, height: self.tbvListDoctor.frame.height + (self.tabBarController?.tabBar.frame.height)! + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0))
+            }) { (finish) in
+                
+            }
         }
     }
 }
