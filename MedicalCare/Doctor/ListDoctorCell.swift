@@ -32,9 +32,11 @@ class ListDoctorCell: UITableViewCell {
         lblName.text = name
         lblSpecallize.text = special
         lblHospital.text =  addHos
-        MDProvider.instance.getCoordinate(addressString: addHos, lblPlace: lblPlace, completionHandler: {distance , err in
-//            self.lblPlace.text = "\(distance)" + " km"
-        })
+        DispatchQueue.main.async {
+            MDProvider.instance.getCoordinate(addressString: addHos, lblPlace: self.lblPlace, completionHandler: {distance , err in
+                //            self.lblPlace.text = "\(distance)" + " km"
+            })
+        }
         self.layoutIfNeeded()
         self.setNeedsLayout()
     }

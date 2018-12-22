@@ -34,10 +34,6 @@ class HospitalPharmacyDetialViewController: MDBaseViewController {
         tvInfo.text = infoHospital?.info ?? ""
         phone = infoHospital?.phone_number ?? ""
         MDProvider.instance.setupImage(strAva: infoHospital?.avatar ?? "", imgView: imgAva)
-        MDProvider.instance.getCoordinate(addressString: infoHospital?.address ?? "", lblPlace: lblPlace, completionHandler: {distance , err in
-            print(distance)
-        })
-        
         if tvInfo.contentSize.height > tvInfo.frame.height{
             tvInfo.isScrollEnabled = true
         }else{
@@ -45,6 +41,14 @@ class HospitalPharmacyDetialViewController: MDBaseViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.async {
+            MDProvider.instance.getCoordinate(addressString: self.infoHospital?.address ?? "", lblPlace: self.lblPlace, completionHandler: {distance , err in
+                print(distance)
+            })
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

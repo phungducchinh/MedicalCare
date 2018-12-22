@@ -63,7 +63,7 @@ let errorCancelAppointment = "Không thể huỷ lịch hẹn!\nVui lòng huỷ 
 
 //---------Api doucument-----
 //let kServerDomain = "http://192.168.1.158:8080/medicalcare/" //local server tokyo
-let kServerDomain = "http://172.16.1.15:8080/medicalcare/" //local server home
+let kServerDomain = "http://192.168.1.100:8080/medicalcare/" //local server home
 //let kServerDomain = "http://172.16.1.129:8080/medicalcare/" //local server the coffe house
 
 let kAPILogin = kServerDomain + "login.php"
