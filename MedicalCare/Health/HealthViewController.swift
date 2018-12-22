@@ -33,6 +33,9 @@ class HealthViewController: UIViewController {
         MDProvider.instance.setUpNavigation(controller: self)
         tbHealth.rowHeight = UITableViewAutomaticDimension
         MDProvider.instance.setGradientBackground(view: self.bgView)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(resetData))
+        lblInfo.isUserInteractionEnabled = true
+        lblInfo.addGestureRecognizer(tap)
 //        MDProvider.instance.setShadown(view: tbHealth, borderShadow: 1.0, bgColor :.clear, shadownColor : .black)
         // Do any additional setup after loading the view.
     }
@@ -54,7 +57,14 @@ class HealthViewController: UIViewController {
         print(nbDistance, " ", nbWalk, " ", nbFloor )
         DispatchQueue.main.async {
             self.tbHealth.reloadData()
-            self.lblInfo.text = "\(Double((self.arrRealData[0]/self.arrNumberInfo[0] + self.arrRealData[1]/self.arrNumberInfo[1] + self.arrRealData[2]/self.arrNumberInfo[2])/3).roundToDecimal(1)) %"
+            self.lblInfo.text = "\(Double((self.arrRealData[0]/self.arrNumberInfo[0] + self.arrRealData[1]/self.arrNumberInfo[1] + self.arrRealData[2]/self.arrNumberInfo[2])*100/3).roundToDecimal(1)) %"
+        }
+    }
+    
+    @objc func resetData(){
+        DispatchQueue.main.async {
+            self.tbHealth.reloadData()
+            self.lblInfo.text = "\(Double((self.arrRealData[0]/self.arrNumberInfo[0] + self.arrRealData[1]/self.arrNumberInfo[1] + self.arrRealData[2]/self.arrNumberInfo[2])*100/3).roundToDecimal(1)) %"
         }
     }
     

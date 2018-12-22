@@ -141,8 +141,8 @@ class FindoctorViewController: MDBaseViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == kSegueFindDoctorToListDoctor{
-            let find = FindDoctor(hospital_id: getId(info: (infoFindDoctor?.benhvien)!, name: btnHospital.titleLabel?.text ?? "") , certificate_id: getId(info: (infoFindDoctor?.chuyenkhoa)!, name: btnSpecialize.titleLabel?.text ?? "") ,
-                                  specialize_id: getId(info: (infoFindDoctor?.hocham)!, name: btnCertificate.titleLabel?.text ?? "") ,
+            let find = FindDoctor(hospital_id: getId(info: (infoFindDoctor?.benhvien)!, name: btnHospital.titleLabel?.text ?? "") , certificate_id: getId(info: (infoFindDoctor?.hocham)!, name: btnCertificate.titleLabel?.text ?? "") ,
+                                  specialize_id: getId(info: (infoFindDoctor?.chuyenkhoa)!, name: btnSpecialize.titleLabel?.text ?? "") ,
                                   gender: getGender(gender: btnGender.titleLabel?.text ?? "") )
             let vc = segue.destination as? DoctorListViewController
                 vc?.objFindDoctor = find
