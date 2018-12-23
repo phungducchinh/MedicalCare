@@ -30,6 +30,7 @@
 		0E5372F42163C30500F5F260 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F22163C30500F5F260 /* Cell.swift */; };
 		0E5372F52163C30500F5F260 /* DropDownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F32163C30500F5F260 /* DropDownListView.swift */; };
 		0E5372F72163D21C00F5F260 /* ChooseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5372F62163D21C00F5F260 /* ChooseTimeViewController.swift */; };
+		0E60413E21CF3EFA00032CF4 /* JSON_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60413D21CF3EFA00032CF4 /* JSON_Distance.swift */; };
 		0E6B9232216FA290009662C5 /* Emergency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9231216FA290009662C5 /* Emergency.swift */; };
 		0E6B9234216FA75E009662C5 /* InfoFinđoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */; };
 		0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E712B1B216E2B18002FA421 /* MDAPIManager.swift */; };
@@ -90,6 +91,7 @@
 		0E5372F22163C30500F5F260 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		0E5372F32163C30500F5F260 /* DropDownListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownListView.swift; sourceTree = "<group>"; };
 		0E5372F62163D21C00F5F260 /* ChooseTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimeViewController.swift; sourceTree = "<group>"; };
+		0E60413D21CF3EFA00032CF4 /* JSON_Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Distance.swift; sourceTree = "<group>"; };
 		0E6B9231216FA290009662C5 /* Emergency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emergency.swift; sourceTree = "<group>"; };
 		0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoFinđoctor.swift"; sourceTree = "<group>"; };
 		0E712B1B216E2B18002FA421 /* MDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAPIManager.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				0E6B9233216FA75E009662C5 /* InfoFinđoctor.swift */,
 				0EA134122170EB3C00A76A5E /* Doctor.swift */,
 				0E7ECB112177947E00E83B6C /* Appointment.swift */,
+				0E60413D21CF3EFA00032CF4 /* JSON_Distance.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				0EFDFF362156B94400627A59 /* Frameworks */,
 				0EFDFF372156B94400627A59 /* Resources */,
 				BED26524EA0AF41201849581 /* [CP] Embed Pods Frameworks */,
+				9EDC002882E1A2CD9E8CA871 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -442,6 +446,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9EDC002882E1A2CD9E8CA871 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MedicalCare/Pods-MedicalCare-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedicalCare/Pods-MedicalCare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BED26524EA0AF41201849581 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -452,12 +476,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -491,6 +517,7 @@
 				0E123BD7215E94F500AFAE47 /* AppointmentDetailViewCell.swift in Sources */,
 				0E5372F72163D21C00F5F260 /* ChooseTimeViewController.swift in Sources */,
 				0EFDFF5B2156D2D700627A59 /* ProfileRegiterViewController.swift in Sources */,
+				0E60413E21CF3EFA00032CF4 /* JSON_Distance.swift in Sources */,
 				0E49BA51215A70FB0085C20E /* ListDoctorCell.swift in Sources */,
 				0E6B9234216FA75E009662C5 /* InfoFinđoctor.swift in Sources */,
 				0E712B1C216E2B18002FA421 /* MDAPIManager.swift in Sources */,

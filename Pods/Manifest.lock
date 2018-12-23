@@ -1,24 +1,41 @@
 PODS:
   - Alamofire (4.7.3)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
   - IQKeyboardManager (6.1.1)
   - JGProgressHUD (2.0.3)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
+  - GoogleMaps
+  - GooglePlaces
   - IQKeyboardManager
   - JGProgressHUD
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - GoogleMaps
+    - GooglePlaces
     - IQKeyboardManager
     - JGProgressHUD
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 1c099fbf35883a0985ff9bd3677a97ebe2b3efe3
+PODFILE CHECKSUM: 8ffb8b2a48f2e39f736e8925c13724412e1a0224
 
 COCOAPODS: 1.5.3

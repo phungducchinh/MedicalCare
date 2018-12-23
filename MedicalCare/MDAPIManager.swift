@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 import Alamofire
+import CoreLocation
+import MapKit
+import SwiftyJSON
 
 class MDAPIManager{
     
@@ -16,8 +19,8 @@ class MDAPIManager{
     
     private lazy var sessionManager: SessionManager = {
         let configuration = URLSessionConfiguration.background(withIdentifier: "medicalcare")
-        configuration.timeoutIntervalForRequest = 60.0
-        configuration.timeoutIntervalForResource = 60.0
+        configuration.timeoutIntervalForRequest = 120.0
+        configuration.timeoutIntervalForResource = 120.0
         var manager = Alamofire.SessionManager(configuration: configuration)
         return manager
     }()
@@ -715,6 +718,41 @@ class MDAPIManager{
                     }
                 }
                 failure(false, kErrorText)
+            }
+        }
+    }
+    
+    func caculateGoogleDistance(toPlace: String,success: @escaping (DistanceOrTime) -> Void, failure: @escaping (_ success : Bool , _ messenge : String) -> Void)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let userLocation : CLLocation = appDelegate.userLocation{
+            let urlRequest = "https://maps.googleapis.com/maps/api/distancematrix/json?&origins=\(userLocation.coordinate.latitude),\(userLocation.coordinate.longitude)&destinations=\(toPlace)&key=AIzaSyDXpMQJz5_eWu5dOXt4u8_TL_-6cAzwI5A"
+            //            print(urlRequest as Any)
+             let base_url = urlRequest.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let manager = self.sessionManager
+            let headers: HTTPHeaders = [ "Accept": "application/json", "Content-Type": "application/json" ]
+            let urlgetInfo = URL(string: base_url)
+            manager.request(urlgetInfo!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseString { response in
+                
+                guard response.result.isSuccess else {
+                    failure(false, "Không thể lấy được vị trí")
+                    return
+                }
+                do {
+                    let json = try JSON(data: response.data!)
+                    let json1 = json["rows"]
+                    let json2 = json1[0]
+                    let json3 = json2["elements"]
+                    let dic = json3[0]
+                    
+                    let Response = try JSONDecoder().decode(JSON_Distance.self, from: response.data!)
+                    success(Response.rows[0].elements[0].distance)
+                    print(Response)
+                }
+                catch let err {
+                    print(err.localizedDescription)
+                    failure(false, "Không thể lấy được vị trí")
+                }
             }
         }
     }

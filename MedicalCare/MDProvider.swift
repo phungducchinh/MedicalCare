@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import MapKit
+import GoogleMaps
 
 class MDProvider  {
     
@@ -214,6 +215,31 @@ class MDProvider  {
         }
         
         return priceString;
+    }
+    
+    func caculateGoogleDistance(toPlace: String) -> String{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let userLocation : CLLocation = appDelegate.userLocation{
+            let urlRequest = "https://maps.googleapis.com/maps/api/distancematrix/json?&origins=\(userLocation.coordinate.latitude),\(userLocation.coordinate.longitude)&destinations=\(toPlace)&key=AIzaSyAFZ85WDGQfTBPeMXkOpL_x1_263eRr0LQ"
+//            print(urlRequest as Any)
+            let base_url =  try! Data(contentsOf: URL(string: urlRequest.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!)
+            let json =  try! JSONSerialization.jsonObject(with: base_url, options: []) as! NSDictionary
+            let json1 = json["rows"] as! NSArray
+            let json2 = json1[0] as! NSDictionary
+            let json3 = json2["elements"] as! NSArray
+            let dic = json3[0] as! NSDictionary
+            
+            let dis = dic["distance"] as! NSDictionary
+            if let distance = dis["text"]
+            {
+                let distance = String(describing: distance)
+                return distance
+            }else{
+                return "0 km"
+            }
+        }else{
+            return "0 km"
+        }
     }
 }
 

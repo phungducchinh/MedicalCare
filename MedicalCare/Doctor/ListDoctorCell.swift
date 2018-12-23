@@ -37,6 +37,14 @@ class ListDoctorCell: UITableViewCell {
                 //            self.lblPlace.text = "\(distance)" + " km"
             })
         }
+//        DispatchQueue.main.async {
+//            MDAPIManager.instance.caculateGoogleDistance(toPlace: addHos, success: {distance in
+//                self.lblPlace.text = distance.text
+//            }, failure: {bool, mess in
+//                print(mess)
+//                self.lblPlace.text = "0 km"
+//            })
+//        }
         self.layoutIfNeeded()
         self.setNeedsLayout()
     }

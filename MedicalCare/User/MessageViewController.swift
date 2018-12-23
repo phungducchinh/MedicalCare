@@ -49,7 +49,7 @@ class MessageViewController: MDBaseViewController {
         while ((topController.presentedViewController) != nil) {
             topController = topController.presentedViewController!;
         }
-        let okAction = UIAlertAction(title: "Đống ý", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
+        let okAction = UIAlertAction(title: "Đồng ý", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
             self.hud.show(in: self.view)
             if let userData = defaultLogin.data(forKey: kUserDefaultkeyLogin), let user = try? JSONDecoder().decode(UserObject.self, from: userData) {
                 MDAPIManager.instance.sendMessage(user_id: user.id ?? 0, message: message, success: {success in
@@ -58,12 +58,14 @@ class MessageViewController: MDBaseViewController {
                         self.tvMessage.text.removeAll()
                     }
                     MDProvider.loadAlert(title: "", message: success)
+                    self.lblTotal.text = "500/500"
                 }, failure: {fail, err in
                     DispatchQueue.main.async {
                         self.hud.dismiss()
                         self.tvMessage.text.removeAll()
                     }
                     MDProvider.loadAlert(title: "", message: err)
+                    self.lblTotal.text = "500/500"
                 })
             }else{
                 DispatchQueue.main.async {

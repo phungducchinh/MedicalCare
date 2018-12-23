@@ -9,4 +9,7 @@ target 'MedicalCare' do
     pod 'Alamofire'
     pod 'JGProgressHUD'
     pod 'IQKeyboardManager'
+pod 'GoogleMaps'
+  pod 'GooglePlaces'
+pod 'SwiftyJSON' 
 end

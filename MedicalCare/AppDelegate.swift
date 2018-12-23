@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 import CoreData
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegate{
@@ -31,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
             self.window?.rootViewController = viewController
         }
-        
+        GMSServices.provideAPIKey("AIzaSyDXpMQJz5_eWu5dOXt4u8_TL_-6cAzwI5A")
+        GMSPlacesClient.provideAPIKey("AIzaSyDXpMQJz5_eWu5dOXt4u8_TL_-6cAzwI5A")
         return true
     }
 
